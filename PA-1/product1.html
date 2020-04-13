@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>product1</title>
+
+    <!-- external css file -->
+    <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /* Go to Top Button */
+        var elmClass = '.gotopbtn'; // Adjust this accordingly.
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 300) { // 300px from top
+            $(elmClass).fadeIn();
+          } else {
+            $(elmClass).fadeOut();
+          }
+        });
+
+        //Click event to scroll to top
+        $(elmClass).click(function () {
+          $('html, body').animate({ scrollTop: 0 }, 800);
+          return false;
+        });
+        /*----------------------------*/
+      });
+    </script>
+
+  </head>
+  <body>
+    <div class="main-container">
+      <!--<p>hello world!</p>-->
+
+      <!-- Nav -->
+      <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
+      <header>
+        <div class="topnav">
+          <!-- Left-aligned links -->
+          <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
+          <a href="index.html">Home</a>
+          <a class="active" href="products.html">Products</a>
+
+          <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
+          <!--<a href="#about">About</a>-->
+          <div class="subnav">
+            <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+              <a href="company.html">Company</a>
+              <a href="team.html">Team</a>
+              <!-- <a href="#careers">Careers</a> -->
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+
+          <!-- Right-aligned links-->
+          <div class="topnav-right">
+            <a href="#search">Search</a>
+            <a href="shoppingcart.html">Shopping Cart</a>
+          </div>
+
+        </div>
+      </header>
+
+
+      <!-- Main -->
+      <section>
+        <div class="main">
+
+          <h1>Animal Crossing: New Horizons</h1>
+          <p>Product 1 description.</p>
+          <div class="w3-card-4" style = "width:50%">
+            <img src="img/Animal-Crossing-New-Horizons.jfif" alt="p1" style = "width:50%">
+            <div class="main">
+              <h4><b>Animal Crossing: New Horizons</b></h4>
+              <p>Platform: Nintendo Switch</p>
+            </div>
+          </div>
+          <br>
+
+          <p>Category: Education Simulation</p>
+          <p>Price: $59.9</p>
+          <p>Currently In Stock: 5</p>
+          <style>
+            .w3-button {width:150px}
+          </style>
+          <p><button class="w3-button w3-border w3-hover-green">Add to Cart</button></p>
+        </div>
+      </section>
+
+
+      <!-- Footer -->
+      <!--
+      <div class="footer">
+        <p>Footer</p>
+      </div> -->
+      <footer>
+        <p>Acme Web Design,  Copyright &copy; 2020</p>
+      </footer>
+    </div>
+
+    <!-- go to top button -->
+    <a class="gotopbtn" href="#"><span class="fas fa-caret-square-up"></span></a>
+
+  </body>
+</html>
