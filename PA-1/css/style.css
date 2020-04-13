@@ -77,6 +77,13 @@ html, body {
   height: 20%;
 }
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 
 /* The subnavigation menu */
 .subnav {
@@ -106,7 +113,7 @@ html, body {
   font-style : italic;
 }
 
-/* Add a red background color to navigation links on hover */
+/* Add a red background color to navigation links on hover. changed to #ddd */
 .navbar a:hover, .subnav:hover .subnavbtn {
   color: black;/*white;*/
   background-color: #ddd; /*red;*/
