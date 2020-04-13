@@ -175,3 +175,23 @@ footer {
   font-size: 11px;
   font-family: Tahoma, Verdana, Arial, sans-serif;
 }
+
+
+
+/* Arrow To Top Button (go to top button) */
+.gotopbtn {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: red;/*#27ae60;*/
+  border-radius: 5px;
+  bottom: 40px;
+  right: 40px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-size: 22px;
+  opacity: 0.7;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
