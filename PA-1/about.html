@@ -13,11 +13,29 @@
 
     <!-- JavaScript -->
     <script type="text/javascript">
+      function openSearch() {
+        document.getElementById("myOverlay").style.display = "block";
+      }
 
+      function closeSearch() {
+        document.getElementById("myOverlay").style.display = "none";
+      }
     </script>
 
   </head>
   <body>
+
+    <!-- Overlay for Search button -->
+    <div id="myOverlay" class="overlay">
+      <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+      <div class="overlay-content">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+
     <div class="main-container">
       <!--<p>hello world!</p>-->
 
@@ -49,7 +67,8 @@
 
           <!-- Right-aligned links-->
           <div class="topnav-right">
-            <a href="#search">Search</a>
+            <!--<a href="#search">Search</a>-->
+            <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
             <a href="shoppingcart.html">Shopping Cart</a>
           </div>
 
