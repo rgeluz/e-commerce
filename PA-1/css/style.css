@@ -55,7 +55,7 @@ html, body {
 }
 
 /* Add a color to the active/current link */
-.topnav a.active {
+.topnav a.active{
   background-color: red; /*#4CAF50;*/
   color: white;
   font-family: Helvetica, Arial, sans-serif;   font-weight: bold;
@@ -65,6 +65,13 @@ html, body {
 /* Right-aligned section inside the top navigation */
 .topnav-right {
   float: right;
+}
+
+.topnav-right a.active {
+  background-color: red; /*#4CAF50;*/
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;   font-weight: bold;
+  font-style : italic;
 }
 
 /* Company Logo */
