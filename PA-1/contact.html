@@ -23,6 +23,38 @@
     </script>
 
   </head>
+  	<style>
+	input[type=text], select, textarea {
+	  width: 100%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	  margin-top: 6px;
+	  margin-bottom: 16px;
+	  resize: vertical;
+	}
+
+	input[type=submit] {
+	  background-color: #4CAF50;
+	  color: white;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+
+	.container {
+	  border-radius: 0px;
+	  padding: 20px;
+	}
+	</style>
+  </head>
+
   <body>
 
     <!-- Overlay for Search button -->
@@ -72,13 +104,43 @@
 
 
       <!-- Main -->
-      <section>
-        <div class="main">
-          <p>Contact Page</p>
-          <p>//add contact form: [name, email, phone number, message box, submit button]</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
-        </div>
-      </section>
+           
+        
+  <section class="container page">
+  	<div class="Main">
+  <article>
+    <header>
+      <h1>Contact</h1>
+    </header>
+<div class="container" align = "left">
+	  <form
+  action="https://formspree.io/mknzpnvv"
+  method="POST" align = "left"
+>
+
+  <label align = "left">
+    Your email:
+    <input type="text" name="_replyto">
+  </label>
+
+  <label>
+    Your message:
+    <textarea name="message" style = "height:200px"></textarea>
+
+  </label>
+
+  <!-- your other form fields go here -->
+
+  <button type="submit">Send</button>
+</form>
+
+    
+  </article>
+  </div>
+</section>
+
+
+      </div>
 
       <!-- Footer -->
       <!--
