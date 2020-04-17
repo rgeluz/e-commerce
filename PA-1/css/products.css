@@ -68,3 +68,43 @@
     margin: 3px;
     padding: 3px;
  }
+
+
+ /****************************************/
+ /* products                            */
+ /****************************************/
+
+ .column {
+   float: left;
+   width: 25%;
+   padding: 10px;
+ }
+
+ .column img{
+   opacity: 0.8;
+   cursor: pointer;
+ }
+
+ .column img:hover {
+   opacity: 1;
+ }
+
+ .row::after {
+   content: "";
+   display: table;
+   clear: both;
+ }
+
+ .expandedImgContainer {
+   position: relative;
+   display: none;
+ }
+
+ .closebtn {
+   position: absolute;
+   top: 10px;
+   right: 15px;
+   color: white;
+   font-size: 35px;
+   cursor: pointer;
+ }

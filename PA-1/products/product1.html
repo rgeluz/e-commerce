@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>product1</title>
+    <title>Product Page</title>
 
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
     <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="../css/products.css" rel="stylesheet">
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
 
     <!-- JavaScript -->
     <script type="text/javascript">
@@ -45,10 +46,18 @@
         document.getElementById("myOverlay").style.display = "none";
       }
 
+      function expandIMG(imgs) {
+        var expanded = document.getElementById("expanded");
+        expanded.src = imgs.src;
+        expanded.parentElement.style.display = "block";
+      }
+
     </script>
 
   </head>
   <body>
+
+
 
     <!-- Overlay for Search button -->
     <div id="myOverlay" class="overlay">
@@ -92,25 +101,46 @@
             <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
             <a href="../shoppingcart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
           </div>
-
         </div>
       </header>
-
 
       <!-- Main -->
       <section>
         <div class="main">
 
           <h1>Animal Crossing: New Horizons</h1>
-          <p>Product 1 description.</p>
-          <div class="w3-card-4" style = "width:50%">
+          <p>Escape to a deserted island and create your own paradise as you explore, create,
+            and customize in the Animal Crossing: New Horizons game.
+            Your island getaway has a wealth of natural resources that can be used to craft everything from tools to creature comforts.</p>
+
+          <!-- <div class="w3-card-4" style = "width:50%">
             <img src="img/Animal-Crossing-New-Horizons.jfif" alt="p1" style = "width:50%">
             <div class="main">
               <h4><b>Animal Crossing: New Horizons</b></h4>
               <p>Platform: Nintendo Switch</p>
             </div>
           </div>
-          <br>
+          <br> -->
+
+          <div class="row">
+            <div class="column">
+              <img src="../img/Animal-Crossing-New-Horizons.jfif" alt="cover" style="width:50%" onclick="expandIMG(this);">
+            </div>
+            <div class="column">
+              <img src="../img/acnh01.jpg" alt="screenshot01" style="width:100%" onclick="expandIMG(this);">
+            </div>
+            <div class="column">
+              <img src="../img/acnh02.jpg" alt="screenshot02" style="width:100%" onclick="expandIMG(this);">
+            </div>
+            <div class="column">
+              <img src="../img/acnh03.jpg" alt="screenshot03" style="width:100%" onclick="expandIMG(this);">
+            </div>
+          </div>
+
+          <div class="expandedImgContainer">
+            <span onclick = "this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <img id="expanded" style="width: 100%">
+          </div>
 
           <p>Category: Education Simulation</p>
           <p>Price: $59.9</p>
