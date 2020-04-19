@@ -31,5 +31,8 @@
 	//JavaScript - Form Validation
 	https://www.tutorialspoint.com/javascript/javascript_form_validations.htm
 
+	//JavaScript: HTML Form - email validation
+	https://www.w3resource.com/javascript/form/email-validation.php
+
 	//Automatically open default email client and pre-populate content
 	https://stackoverflow.com/questions/13231125/automatically-open-default-email-client-and-pre-populate-content
