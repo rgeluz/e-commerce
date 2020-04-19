@@ -18,3 +18,9 @@
 
 	//How To Create a Card
 	https://www.w3schools.com/howto/howto_css_cards.asp
+
+	//game controller icon
+	https://fontawesome.com/icons/gamepad?style=solid
+
+	//marquee //end up removing date and time
+	http://jsfiddle.net/n2XB6/63/
