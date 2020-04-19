@@ -27,3 +27,9 @@
 
 	//marquee //end up removing date and time
 	http://jsfiddle.net/n2XB6/63/
+
+	//JavaScript - Form Validation
+	https://www.tutorialspoint.com/javascript/javascript_form_validations.htm
+
+	//Automatically open default email client and pre-populate content
+	https://stackoverflow.com/questions/13231125/automatically-open-default-email-client-and-pre-populate-content
