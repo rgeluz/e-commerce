@@ -12,3 +12,15 @@
 
 	//Search Bar
 	https://www.w3schools.com/howto/howto_css_fullscreen_search.asp
+
+	//A step-by-step guide to getting started with HTML tables
+	https://medium.com/free-code-camp/a-step-by-step-guide-to-getting-started-with-html-tables-7f43b18f962b
+
+	//How To Create a Card
+	https://www.w3schools.com/howto/howto_css_cards.asp
+
+	//game controller icon
+	https://fontawesome.com/icons/gamepad?style=solid
+
+	//marquee //end up removing date and time
+	http://jsfiddle.net/n2XB6/63/
