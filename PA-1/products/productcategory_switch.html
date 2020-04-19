@@ -18,6 +18,26 @@
 
     <!-- JavaScript -->
     <script type="text/javascript">
+      $(document).ready(function () {
+        /* Go to Top Button */
+        var elmClass = '.gotopbtn'; // Adjust this accordingly.
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 300) { // 300px from top
+            $(elmClass).fadeIn();
+          } else {
+            $(elmClass).fadeOut();
+          }
+        });
+
+        //Click event to scroll to top
+        $(elmClass).click(function () {
+          $('html, body').animate({ scrollTop: 0 }, 800);
+          return false;
+        });
+        /*----------------------------*/
+      });
       function openSearch() {
         document.getElementById("myOverlay").style.display = "block";
       }
@@ -105,15 +125,16 @@
                 <tr>
                   <td>
                     <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar.png" alt="Avatar" style="width:100%">
+                      <!---->
+                      <a href="productdetails_switch_animalCrossing.html">
+                        <img src="../img/products/animalcrossing/animalcrossing.jpg" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
+                        <h4><b>Animal Crossing: New Horizons</b></h4>
+                        <p>Platform: Nintendo Switch</p>
+                        <p>Category: Education Simulation</p>
+                        <p>Price: $59.9</p>
+                        <p>Currently In Stock: 5</p>
                         <p>Description: </p>
                       </div>
                     </div>
@@ -121,15 +142,15 @@
 
                   <td>
                     <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
+                      <a href="productdetails_switch_zelda.html">
+                        <img src="../img/products/zelda/zelda.jpg" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
+                        <h4><b>The Legend of Zelda: Breath of the Wild</b></h4>
+                        <p>Platform: Nintendo Switch</p>
+                        <p>Category: RPG</p>
+                        <p>Price: $59.99</p>
+                        <p>Currently In Stock: 36</p>
                         <p>Description: </p>
                       </div>
                     </div>
@@ -137,15 +158,15 @@
 
                   <td>
                     <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
+                      <a href="productdetails_switch_mariocart8.html">
+                        <img src="../img/products/mariokart8/mariokart8.jpg" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
+                        <h4><b>Mario Kart 8 Deluxe</b></h4>
+                        <p>Platform: Nintendo Switch</p>
+                        <p>Category: Racing Game</p>
+                        <p>Price: $59.99</p>
+                        <p>Currently In Stock: 15</p>
                         <p>Description: </p>
                       </div>
                     </div>
@@ -273,6 +294,8 @@
 
     </div>
 
+        <!-- go to top button -->
+        <a class="gotopbtn" href="#"><span class="fas fa-caret-square-up"></span></a>
 
   </body>
 </html>

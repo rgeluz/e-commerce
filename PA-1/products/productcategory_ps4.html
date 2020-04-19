@@ -19,6 +19,26 @@
 
     <!-- JavaScript -->
     <script type="text/javascript">
+      $(document).ready(function () {
+        /* Go to Top Button */
+        var elmClass = '.gotopbtn'; // Adjust this accordingly.
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 300) { // 300px from top
+            $(elmClass).fadeIn();
+          } else {
+            $(elmClass).fadeOut();
+          }
+        });
+
+        //Click event to scroll to top
+        $(elmClass).click(function () {
+          $('html, body').animate({ scrollTop: 0 }, 800);
+          return false;
+        });
+        /*----------------------------*/
+      });
       function openSearch() {
         document.getElementById("myOverlay").style.display = "block";
       }
@@ -106,16 +126,15 @@
                 <tr>
                   <td>
                     <div class="productcategory-card">
-                      <!---->
-                      <a href="product_animalCrossing.html">
-                        <img src="../img/products/crossing.jfif" alt="Avatar" style="width:100%">
+                      <a href="productdetails_PS4_ff7remake.html">
+                        <img src="../img/products/ff7remake/FFVIIRemake.png" alt="FF7re" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>Animal Crossing: New Horizons</b></h4>
-                        <p>Platform: Nintendo Switch</p>
-                        <p>Category: Education Simulation</p>
+                        <h4><b>Final Fantasy VII Remake</b></h4>
+                        <p>Platform: PS4</p>
+                        <p>Category: RPG</p>
                         <p>Price: $59.9</p>
-                        <p>Currently In Stock: 5</p>
+                        <p>Currently In Stock: 10</p>
                         <p>Description: </p>
                       </div>
                     </div>
@@ -123,15 +142,15 @@
 
                   <td>
                     <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
+                      <a href="productdetails_PS4_TLOU2.html">
+                        <img src="../img/products/TLOU2/TLOU2.png" alt="TLOU2" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
+                        <h4><b>The Last of Us 2</b></h4>
+                        <p>Platform: PS4</p>
+                        <p>Category: Action</p>
+                        <p>Price: $59.9</p>
+                        <p>Currently In Stock: Pre-ordering</p>
                         <p>Description: </p>
                       </div>
                     </div>
@@ -275,6 +294,8 @@
 
     </div>
 
+        <!-- go to top button -->
+        <a class="gotopbtn" href="#"><span class="fas fa-caret-square-up"></span></a>
 
   </body>
 </html>

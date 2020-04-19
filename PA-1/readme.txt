@@ -19,8 +19,20 @@
 	//How To Create a Card
 	https://www.w3schools.com/howto/howto_css_cards.asp
 
+	//How TO - Parallax Scrolling
+	https://www.w3schools.com/howto/howto_css_parallax.asp
+
 	//game controller icon
 	https://fontawesome.com/icons/gamepad?style=solid
 
 	//marquee //end up removing date and time
 	http://jsfiddle.net/n2XB6/63/
+
+	//JavaScript - Form Validation
+	https://www.tutorialspoint.com/javascript/javascript_form_validations.htm
+
+	//JavaScript: HTML Form - email validation
+	https://www.w3resource.com/javascript/form/email-validation.php
+
+	//Automatically open default email client and pre-populate content
+	https://stackoverflow.com/questions/13231125/automatically-open-default-email-client-and-pre-populate-content
