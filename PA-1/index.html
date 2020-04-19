@@ -33,20 +33,22 @@
       }
 
       .redbox {
-        height:200px;
+        height: 200px;
         background-color:red;
-        font-size: 50px;
         padding: 40px;
-        color: white;
-        text-align: center;
-        vertical-align:center
       }
       .redbox a {
         text-decoration: none;
         color: white;
       }
 
-      .redbox marquee {
+      .redbox-container {
+        color: white;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .redbox-container marquee {
         font-size: 20px;
         color: white;
       }
@@ -59,7 +61,19 @@
   </head>
   <body>
 
-
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-gamepad"></i> SHOP</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          See New Arrivals
+        </marquee>
+      </div>
+    </div>
 
     <div class="parallax"></div>
 
@@ -71,18 +85,35 @@
     </div>-->
 
     <div class="redbox">
-      <a href="products.html"><i class="fas fa-gamepad"></i> SHOP</a>
-      <br>
-      <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
-        <!--<i><font color="blue">
-          <strong>Today's date is :<span id="datetime"></span></strong>
-        </font>
-      </i>-->
-        See New Arrivals
-      </marquee>
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-gamepad"></i> SHOP</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          See New Arrivals
+        </marquee>
+      </div>
     </div>
 
     <div class="parallax"></div>
+
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-gamepad"></i> SHOP</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          See New Arrivals
+        </marquee>
+      </div>
+    </div>
+
 
   </body>
 </html>
