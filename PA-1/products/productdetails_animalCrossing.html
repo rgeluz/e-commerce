@@ -15,7 +15,7 @@
     <link href="../css/productdetails.css" rel="products stylesheet">
     <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
 
-    <!-- JavaScript -->
+    <!--internal javascript -->
     <script type="text/javascript">
       $(document).ready(function () {
         /* Go to Top Button */
@@ -51,24 +51,21 @@
         expanded.src = imgs.src;
         expanded.parentElement.style.display = "block";
       }
-
-
-      // Form validation code will come here.
-      function validate() {
-        /*alert("validating submission"); */
-        window.location.href = "mailto:user@example.com?subject=Subject&body=message%20goes%20here";
-      }
     </script>
-	<style>
+    
+    <!-- external javascript -->
+    <script src="../js/productdetails.js"></script>
 
+    <!-- internal css -->
+  	<style>
+  	</style>
 
-	</style>
   </head>
   <body>
 
     <!-- Overlay for Search button -->
     <div id="myOverlay" class="overlay">
-      <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+      <span class="" onclick="closeSearch()" title="Close Overlay">×</span>
       <div class="overlay-content">
         <form action="/action_page.php">
           <input type="text" placeholder="Search.." name="search">
@@ -123,7 +120,7 @@
 
             <div class="main">
               <div class="expandedImgContainer">
-                <span onclick = "this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                <span onclick = "this.parentElement.style.display='none'" class="">&times;</span>
                 <img id="expanded" style="width: 100%">
               </div>
               <div class="row">
@@ -143,10 +140,10 @@
           </div>
 
             <div class="main">
-              <h4><b>Animal Crossing: New Horizons</b></h4>
+              <h4 id="productname"><b>Animal Crossing: New Horizons</b></h4>
               <p>Platform: Nintendo Switch</p>
               <p>Category: Education Simulation</p>
-              <p>Price: $59.9</p>
+              <p id="productprice">Price: $59.9</p>
               <p>Currently In Stock: 5</p>
               <p>Description:
               Escape to a deserted island and create your own paradise as you explore, create,
@@ -160,17 +157,18 @@
         <form action="" name="orderform" onsubmit="return(validate());">
           <div class="col-50">
           <strong><h2>Order Form</h2></strong>
-          <h4>Shipping Information</h4>
+        <!--<h4>Shipping Information</h4>-->
+        <h3>Shipping Information</h3>
 
           <div class="row">
             <div class="col-50">
               <label for="cname">First Name</label>
-              <input type="text" id="cname" name="cardname" placeholder="John">
+              <input type="text" id="fname" name="firstname" placeholder="John">
             </div>
 
             <div class="col-50">
               <label for="cname">Last Name</label>
-              <input type="text" id="cname" name="cardname" placeholder="Doe">
+              <input type="text" id="lname" name="lastname" placeholder="Doe">
             </div>
           </div>
 
@@ -186,7 +184,7 @@
 
             <div class="col-50">
             <label for="state">State</label>
-            <select class = "select-css">
+            <select class = "select-css" name="state">
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -250,7 +248,7 @@
 
           <label for="Shippng Method">Shipping Method:</label>
 
-          <select class = "select-css" id="Shipping Method">
+          <select class = "select-css" id="Shipping Method" name="shippingmethod">
             <option value="overnight">Overnight</option>
             <option value="2-day">2-Days Expedited</option>
             <option value="6-day">6-Days Ground</option>
