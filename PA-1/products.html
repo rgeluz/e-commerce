@@ -11,6 +11,21 @@
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/products.css" rel="stylesheet">
+    <style>
+      .productpage-message {
+        background-color: white;
+        color: red;
+        font-size: 15px;
+        text-align: justify;
+        padding: 30px;
+
+        border-color: red;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem
+      }
+    </style>
 
     <!-- JavaScript -->
     <!--<script type="text/javascript">-->
@@ -51,7 +66,7 @@
     <div id="myOverlay" class="overlay">
       <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
       <div class="overlay-content">
-        <form action="/action_page.php">
+        <form action="#"> <!--"/action_page.php" -->
           <input type="text" placeholder="Search.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
@@ -96,67 +111,22 @@
       <!-- Main -->
       <section>
         <div class="main">
-          <p>Products Page</p>
+          <div class="productpage-message" >
+            <p><span style="font-size: 20px;">Welcome to /placeholder_name/!<span></p>
+            <p>We have over 100 products in stock to choose from.
+              We are a full-service gaming shop that is dedicated to offering the best and most popular games, accessories, apparel and
+              anything else you need for your gaming desires. We do so at the best possible pricing with always FREE CRAZY FAST SHIPPING!
+              All items ship for free next day (exceptions: Preorders and Special Orders). We are here to assist you.
+              Feel free to message us with questions, comments, if there's anything you're looking for you can't find or to place a custom order.</p>
+          </div>
+
+
+          <!--<p>Products Page</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
 
+        -->
+
           <h1>Categories</h1>
-          <!--<ul>
-            <li>
-              <h3>Product 1</h3>
-              <a href="product1.html">Animal Crossing:New Horizons</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $1,000 - $3,000</p>
-            </li>
-            <li>
-              <h3>Product 2</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $250</p>
-            </li>
-            <li>
-              <h3>Product 3</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $50</p>
-            </li>
-            <li>
-              <h3>Product 4</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $25</p>
-            </li>
-            <li>
-              <h3>Product 5</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $1,000 - $3,000</p>
-            </li>
-            <li>
-              <h3>Product 6</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $250</p>
-            </li>
-            <li>
-              <h3>Product 7</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $50</p>
-            </li>
-            <li>
-              <h3>Product 8</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $1,000 - $3,000</p>
-            </li>
-            <li>
-              <h3>Product 9</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $250</p>
-            </li>
-            <li>
-              <h3>Product 10</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Price: $50</p>
-            </li>
-
-          </ul>-->
-
-
-
 
           <!--Product Categories -->
           <section class="basic-grid">

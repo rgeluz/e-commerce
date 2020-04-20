@@ -61,7 +61,7 @@
     <div id="myOverlay" class="overlay">
       <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
       <div class="overlay-content">
-        <form action="/action_page.php">
+        <form action="#">
           <input type="text" placeholder="Search.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
@@ -104,43 +104,38 @@
 
 
       <!-- Main -->
-           
-        
-  <section class="container page">
-  	<div class="Main">
-  <article>
-    <header>
-      <h1>Contact</h1>
-    </header>
-<div class="container" align = "left">
-	  <form
-  action="https://formspree.io/mknzpnvv"
-  method="POST" align = "left"
->
-
-  <label align = "left">
-    Your email:
-    <input type="text" name="_replyto">
-  </label>
-
-  <label>
-    Your message:
-    <textarea name="message" style = "height:200px"></textarea>
-
-  </label>
-
-  <!-- your other form fields go here -->
-
-  <button type="submit">Send</button>
-</form>
-
-    
-  </article>
-  </div>
-</section>
 
 
-      </div>
+      <section class="container page">
+        <div class="Main">
+          <article>
+            <header>
+              <h1>Contact</h1>
+            </header>
+            <div class="container" align="left">
+              <form action="https://formspree.io/mknzpnvv" method="POST" align="left">
+
+                <label align="left">
+                Your email:
+                <input type="text" name="_replyto">
+                </label>
+
+                <label>
+                Your message:
+                <textarea name="message" style = "height:200px"></textarea>
+
+                </label>
+
+                <!-- your other form fields go here -->
+                <button type="submit">Send</button>
+              </form>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+
 
       <!-- Footer -->
       <!--
