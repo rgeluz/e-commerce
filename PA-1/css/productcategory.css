@@ -29,6 +29,7 @@ table, th, td {
 /* On mouse-over, add a deeper shadow */
 .productcategory-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: translateY(-3px) scale(1.1);
 }
 
 /* Add some padding inside the card container */
