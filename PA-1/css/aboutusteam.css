@@ -23,6 +23,10 @@ html {
   .title{
     color: red;
     font-size: xx-large;
+  }
+
+  .team-info{
+    font-size: larger;
     padding-bottom: 10px;
   }
   
