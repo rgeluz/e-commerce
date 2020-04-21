@@ -1,7 +1,34 @@
+//Group members	
+	Roman Geluz 
+	ID# 218497143
+
+	Rishi Shah
+	ID# 12474679
+	
+	Michael Hernandez
+	ID# 68363688
+	
+	Haitao Ye
+	ID# 21497606
 
 	//Link to the site:
 	http://circinus-6.ics.uci.edu:8080/project1/index.html
-
+	
+//About the site
+	We have a cool introducing home page where the user must click the floating bar to enter the actual e-commerce page.
+	The products page shows the overview about our products, along with the general categories of merchandise that 
+	are being selling.
+	The top navigation bar also provide a about drop down button, where our team, company and contact pages are located.
+	The company page gives the overview about the site, and team page gives relative information about the team
+	and also the student ids. The contact page also shows a email option that could send contact request.
+	From the product page the user can choose any category he or she is interested and click on the picture 
+	to enter the according product detail page, 
+	the category cards have hover effect which zooms out when a mouse is being hovered on.
+	The detailed page shows all basic information about the product, the user can click on the small pictures to 
+	enlarge them.
+	The ordering form can also be found on the product detail page, it checks the must fill-in fields and send a 
+	email once all checks are passed. 
+	
 //References
 
 	
