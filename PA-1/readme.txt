@@ -56,6 +56,9 @@
 	//HOW TO - Meet the team
 	https://www.w3schools.com/howto/howto_css_team.asp
 	
+	//HOW TO - CSS/JS Modal
+	https://www.w3schools.com/howto/howto_css_modals.asp
+	
 	//game controller icon
 	https://fontawesome.com/icons/gamepad?style=solid
 
