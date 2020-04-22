@@ -50,6 +50,12 @@
 	//How TO - Parallax Scrolling
 	https://www.w3schools.com/howto/howto_css_parallax.asp
 
+	//HOW TO - Blurred Background Image
+	https://www.w3schools.com/howto/howto_css_blurred_background.asp
+
+	//HOW TO - Meet the team
+	https://www.w3schools.com/howto/howto_css_team.asp
+	
 	//game controller icon
 	https://fontawesome.com/icons/gamepad?style=solid
 
