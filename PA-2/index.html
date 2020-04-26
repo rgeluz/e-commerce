@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="">
+
+    <title>Home</title>
+
+    <!-- external css file -->
+    <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
+    <link href="./css/style.css" rel="stylesheet">
+
+    <!-- internal css -->
+    <style>
+      body, html {
+        height: 100%;
+      }
+
+      .parallax {
+        /* The image used */
+        /*background-image: url('img_parallax.jpg');*/
+        /**/background-image: url("img/sonycontroller_background.jpg");
+
+        /* Full height */
+        height: 100%;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .redbox {
+        height: 200px;
+        background-color:red;
+        padding: 40px;
+      }
+      .redbox a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .whitebox {
+        height: 200px;
+        background-color: white;
+        padding: 40px;
+      }
+
+      .whitebox a {
+        text-decoration: none;
+        color: red;
+      }
+
+      .redbox-container {
+        color: white;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .redbox-container marquee {
+        font-size: 20px;
+        color: white;
+      }
+
+      .whitebox-container {
+        color: red;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .whitebox-container marquee {
+        font-size: 20px;
+        color: red;
+      }
+
+      .logo{
+        color: white;
+        font-style: normal;
+        background-color: red;
+        padding: 10px;
+        border-radius: 25px;
+      }
+    </style>
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
+    </script>
+
+  </head>
+  <body>
+
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-gamepad"></i> PLAY</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          Play the Latest Games!
+        </marquee>
+      </div>
+    </div>
+
+    <div class="parallax"></div>
+
+    <!--<div style="height:200px; background-color:red; font-size: 15px; padding: 40px; color: white;">
+      Scroll Up and Down this page to see the parallax scrolling effect.
+      This div is just here to enable scrolling.
+      Tip: Try to remove the background-attachment property to remove the scrolling effect.
+      <a href="products.html">products</a>
+    </div>-->
+
+    <div class="whitebox">
+      <div class="whitebox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-shopping-bag"></i> SHOP</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="white" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          See New Arrivals! 2020 Spring Drop!
+        </marquee>
+      </div>
+    </div>
+
+    <div class="parallax"></div>
+
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-trophy"></i> WIN</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          Get the Latest Gaming Gear and Beat Your Opponents!
+        </marquee>
+      </div>
+    </div>
+
+    <div class="parallax"></div>
+
+    <div class="whitebox">
+      <div class="whitebox-container"> <!--container for text and marquee -->
+        <a href="products.html"><h1 style="font-size: 50px;"><em class="logo">Gamehub</em></h1></a>
+      </div>
+    </div>
+
+  </body>
+</html>
