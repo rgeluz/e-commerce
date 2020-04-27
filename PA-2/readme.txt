@@ -29,7 +29,7 @@
 	The ordering form can also be found on the product detail page, it checks the must fill-in fields and send a 
 	email once all checks are passed. 
 	
-//References
+//References for PA-1
 
 	
 	//How to Top Nav
@@ -73,3 +73,9 @@
 
 	//Automatically open default email client and pre-populate content
 	https://stackoverflow.com/questions/13231125/automatically-open-default-email-client-and-pre-populate-content
+
+
+//References for PA-2
+
+	
+
