@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <meta name="description" content="">
 
-    <title>Shopping Cart</title>
+    <title>About</title>
 
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
@@ -41,58 +41,26 @@
 
       <!-- Nav -->
       <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
-      <header>
-        <div class="topnav">
-          <!-- Left-aligned links -->
-          <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
+      <!-- Header -->
+      <?php
+        include('header.php');
+      ?>
 
-          <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
-          <!--<a href="#about">About</a>-->
-          <div class="subnav">
-            <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-              <a href="company.html">Company</a>
-              <a href="team.html">Team</a>
-              <!-- <a href="#careers">Careers</a> -->
-              <a href="contact.html">Contact</a>
-            </div>
-          </div>
-
-          <!-- Right-aligned links-->
-          <div class="topnav-right">
-            <!--<a href="#search">Search</a>-->
-            <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
-            <a class="active" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
-          </div>
-
-        </div>
-      </header>
 
 
       <!-- Main -->
       <section>
         <div class="main">
-          <!--
-          <p>Shopping Cart</p>
-          <p>show items in bag/cart and checkout button</p>
-          <p>then maybe in another page, contact information, payment and shipping informaiton, and then order summary </p>
+          <p>About Page</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
-          -->
         </div>
       </section>
 
-
-
       <!-- Footer -->
-      <!--
-      <div class="footer">
-        <p>Footer</p>
-      </div> -->
-      <footer>
-        <p>Acme Web Design,  Copyright &copy; 2020</p>
-      </footer>
+      <?php
+        include('footer.php');
+      ?>
+      
     </div>
   </body>
 </html>
