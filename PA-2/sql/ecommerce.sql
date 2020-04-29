@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 28, 2020 at 06:07 AM
+-- Host: localhost
+-- Generation Time: Apr 28, 2020 at 08:41 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -18,16 +18,40 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mysql`
+-- Database: `ecommerce`
 --
+CREATE DATABASE ecommerce;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `FirstName` varchar(100) NOT NULL,
+  `LastName` varchar(100) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `City` varchar(100) NOT NULL,
+  `State` varchar(100) NOT NULL,
+  `Zip` int(10) NOT NULL,
+  `ShippingMethod` varchar(100) NOT NULL,
+  `ProductID` varchar(100) NOT NULL,
+  `Quantity` int(10) NOT NULL,
+  `CreditCardNumber` varchar(100) NOT NULL,
+  `ExpMonth` varchar(100) NOT NULL,
+  `ExpYear` int(10) NOT NULL,
+  `CVV` int(10) NOT NULL,
+  `PhoneNumber` varchar(100) NOT NULL,
+  `Email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productdb`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `productdb` (
+CREATE TABLE `product` (
   `ProductName` varchar(200) NOT NULL,
   `Quantity` int(10) NOT NULL,
   `ProductID` varchar(100) NOT NULL,
@@ -39,10 +63,10 @@ CREATE TABLE `productdb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `productdb`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `productdb` (`ProductName`, `Quantity`, `ProductID`, `Category`, `Platform`, `Price`, `Description`, `ImageLinks`) VALUES
+INSERT INTO `product` (`ProductName`, `Quantity`, `ProductID`, `Category`, `Platform`, `Price`, `Description`, `ImageLinks`) VALUES
 ('Arozzi - Verona Pro V2 Gaming Chair - Green', 100, '11VX1635', 'Gaming Chair', '', 249.99, 'Experience exceptional comfort by sitting on this Arozzi Verona Pro V2 green gaming chair.The neck and lower-back cushions provide extra support, while the dual-wheel casters ensure rolling around your setup is smooth and simple. This Arozzi Verona Pro V2 green gaming chair features adjustable height and tilt for optimal sitting.', '../img/products/arozzi/arozzi1.jpg,../img/products/arozzi/arozzi1.jpg,../img/products/arozzi/arozzi2.jpg,../img/products/arozzi/arozzi3.jpg,../img/products/arozzi/arozzi4.jpg'),
 ('Vintage Metroid cotton t-shirt', 100, '56SH682', 'RPG', '', 18.63, 'Vintage Metroid cotton t-shirt. The design is based on the action-adventure game Metroid, developed and published by Nintendo.', '../img/products/metroid/metroid.png,../img/products/metroid/metroid.png,../img/products/metroid/metroid2.png'),
 ('Legend of Zelda: Breadth of the Wild', 100, '66LJL89', 'RPG', 'Nintendo Switch', 59.99, 'Travel back to Hyrule with Link in Zelda: Breath of the Wild for the Nintendo Switch.\r\nExplore a variety of shrines, sail across rough waters and scavenge for food to defeat Ganondorf and save Zelda once and for all. Zelda: Breath of the Wild includes Wolf, who joins Link in his adventure and\r\ndelivers enhanced gameplay for greater enjoyment.', '../img/products/zelda/zelda.jpg,../img/products/zelda/zelda1.jpg,../img/products/zelda/zeldagameplay.jpg,../img/products/zelda/zeldagameplay2.jpg,../img/products/zelda/zeldagameplay3.png'),
@@ -66,9 +90,9 @@ INSERT INTO `productdb` (`ProductName`, `Quantity`, `ProductID`, `Category`, `Pl
 --
 
 --
--- Indexes for table `productdb`
+-- Indexes for table `product`
 --
-ALTER TABLE `productdb`
+ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`);
 COMMIT;
 
