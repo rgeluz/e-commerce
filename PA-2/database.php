@@ -41,17 +41,18 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "testdb";
     $databasename= "ecommerce";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
+        echo "Connected successfully <br>";
     } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
+        echo "Connection failed: " . $e->getMessage() . "<br>";
     }
+    return $conn;
 
   } //end of openConnection()
 
@@ -79,7 +80,7 @@
 
   /*
   */
-  function getProducts(){
+  function getAllProducts(){
     //open connection
     $conn = openConnection();
 
@@ -96,11 +97,42 @@
     // execute prepared statement and store results into the array
     if ($stmt->execute()) {
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $products[] $row;
+        $products[] = $row;
       }
     }
     //close connection
-    closeConnection();
+    closeConnection($conn);
+  }
+
+  /*
+  */
+  function getAllProductsByCategory($category){
+    //open connection
+    $conn = openConnection();
+
+    //MySQLi extension approach
+    /*$sql = "";
+    $result = $conn->query($sql);*/
+
+    // prepare the statement.
+    $stmt = $conn->prepare("SELECT * FROM product WHERE productcategory=:productcat");
+
+    // bind the parameters
+    $stmt -> bindvalue(":productcat",$category);
+
+    // initialise an array for the results
+    $products = array();
+
+    // execute prepared statement and store results into the array
+    if ($stmt->execute()) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $products[] = $row;
+      }
+    }
+    //close connection
+    closeConnection($conn);
+
+    return $products;
   }
 
   /*
@@ -123,12 +155,12 @@
     // execute prepared statement and store results into the array
     if ($stmt->execute()) {
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $products[] $row;
+        $products[] = $row;
       }
     }
 
     //close connection
-    closeConnection();
+    closeConnection($conn);
   }
 
 

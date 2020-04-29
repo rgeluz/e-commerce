@@ -52,26 +52,30 @@
       <!-- Main -->
       <section>
         <div class="main">
-          <h1 class= "title">About Gamehub</h1>
+          <h1> Test Database Functions:<h1>
 
-          <!--Blurred Backround with Centered text in Box-->
-          <div class="bg-image"></div>
-          <div class="bg-text">
-            <h1 style="font-size: 50px;">We are <em class="logo">Gamehub</em></h1>
-            <h2>And we are an up-and-coming online retailer for all things video game related.</h2>
-            <p>Anything related to gaming, we have it all! <br>
-              Come get all of your specialized needs in our marketplace.
-            </p>
-          </div>
-          <div class="more-information">
-            <h1>Our Mission</h1>
-            <p>Founded in 2020, Gamehub is a startup that is striving to provide gamers everywhere with everything they need. <br>
-            Gamehub is the one stop shop for all things video game related. Gamehub offers video games in all the <br>
-              major consoles of this generation and gaming accessories like controllers, keyboards, and headsets. <br>
-              If that's not enough, Gamehub also sells apperal from your favorite video games! <br>
-              Through Gamehub's marketplace, our customers can be sure to find and get anything and everything video game related.
-            </p>
-          </div>
+            <!-- Test dabase functions here -->
+            <?php
+
+              //test opening and closing of connection
+              include('database.php');
+              $conn = openConnection();
+              closeConnection($conn);
+              echo "<br>";
+
+              //test get products by category
+              $products = getAllProductsByCategory("Accessories");
+
+              for($i = 0; $i < count($products); $i++){
+                echo "#" . $i . "<br>";
+                foreach($products[$i] as $key => $value) {
+                  echo "key=" . $key . ", value=" . $value;
+                  echo "<br>";
+                }
+                echo "<br>";
+              }
+
+            ?>
         </div>
       </section>
 
