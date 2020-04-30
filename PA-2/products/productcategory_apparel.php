@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <meta name="description" content="">
 
-    <title>Nintento Switch</title>
+    <title>Apparel</title>
 
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
@@ -66,49 +66,25 @@
 
       <!-- Nav -->
       <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
-      <header>
-        <div class="topnav">
-          <!-- Left-aligned links -->
-          <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
-          <a class="active" href="../index.html">Home</a>
-          <a href="../products.html">Products</a>
-
-          <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
-          <!--<a href="#about">About</a>-->
-          <div class="subnav">
-            <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-              <a href="../company.html">Company</a>
-              <a href="../team.html">Team</a>
-              <!-- <a href="#careers">Careers</a> -->
-              <a href="../contact.html">Contact</a>
-            </div>
-          </div>
-
-          <!-- Right-aligned links-->
-          <div class="topnav-right">
-            <!--<a href="#search">Search</a>-->
-            <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
-            <a href="../shoppingcart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
-          </div>
-
-        </div>
-      </header>
+      <!-- Header -->
+      <?php
+        include('header.php');
+      ?>
 
 
       <!-- Main -->
       <section>
         <div class="main">
           <p><a href="../products.html">Back to Products Page</a></p>
-          <!--<p>Nintento Switch Products</p>
-          <p>//add nintendo switch products</p>
+          <!--<p>Gaming Apparel</p>
+          <p>add video game apparel</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
           -->
 
           <!-- Product Table -->
           <div class="product-table">
             <table>
-              <caption><h1>Nintentdo Switch</h1></caption>
+              <caption><h1>Gaming Apparel</h1></caption>
               <thead>
                 <tr>
                   <!--<th>Table Header</th>-->
@@ -125,70 +101,78 @@
                 <tr>
                   <td>
                     <div class="productcategory-card">
-                      <!---->
-                      <a href="productdetails_switch_animalCrossing.html">
-                        <img src="../img/products/animalcrossing/animalcrossing.jpg" alt="Avatar" style="width:100%">
+                      <a href="productdetails_apparel_metroid.html">
+                        <img src="../img/products/metroid/metroid.png" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>Animal Crossing: New Horizons</b></h4>
-                        <p>Platform: Nintendo Switch</p>
-                        <p>Category: Education Simulation</p>
-                        <p>Price: $59.9</p>
-                        <p>Currently In Stock: 5</p>
+                        <h4><b>Vintage Metroid cotton t-shirt</b></h4>
+                        <p>Category: Vintage Games</p>
+                        <p>Price: $18.63</p>
+                        <p>Currently In Stock: 39</p>
                       </div>
                     </div>
                   </td>
 
                   <td>
                     <div class="productcategory-card">
-                      <a href="productdetails_switch_zelda.html">
-                        <img src="../img/products/zelda/zelda.jpg" alt="Avatar" style="width:100%">
+                      <a href="productdetails_apparel_streetfighter_playerselect.html">
+                        <img src="../img/products/streetfighter/streetfighter1.png" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>The Legend of Zelda: Breath of the Wild</b></h4>
-                        <p>Platform: Nintendo Switch</p>
-                        <p>Category: RPG</p>
-                        <p>Price: $59.99</p>
-                        <p>Currently In Stock: 36</p>
+                        <h4><b>Street Fighter Character Select Men's T-Shirt</b></h4>
+                        <p>Category: Vintage Games</p>
+                        <p>Price: $21.99</p>
+                        <p>Currently In Stock: 35</p>
                       </div>
                     </div>
                   </td>
 
                   <td>
                     <div class="productcategory-card">
-                      <a href="productdetails_switch_mariocart8.html">
-                        <img src="../img/products/mariokart8/mariokart8.jpg" alt="Avatar" style="width:100%">
+                      <a href="productdetails_apparel_streetfighter_group.html">
+                        <img src="../img/products/streetfighter/streetfighter2.png" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>Mario Kart 8 Deluxe</b></h4>
-                        <p>Platform: Nintendo Switch</p>
-                        <p>Category: Racing Game</p>
-                        <p>Price: $59.99</p>
-                        <p>Currently In Stock: 15</p>
+                        <h4><b>Street Fighter Group Shot Men's T-Shirt</b></h4>
+                        <p>Category: Vintage Games</p>
+                        <p>Price: $21.99</p>
+                        <p>Currently In Stock: 20</p>
                       </div>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Second Row -->
-                <!-- <tr>
+                <tr>
                   <td>
                     <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar.png" alt="Avatar" style="width:100%">
+                      <a href="productdetails_apparel_minecraft.html">
+                        <img src="../img/products/minecraft/creeper1.jpg" alt="Avatar" style="width:100%">
                       </a>
                       <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
+                        <h4><b>Minecraft Creeper T-Shirt</b></h4>
+                        <p>Category: Video Games</p>
+                        <p>Price: $10.00</p>
+                        <p>Currently In Stock: 50</p>
                       </div>
                     </div>
                   </td>
 
                   <td>
+                    <div class="productcategory-card">
+                      <a href="productdetails_apparel_gtav.html">
+                        <img src="../img/products/gtav/gtav1.jpg" alt="Avatar" style="width:100%">
+                      </a>
+                      <div class="productcategory-card-container">
+                        <h4><b>GTA V GRAND THEFT AUTO FIVE LOGO GRAPHIC T SHIRT</b></h4>
+                        <p>Category: Video Games</p>
+                        <p>Price: $10.00</p>
+                        <p>Currently In Stock: 45</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <!--<td>
                     <div class="productcategory-card">
                       <a href="#">
                         <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
@@ -202,27 +186,11 @@
                         <p>Description: </p>
                       </div>
                     </div>
-                  </td>
-
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
-                </tr> -->
+                  </td>-->
+                </tr>
 
                 <!-- Third Row -->
-                <!-- <tr>
+                <!--<tr>
                   <td>
                     <div class="productcategory-card">
                       <a href="#">
@@ -269,9 +237,9 @@
                         <p>Description: </p>
                       </div>
                     </div>
-                  </td>
+                  </td>-->
 
-                </tr> -->
+                </tr>
 
               </tbody>
             </table>
@@ -282,12 +250,9 @@
 
 
       <!-- Footer -->
-      <!-- <div class="footer">
-        <p>Footer</p>
-      </div> -->
-      <footer>
-        <p>Acme Web Design, Copyright &copy; 2020</p>
-      </footer>
+      <?php
+        include('footer.php');
+      ?>
 
     </div>
 
