@@ -114,12 +114,12 @@
             </div>
             <div class="card"><!--2-->
               <a href="./products/productcategory_xbox.php">
-              <img class= "product-img" src="img/products/xbox.jpg" alt="Xbox One">
-              <h2>XBox One</h2>
-            </a>
+                <img class= "product-img" src="img/products/xbox.jpg" alt="Xbox One">
+                <h2>XBox One</h2>
+              </a>
             </div>
             <div class="card"><!--3-->
-              <a href="./products/productcategory_switch..php">
+              <a href="./products/productcategory_switch.php">
                 <img class= "product-img" src="img/products/switch.jpg" alt="Nintento Switch">
                 <h2>Nintendo Switch</h2>
               </a>

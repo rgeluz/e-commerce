@@ -75,7 +75,7 @@
       <!-- Main -->
       <section>
         <div class="main">
-          <p><a href="../products.html">Back to Products Page</a></p>
+          <p><a href="../products.php">Back to Products Page</a></p>
           <!--<p>Video Game Accessories</p>
           <p>add video game accessories</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
@@ -97,154 +97,51 @@
               </tfoot>
               <tbody>
 
-                <!-- First Row -->
-                <tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_accessories_ps4contrl.html">
-                        <img src="../img/products/ps4controller/ps4controller1.jpg" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)</b></h4>
-                        <p>Platform: Sony PlayStation 4</p>
-                        <p>Category: Gaming Controller</p>
-                        <p>Price:$64.99</p>
-                        <p>Currently In Stock: 200</p>
-                      </div>
-                    </div>
-                  </td>
+                <!-- render product cards -->
+                <?php
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_accessories_xboxcontrl.html">
-                        <img src="../img/products/xboxcontroller/xboxcontroller1.jpg" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>Microsoft - Wireless Controller for Xbox One and Windows 10 - Black</b></h4>
-                        <p>Platform: Microsoft XBox</p>
-                        <p>Category: Gaming Controller</p>
-                        <p>Price: $59.99</p>
-                        <p>Currently In Stock: 210</p>
-                      </div>
-                    </div>
-                  </td>
+                  include('../database.php');
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_accessories_corsairkeyboard.html">
-                        <img src="../img/products/corsair/cosair1.jpg" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>CORSAIR - Gaming K70 RGB MK.2 SE Mechanical Wired CHERRY MX Speed Switch Keyboard with RGB Back Lighting - Silver Anodized Brushed Aluminum</b></h4>
-                        <p>Platform: PC Gaming</p>
-                        <p>Category: Mechanical Keyboard</p>
-                        <p>Price: $139.99</p>
-                        <p>Currently In Stock: 75</p>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                  $products = getAllProductsByCategory("Accessories");
 
-                <!-- Second Row -->
-                <tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_accessories_arozzichair.html">
-                        <img src="../img/products/arozzi/arozzi1.jpg" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>Arozzi - Verona Pro V2 Gaming Chair - Green</b></h4>
-                        <p>Platform: PC Gaming</p>
-                        <p>Category: Gaming Chair</p>
-                        <p>Price: $249.99</p>
-                        <p>Currently In Stock: 40</p>
-                      </div>
-                    </div>
-                  </td>
+                  for($i = 0; $i < count($products); $i++){
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_accessories_astroheadphones.html">
-                        <img src="../img/products/astro/astro1.jpg" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>Astro Gaming - ASTRO A50 + Base Station RF Wireless Over-the-Ear Headphones - Gray</b></h4>
-                        <p>Platform: PC Gaming</p>
-                        <p>Category: Gaming Headphones</p>
-                        <p>Price: $299.99</p>
-                        <p>Currently In Stock: 37</p>
-                      </div>
-                    </div>
-                  </td>
+                    $product = $products[$i];
 
-                  <!--<td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td> -->
-                </tr>
+                    //for every three products surround with <tr></tr> tags
+                    if( ($i % 3)==0 ){
+                      echo "<tr>";
+                    }
 
-                <!-- Third Row -->
-                <!--<tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    //get main image
+                    //the first element in array is the main image
+                    $imageLinksArray = explode(",",$product['ImageLinks']);
+                    $mainImagePath = $imageLinksArray[0];
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    echo "
+                            <td>
+                              <div class='productcategory-card'>
+                                <a href=''>
+                                  <img src='".$mainImagePath."' alt='Avatar' style='width:100%'>
+                                </a>
+                                <div class='productcategory-card-container'>
+                                  <h4><b>".$product['ProductName']."</b></h4>
+                                  <p>Platform: ".$product['Platform']."</p>
+                                  <p>Category: ".$product['Category']."</p>
+                                  <p>Price: ".$product['Price']."</p>
+                                  <p>Currently In Stock: ".$product['Quantity']."</p>
+                                </div>
+                              </div>
+                            </td>
+                          ";
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    //for every three products surround with <tr></tr> tags
+                    if( ($i % 3)==2 ){
+                      echo "</tr>";
+                    }
 
-                </tr> -->
+                  } //end of for
+                ?> <!-- end of php -->
 
               </tbody>
             </table>

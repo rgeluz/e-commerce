@@ -76,7 +76,7 @@
       <!-- Main -->
       <section>
         <div class="main">
-          <p><a href="../products.html">Back to Products Page</a></p>
+          <p><a href="../products.php">Back to Products Page</a></p>
           <!--<p>PS4 Products</p>
           <p>//add PS4 products</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
@@ -98,157 +98,51 @@
               </tfoot>
               <tbody>
 
-                <!-- First Row -->
-                <tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_PS4_ff7remake.html">
-                        <img src="../img/products/ff7remake/FFVIIRemake.png" alt="FF7re" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>Final Fantasy VII Remake</b></h4>
-                        <p>Platform: PS4</p>
-                        <p>Category: RPG</p>
-                        <p>Price: $59.9</p>
-                        <p>Currently In Stock: 10</p>
-                      </div>
-                    </div>
-                  </td>
+                <!-- render product cards -->
+                <?php
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="productdetails_PS4_TLOU2.html">
-                        <img src="../img/products/TLOU2/TLOU2.png" alt="TLOU2" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>The Last of Us 2</b></h4>
-                        <p>Platform: PS4</p>
-                        <p>Category: Action</p>
-                        <p>Price: $59.9</p>
-                        <p>Currently In Stock: Pre-ordering</p>
-                      </div>
-                    </div>
-                  </td>
+                  include('../database.php');
 
-                  <!-- <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td> -->
-                </tr>
+                  $products = getAllProductsByCategory("PlayStation 4");
 
-                <!-- Second Row -->
-                <!-- <tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                  for($i = 0; $i < count($products); $i++){
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    $product = $products[$i];
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
-                </tr> -->
+                    //for every three products surround with <tr></tr> tags
+                    if( ($i % 3)==0 ){
+                      echo "<tr>";
+                    }
 
-                <!-- Third Row -->
-                <!-- <tr>
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    //get main image
+                    //the first element in array is the main image
+                    $imageLinksArray = explode(",",$product['ImageLinks']);
+                    $mainImagePath = $imageLinksArray[0];
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    echo "
+                            <td>
+                              <div class='productcategory-card'>
+                                <a href=''>
+                                  <img src='".$mainImagePath."' alt='Avatar' style='width:100%'>
+                                </a>
+                                <div class='productcategory-card-container'>
+                                  <h4><b>".$product['ProductName']."</b></h4>
+                                  <p>Platform: ".$product['Platform']."</p>
+                                  <p>Category: ".$product['Category']."</p>
+                                  <p>Price: ".$product['Price']."</p>
+                                  <p>Currently In Stock: ".$product['Quantity']."</p>
+                                </div>
+                              </div>
+                            </td>
+                          ";
 
-                  <td>
-                    <div class="productcategory-card">
-                      <a href="#">
-                        <img src="../img/products/img_avatar2.png" alt="Avatar" style="width:100%">
-                      </a>
-                      <div class="productcategory-card-container">
-                        <h4><b>{Product Title}</b></h4>
-                        <p>Platform:</p>
-                        <p>Category:</p>
-                        <p>Price:</p>
-                        <p>Currently In Stock:</p>
-                        <p>Description: </p>
-                      </div>
-                    </div>
-                  </td>
+                    //for every three products surround with <tr></tr> tags
+                    if( ($i % 3)==2 ){
+                      echo "</tr>";
+                    }
 
-                </tr> -->
+                  } //end of for
+                ?> <!-- end of php -->
 
               </tbody>
             </table>
