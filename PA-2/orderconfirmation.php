@@ -10,22 +10,8 @@
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
     <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/products.css" rel="stylesheet">
-    <style>
-      .productpage-message {
-        background-color: white;
-        color: red;
-        font-size: 15px;
-        text-align: justify;
-        padding: 30px;
+    <link href="./css/orderconfirmation.css" rel="stylesheet">
 
-        border-color: red;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 4px;
-        box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem
-      }
-    </style>
 
     <!-- JavaScript -->
     <!--<script type="text/javascript">-->
@@ -88,25 +74,85 @@
       <section>
         <div class="main">
 
-          <div class="productpage-message" >
-            <p><span style="font-size: 20px;">Welcome to Gamehub!<span></p>
-            <p>We have over 100 products in stock to choose from.
-              We are a full-service gaming shop that is dedicated to offering the best and most popular games, accessories, apparel and
-              anything else you need for your gaming desires. We do so at the best possible pricing with always FREE CRAZY FAST SHIPPING!
-              All items ship for free next day (exceptions: Preorders and Special Orders). We are here to assist you.
-              Feel free to message us with questions, comments, if there's anything you're looking for you can't find or to place a custom order.</p>
-          </div>
 
-          <div class="productpage-message" >
-            <p><span style="font-size: 20px;">Welcome to Gamehub!<span></p>
-            <p>We have over 100 products in stock to choose from.
-              We are a full-service gaming shop that is dedicated to offering the best and most popular games, accessories, apparel and
-              anything else you need for your gaming desires. We do so at the best possible pricing with always FREE CRAZY FAST SHIPPING!
-              All items ship for free next day (exceptions: Preorders and Special Orders). We are here to assist you.
-              Feel free to message us with questions, comments, if there's anything you're looking for you can't find or to place a custom order.</p>
-          </div>
+          <div class="redbox">
+
+            <div class="orderconfirmation" >
+              <div class="sectionheading"><p>ORDER CONFIRMATION</p></div>
 
 
+              <p><span style="font-size: 30px;"><i class="fas fa-cart-arrow-down"></i></span></p>
+              <p>{Name}, thank you for your order!</p>
+              <p>We've recieved your order and will contact you as soon as your package is shipped.
+                You can find your purchase information below.</p>
+            </div>
+
+            <div class="ordersummary">
+              <div class="sectionheading"><p>Order Summary</p></div>
+              <p>{Date}</p>
+
+              <div class="productimageandsummary-container">
+                <div class="productimage">
+                  <img class= "product-img" src="img/products/ps4.jpeg" alt="PS4">
+                </div>
+                <div class="productsummary">
+                  <p><span style="font-weight: bold;">{Product Name}</span><span class="alignright">[value]<span></p>
+                  <p>Discount <span class="alignright">[value]<span></p>
+                  <p>Price after discount <span class="alignright">[value]<span></p>
+                  <p>Product ID <span class="alignright">[value]<span></p>
+                  <p>Quantity <span class="alignright">[value]<span></p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="ordertotal">
+              <div class="sectionheading"><p>Order Total</p></div>
+              <p>Subtotal price <span class="alignright">[value]<span></p>
+              <p>Discount <span class="alignright">[value]<span></p>
+              <p>Shipping price <span class="alignright">[value]<span></p>
+              <p><span style="font-weight: bold;">Total price: </span><span class="alignright" style="font-weight: bold;">[value]<span></p>
+            </div>
+
+            <div class="billingandshipping">
+              <div class="sectionheading"><p>Billing and Shipping</p></div>
+
+
+              <div class="billingandshipping-container">
+                <div class="billingandshipping-box">
+                  <p><span style="font-weight: bold;">Billing</span></p>
+                  <p>{First and Last Name}</p>
+                  <p>{Address}</p>
+                  <p>{City, State}</p>
+                  <p>{Zip code}</p>
+                  <p>{Country}</p>
+                </div>
+                <div class="billingandshipping-box">
+                  <p><span style="font-weight: bold;">Shipping</span></p>
+                  <p>{First and Last Name}</p>
+                  <p>{Address}</p>
+                  <p>{City, State}</p>
+                  <p>{Zip code}</p>
+                  <p>{Country}</p>
+                </div>
+                <div class="billingandshipping-box">
+                  <p><span style="font-weight: bold;">Payment method</span></p>
+                  <p>{Payment Method}</p>
+                </div>
+                <div class="billingandshipping-box">
+                  <p><span style="font-weight: bold;">Shipping method</span></p>
+                  <p>{Shipping method}</p>
+                </div>
+              </div>
+
+
+
+
+
+
+
+            </div>
+          </div> <!--end of redbox class -->
 
         </div>
       </section>

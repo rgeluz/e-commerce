@@ -76,6 +76,69 @@
 
 
 //References for PA-2
+	//Making Dynamic Website With PHP
+	https://www.youtube.com/watch?v=pzwqgVSGAuU
 
+	//How to generate a HTML page dynamically using PHP?
+	https://stackoverflow.com/questions/14871014/how-to-generate-a-html-page-dynamically-using-php
+	
+
+	//MySQL Tutorial for Beginners | How to create database and add table in XAMPP using MYSQL
+	https://www.youtube.com/watch?v=WmFHreVid-k
+
+	//Importing MySQL databases and tables using phpMyAdmin
+	https://www.youtube.com/watch?v=jW5lrS6EUPM
+
+	//Exporting MySQL databases and tables using phpMyAdmin
+	https://www.youtube.com/watch?v=ffmCGVse8yg
+
+	//How to rename database tables in phpMyAdmin
+	https://www.youtube.com/watch?time_continue=3&v=ompnBfAP43A&feature=emb_logo
+		select table to rename
+		click on the operations tab, and scroll down to the "table options" section		
+		rename the table in the "Rename table to" field
+		click go
+		you should see the table name changes.
+
+	//36: How to connect to a database in PHP | PHP tutorial | Learn PHP programming
+	https://www.youtube.com/watch?v=ILyf16MEvHM
+
+	//37: How to show database data on a website using MySQLi | PHP tutorial | Learn PHP programming
+	https://www.youtube.com/watch?v=0YLJ0uO6n8I
+
+
+	//PHP Functions
+	https://www.tutorialrepublic.com/php-tutorial/php-functions.php
+
+	//PHP Functions returning value
+	https://www.tutorialspoint.com/php/php_functions.htm
+
+	//PHP Connect to MySQL
+	https://www.w3schools.com/php/php_mysql_connect.asp
+
+	//How to call function of one php file from another php file and pass parameters to it?
+	https://stackoverflow.com/questions/8104998/how-to-call-function-of-one-php-file-from-another-php-file-and-pass-parameters-t
+
+	//How to Connect MySQL Database with PHP Websites
+	https://www.cloudways.com/blog/connect-mysql-with-php/#connection
+
+	//How do I loop through a MySQL query via PDO in PHP?
+	https://stackoverflow.com/questions/159924/how-do-i-loop-through-a-mysql-query-via-pdo-in-php
+
+
+------>	//Creating a dynamic one-page website using PHP and mySQL
+	https://www.youtube.com/playlist?list=PL_QXkBHy8yVo085n2_3T9S0h8vfW-ksVp
+
+	04292020: Had to update product table to include a new column called "ProductCategory"
+	this is associate the product by which category page they will belong to.
+
+	//Loop Through an Associative Array
+	https://www.w3schools.com/php/php_arrays_associative.asp
+
+	//Foreach loop through multidimensional array in PHP
+	https://www.tutorialrepublic.com/faq/foreach-loop-through-multidimensional-array-in-php.php
+
+	//3 ways to display divs side by side (float, flexbox, CSS grid)
+	https://coder-coder.com/display-divs-side-by-side/
 	
 
