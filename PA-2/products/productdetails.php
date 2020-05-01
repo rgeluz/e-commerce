@@ -260,7 +260,10 @@
               <div class="row">
                 <div class="col-50">
                   <label for="productid">Product ID</label>
-                  <input type="text" id="productid" name="productid" placeholder="1GA13" pattern=".{5}" required>
+                  <?php
+                    //<input type="text" id="productid" name="productid" placeholder="1GA13" pattern=".{5}" required>
+                    echo"<input type='text' id='productid' name='productid' value='".$product['ProductID']."' readonly required>"
+                  ?>
                 </div>
                 <div class="col-50">
                   <label for="qty">Quantity (5 Max)</label>
