@@ -12,7 +12,11 @@
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
     <link href="../css/style.css" rel="stylesheet">
+<<<<<<< HEAD:PA-1/products/product1.html
     <link href="../css/products.css" rel="stylesheet">
+=======
+    <link href="../css/products.css" rel="products stylesheet">
+>>>>>>> a21a4b97a0788d1db81dd31a50571a98a1e85f86:PA-1/products/product_animalCrossing.html
     <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
 
     <!-- JavaScript -->
@@ -55,66 +59,7 @@
     </script>
 	<style>
 
-	.row {
-	  display: -ms-flexbox; /* IE10 */
-	  display: flex;
-	  -ms-flex-wrap: wrap; /* IE10 */
-	  flex-wrap: wrap;
-	  margin: 0 -16px;
-	}
 
-	.col-25 {
-	  -ms-flex: 25%; /* IE10 */
-	  flex: 25%;
-	}
-
-	.col-50 {
-	  -ms-flex: 50%; /* IE10 */
-	  flex: 50%;
-	}
-
-	.col-75 {
-	  -ms-flex: 75%; /* IE10 */
-	  flex: 75%;
-	}
-
-	.col-25,
-	.col-50,
-	.col-75 {
-	  padding: 0 16px;
-	}
-	
-	input[type=text] {
-	  width: 100%;
-	  margin-bottom: 20px;
-	  padding: 12px;
-	  border: 1px solid #ccc;
-	  border-radius: 3px;
-	}
-	
-	input[type=tel] {
-	  width: 100%;
-	  margin-bottom: 20px;
-	  padding: 12px;
-	  border: 1px solid #ccc;
-	  border-radius: 3px;
-	}
-	
-	input[type=number] {
-	  width: 100%;
-	  margin-bottom: 20px;
-	  padding: 12px;
-	  border: 1px solid #ccc;
-	  border-radius: 3px;
-	}
-
-	.select-css {
-	  width: 100%;
-	  margin-bottom: 20px;
-	  padding: 12px;
-	  border: 1px solid #ccc;
-	  border-radius: 3px;
-	}
 	</style>
   </head>
   <body>
@@ -125,7 +70,7 @@
     <div id="myOverlay" class="overlay">
       <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
       <div class="overlay-content">
-        <form action="/action_page.php">
+        <form action="#">
           <input type="text" placeholder="Search.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
@@ -170,6 +115,7 @@
       <section>
         <div class="main">
 
+<<<<<<< HEAD:PA-1/products/product1.html
 <<<<<<< HEAD
           <h1>Animal Crossing: New Horizons</h1>
           <p>Escape to a deserted island and create your own paradise as you explore, create,
@@ -180,20 +126,52 @@
             <img src="img/Animal-Crossing-New-Horizons.jfif" alt="p1" style = "width:50%">
 =======
           
+=======
+>>>>>>> a21a4b97a0788d1db81dd31a50571a98a1e85f86:PA-1/products/product_animalCrossing.html
           <div class="w3-card-4" style = "width:48%; float:left;">
+             <center><img src="../img/products/Crossing.jfif" alt="p1" style = "width:50%; padding-top: 10px" ></center>
 
+            <div class="main">
+              <div class="expandedImgContainer">
+                <span onclick = "this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                <img id="expanded" style="width: 100%">
+              </div>
+              <div class="row">
+                <div class="column">
+                  <img src="../img/products/acnh01.jpg" alt="screenshot01" style="width:100%" onclick="expandIMG(this);">
+                </div>
+                <div class="column">
+                  <img src="../img/products/acnh02.jpg" alt="screenshot02" style="width:100%" onclick="expandIMG(this);">
+                </div>
+                <div class="column">
+                  <img src="../img/products/acnh03.jpg" alt="screenshot03" style="width:100%" onclick="expandIMG(this);">
+                </div>
+                <div class="column">
+                  <img src="../img/products/acnh04.jpg" alt="screenshot04" style="width:100%" onclick="expandIMG(this);">
+                </div>
+            </div>
+          </div>
+
+<<<<<<< HEAD:PA-1/products/product1.html
             <center><img src="img/crossing.jfif" alt="p1" style = "width:45%; padding-top: 10px"></center>
 >>>>>>> 1f60ce1377eca323dbfdcc9ce3136e6b1a4e428b
+=======
+>>>>>>> a21a4b97a0788d1db81dd31a50571a98a1e85f86:PA-1/products/product_animalCrossing.html
             <div class="main">
               <h4><b>Animal Crossing: New Horizons</b></h4>
               <p>Platform: Nintendo Switch</p>
-	          <p>Category: Education Simulation</p>
-	          <p>Price: $59.9</p>
-	          <p>Currently In Stock: 5</p>
-	          <p>Description: </p>
+              <p>Category: Education Simulation</p>
+              <p>Price: $59.9</p>
+              <p>Currently In Stock: 5</p>
+			  <p>Product ID: 123G8G</p>
+              <p>Description:
+              Escape to a deserted island and create your own paradise as you explore, create,
+              and customize in the Animal Crossing: New Horizons game.
+              Your island getaway has a wealth of natural resources that can be used to craft e
+              verything from tools to creature comforts.</p>
             </div>
-          </div>
-		  
+        </div>
+
 		  <div class="w3-card-4" style = "width:48%; float:right;">
             <div class="col-50">
             <strong><h2>Order Form</h2></strong>
@@ -203,18 +181,18 @@
 					<label for="cname">First Name</label>
 					<input type="text" id="cname" name="cardname" placeholder="John">
 				</div>
-				
+
 				<div class="col-50">
 					<label for="cname">Last Name</label>
 					<input type="text" id="cname" name="cardname" placeholder="Doe">
 				</div>
 			</div>
-			
-				
-			
+
+
+
 			<label for="adr">Address</label>
 			<input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-			
+
 			<label for="city">City</label>
 			<input type="text" id="city" name="city" placeholder="New York">
 
@@ -291,28 +269,28 @@
 			  <option value="2-day">2-Days Expedited</option>
 			  <option value="6-day">6-Days Ground</option>
 			</select>
-			
+
 			<h3>Billing Information</h3>
-			
-			
+
+
 
 			<div class="row">
-              <div class="col-50">
-                <label for="expyear">Product ID</label>
-                <input type="text" id="expyear" name="expyear" placeholder="1GA13" pattern=".{5}">
-              </div>
-              <div class="col-50">
-                <label for="cvv">Quantity (5 Max)</label>
-                <input type="number" id="cvv" name="cvv" placeholder="1" min="0" max ="5">
-              </div>
-            </div>
+        <div class="col-50">
+          <label for="expyear">Product ID</label>
+          <input type="text" id="expyear" name="expyear" placeholder="1GA13" pattern=".{5}">
+        </div>
+        <div class="col-50">
+          <label for="cvv">Quantity (5 Max)</label>
+          <input type="number" id="cvv" name="cvv" placeholder="1" min="0" max ="5">
+        </div>
+      </div>
 
-            <label for="ccnum">Credit card number</label> 
+            <label for="ccnum">Credit card number</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-			
+
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
-			
+
             <div class="row">
 
               <div class="col-50">
@@ -333,9 +311,14 @@
             <input type="tel" id="phone" name="phone" placeholder="1-555-666-7777"  pattern="[0-9]{1,}-[0-9]{3}-[0-9]{3}-[0-9]{4}">
 
             <label for="email">Email</label>
-			<input type="text" id="email" name="email" placeholder="john@example.com">
+			         <input type="text" id="email" name="email" placeholder="john@example.com">
+
+            <div class="w3-section">
+                <button class="w3-button w3-green"> Place Oder </buttion>
+            </div>
 
         </div>
+<<<<<<< HEAD:PA-1/products/product1.html
 		  
 		  
 		  
@@ -373,12 +356,18 @@
           <p><button class="w3-button w3-border w3-hover-green">Add to Cart</button></p>
 =======
 		  
+=======
+      </div>
+>>>>>>> a21a4b97a0788d1db81dd31a50571a98a1e85f86:PA-1/products/product_animalCrossing.html
 		  <br>
-          
 
+<<<<<<< HEAD:PA-1/products/product1.html
           
 >>>>>>> 1f60ce1377eca323dbfdcc9ce3136e6b1a4e428b
         </div>
+=======
+      </div>
+>>>>>>> a21a4b97a0788d1db81dd31a50571a98a1e85f86:PA-1/products/product_animalCrossing.html
       </section>
 
 

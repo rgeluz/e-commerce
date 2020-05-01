@@ -11,86 +11,146 @@
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
     <link href="./css/style.css" rel="stylesheet">
 
-    <!-- JavaScript -->
-    <script type="text/javascript">
-      function openSearch() {
-        document.getElementById("myOverlay").style.display = "block";
+    <!-- internal css -->
+    <style>
+      body, html {
+        height: 100%;
       }
 
-      function closeSearch() {
-        document.getElementById("myOverlay").style.display = "none";
+      .parallax {
+        /* The image used */
+        /*background-image: url('img_parallax.jpg');*/
+        /**/background-image: url("img/sonycontroller_background.jpg");
+
+        /* Full height */
+        height: 100%;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
+
+      .redbox {
+        height: 200px;
+        background-color:red;
+        padding: 40px;
+      }
+      .redbox a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .whitebox {
+        height: 200px;
+        background-color: white;
+        padding: 40px;
+      }
+
+      .whitebox a {
+        text-decoration: none;
+        color: red;
+      }
+
+      .redbox-container {
+        color: white;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .redbox-container marquee {
+        font-size: 20px;
+        color: white;
+      }
+
+      .whitebox-container {
+        color: red;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .whitebox-container marquee {
+        font-size: 20px;
+        color: red;
+      }
+
+      .logo{
+        color: white;
+        font-style: normal;
+        background-color: red;
+        padding: 10px;
+        border-radius: 25px;
+      }
+    </style>
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
     </script>
 
   </head>
   <body>
 
-    <!-- Overlay for Search button -->
-    <div id="myOverlay" class="overlay">
-      <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-      <div class="overlay-content">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-gamepad"></i> PLAY</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          Play the Latest Games!
+        </marquee>
       </div>
     </div>
 
-    <div class="main-container">
-      <!--<p>hello world!</p>-->
+    <div class="parallax"></div>
 
-      <!-- Nav -->
-      <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
-      <header>
-        <div class="topnav">
-          <!-- Left-aligned links -->
-          <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
-          <a class="active" href="index.html">Home</a>
-          <a href="products.html">Products</a>
+    <!--<div style="height:200px; background-color:red; font-size: 15px; padding: 40px; color: white;">
+      Scroll Up and Down this page to see the parallax scrolling effect.
+      This div is just here to enable scrolling.
+      Tip: Try to remove the background-attachment property to remove the scrolling effect.
+      <a href="products.html">products</a>
+    </div>-->
 
-          <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
-          <!--<a href="#about">About</a>-->
-          <div class="subnav">
-            <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-              <a href="company.html">Company</a>
-              <a href="team.html">Team</a>
-              <!-- <a href="#careers">Careers</a> -->
-              <a href="contact.html">Contact</a>
-            </div>
-          </div>
-
-          <!-- Right-aligned links-->
-          <div class="topnav-right">
-            <!--<a href="#search">Search</a>-->
-            <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
-            <a href="shoppingcart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
-          </div>
-
-        </div>
-      </header>
-
-
-      <!-- Main -->
-      <section>
-        <div class="main">
-          <p>Home Page</p>
-          <p>//add landing page</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet enim tortor at auctor urna nunc. Ornare aenean euismod elementum nisi quis eleifend quam. At erat pellentesque adipiscing commodo elit at imperdiet. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Ac ut consequat semper viverra nam libero justo laoreet. Et odio pellentesque diam volutpat commodo. Odio euismod lacinia at quis risus sed vulputate odio ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Est placerat in egestas erat imperdiet sed. Dignissim suspendisse in est ante in nibh mauris cursus. At elementum eu facilisis sed odio morbi quis commodo odio. Odio ut sem nulla pharetra. Purus in mollis nunc sed id semper. Curabitur gravida arcu ac tortor dignissim convallis aenean. Cursus euismod quis viverra nibh cras pulvinar.</p>
-        </div>
-      </section>
-
-
-      <!-- Footer -->
-      <!-- <div class="footer">
-        <p>Footer</p>
-      </div> -->
-      <footer>
-        <p>Acme Web Design, Copyright &copy; 2020</p>
-      </footer>
-
+    <div class="whitebox">
+      <div class="whitebox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-shopping-bag"></i> SHOP</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="white" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          See New Arrivals! 2020 Spring Drop!
+        </marquee>
+      </div>
     </div>
 
+    <div class="parallax"></div>
+
+    <div class="redbox">
+      <div class="redbox-container"> <!--container for text and marquee -->
+        <a href="products.html"><i class="fas fa-trophy"></i> WIN</a>
+        <br>
+        <marquee behavior="scroll" bgcolor="red" loop="-1" width="100%">
+          <!--<i><font color="blue">
+            <strong>Today's date is :<span id="datetime"></span></strong>
+          </font>
+        </i>-->
+          Get the Latest Gaming Gear and Beat Your Opponents!
+        </marquee>
+      </div>
+    </div>
+
+    <div class="parallax"></div>
+
+    <div class="whitebox">
+      <div class="whitebox-container"> <!--container for text and marquee -->
+        <a href="products.html"><h1 style="font-size: 50px;"><em class="logo">Gamehub</em></h1></a>
+      </div>
+    </div>
 
   </body>
 </html>
