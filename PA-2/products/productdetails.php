@@ -78,84 +78,85 @@
     </div>
   </div>
 
-
   <div class="main-container">
     <!--<p>hello world!</p>-->
 
     <!-- Nav -->
     <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
-    <header>
-      <div class="topnav">
-        <!-- Left-aligned links -->
-        <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
-        <a href="../index.html">Home</a>
-        <a class="active" href="../products.html">Products</a>
-
-        <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
-        <!--<a href="#about">About</a>-->
-        <div class="subnav">
-          <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="../company.html">Company</a>
-            <a href="../team.html">Team</a>
-            <!-- <a href="#careers">Careers</a> -->
-            <a href="../contact.html">Contact</a>
-          </div>
-        </div>
-
-        <!-- Right-aligned links-->
-        <div class="topnav-right">
-          <!--<a href="#search">Search</a>-->
-          <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
-          <a href="../shoppingcart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
-        </div>
-
-      </div>
-    </header>
-
+    <?php
+      include('product_header.php');
+    ?>
 
     <!-- Main -->
     <section>
       <div class="main">
-        <p><a href="productcategory_apparel.html">Back to Apparel Product Page</a></p>
+
+        <?php
+          //<p><a href="productcategory_switch.html">Back to Nintendo Switch Product Page</a></p>
+          $pageFrom = $_GET['pageFrom'];
+          $productCategory = $_GET['productCategory'];
+          echo "<p><a href='".$pageFrom."'>Back to ".$productCategory." Product Page</a></p>";
+        ?>
 
         <!-- Product Detail Card -->
+        <?php
+
+          include('../database.php');
+          //get product given the product ID
+          $productID = $_GET['productID'];
+          $products = getProduct($productID);
+          $product = $products[0]; //retrieve the first element of array
+
+          //get main image
+          //the first element in array is the main image
+          $imageLinksArray = explode(",",$product['ImageLinks']);
+          $mainImagePath = $imageLinksArray[0];
+
+        ?>
+
         <div class="w3-card-4 productdetail-card" style="width:48%; float:left;">
-          <center><img src="../img/products/minecraft/creeper1.jpg" alt="p1" style="width:50%; padding-top: 10px"></center>
+
+          <?php
+            //<center><img src="../img/products/zelda/zelda.jpg" alt="p1" style="width:50%; padding-top: 10px"></center>
+            echo "<center><img src='".$mainImagePath."' alt='p1' style='width:50%; padding-top: 10px'></center>"
+          ?>
 
           <div class="main">
             <div class="expandedImgContainer">
               <span onclick="this.parentElement.style.display='none'" class="expanded-closebtn">&times;</span>
               <img id="expanded" style="width: 100%">
             </div>
+
             <div class="row">
-              <div class="column">
-                <img src="../img/products/minecraft/creeper1.jpg" alt="screenshot01" style="width:100%" onclick="expandIMG(this);">
-              </div>
-              <div class="column">
-                <img src="../img/products/minecraft/creeper2.png" alt="screenshot02" style="width:100%" onclick="expandIMG(this);">
-              </div>
-              <div class="column">
-                <img src="../img/products/minecraft/creeper3.jpg" alt="screenshot03" style="width:100%" onclick="expandIMG(this);">
-              </div>
-              <div class="column">
-                <img src="../img/products/minecraft/creeper4.jpg" alt="screenshot04" style="width:100%" onclick="expandIMG(this);">
-              </div>
+            <?php
+              for($i = 1; $i < count($imageLinksArray); $i++){
+                echo "
+                      <div class='column'>
+                        <img src='".$imageLinksArray[$i]."' alt='screenshot0".$i."' style='width:100%' onclick='expandIMG(this);'>
+                      </div>
+                    ";
+              } //end of for
+            ?>
             </div>
           </div>
 
-          <div class="main">
-            <h4 id="productname"><b>Minecraft Creeper T-Shirt</b></h4>
-            <p>Category: Video Games</p>
-            <p id="productprice">Price: $10.00</p>
-            <p>Currently In Stock: 39</p>
-			<p>Product ID: 89GX1MN5</p>
-            <p>Description: Creepers are one of the most unique and iconic hostile mobs found in Minecraft.
-              A Creeper can easily be recognized by its tall vertical structure (roughly the size of a player),
-              green, pixelated skin, and four legs. It is possibly the most dangerous enemy in the game.</p>
-          </div>
+          <?php
+            echo "
+                    <div class='main'>
+                      <h4 id='productname'><b>".$product['ProductName']."</b></h4>
+                      <p>Platform: ".$product['Platform']."</p>
+                      <p>Category: ".$product['Category']."</p>
+                      <p id='productprice'>Price: ".$product['Price']."</p>
+                      <p>Currently In Stock: ".$product['Quantity']."</p>
+                      <p>Product ID: ".$product['ProductID']."</p>
+                      <p>Description: ".$product['Description']."</p>
+                    </div>
+                  ";
+          ?>
+
         </div>
         <!-- end of product detail card div -->
+
 
         <!-- Order Form Card -->
         <div class="w3-card-4 orderform-card" style="width:48%; float:right;">
@@ -308,15 +309,10 @@
       <!-- end of main div -->
     </section>
 
-
     <!-- Footer -->
-    <!--
-      <div class="footer">
-        <p>Footer</p>
-      </div> -->
-    <footer>
-      <p>Acme Web Design, Copyright &copy; 2020</p>
-    </footer>
+    <?php
+      include('../footer.php');
+    ?>
   </div>
 
   <!-- go to top button -->
