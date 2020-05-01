@@ -161,6 +161,8 @@
 
     //close connection
     closeConnection($conn);
+
+    return $products;
   }
 
 
