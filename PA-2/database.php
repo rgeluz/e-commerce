@@ -168,7 +168,7 @@
 
   /*
     We probably don't need to implement this,
-    as we can records directly in phpMyAdmin
+    as we can add records directly in phpMyAdmin
   */
   function setProducts(){
 
