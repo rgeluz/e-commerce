@@ -109,3 +109,11 @@
     font-size: 35px;
     cursor: pointer;
   }
+
+.form-error {
+  color: red;
+}
+
+.input-error {
+  box-shadow: 0 0 5px red;
+}

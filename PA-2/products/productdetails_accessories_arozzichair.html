@@ -54,6 +54,20 @@
       expanded.src = imgs.src;
       expanded.parentElement.style.display = "block";
     }
+    </script>
+
+    <script>
+    $(document).ready(function() {
+      $("orderform").submit(function(event) {
+        event.preventDefault();
+        var fname = $("#fname").value();
+
+        $(".msg").load("validation.php", {
+          fname: fname
+        });
+      });
+    });
+
   </script>
 
   <!-- external javascript -->
@@ -160,7 +174,8 @@
 
         <!-- Order Form Card -->
         <div class="w3-card-4 orderform-card" style="width:48%; float:right;">
-          <form action="" name="orderform" onsubmit="return(validate());">
+          <!-- <form action="" name="orderform" method="post" onsubmit="return(validate());"> -->
+          <form action="validation.php" name="orderform" id="orderform" method="post">
             <div class="col-50">
               <strong><h2>Order Form</h2></strong>
               <h4>Shipping Information</h4>
@@ -168,7 +183,7 @@
               <div class="row">
                 <div class="col-50">
                   <label for="cname">First Name</label>
-                  <input type="text" id="fname" name="firstname" placeholder="John" required>
+                  <input type="text" id="fname" name="firstname" placeholder="John" onblur="validate('firstname', this.value)" required>
                 </div>
 
                 <div class="col-50">
@@ -296,6 +311,7 @@
               <input type="text" id="email" name="email" placeholder="john@example.com" required>
 
               <input type="submit" value="Submit" />
+              <p class="msg"></p>
 
             </div>
           </form>
