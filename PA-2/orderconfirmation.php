@@ -96,7 +96,7 @@
                   <img class= "product-img" src="img/products/ps4.jpeg" alt="PS4">
                 </div>
                 <div class="productsummary">
-                  <p><span style="font-weight: bold;">{Product Name}</span><span class="alignright">[value]<span></p>
+                  <p style="border-top: 1px solid lightgrey; padding-top: 5px;"><span style="font-weight: bold;">{Product Name}</span><span class="alignright">[value]<span></p>
                   <p>Discount <span class="alignright">[value]<span></p>
                   <p>Price after discount <span class="alignright">[value]<span></p>
                   <p>Product ID <span class="alignright">[value]<span></p>
@@ -108,10 +108,10 @@
 
             <div class="ordertotal">
               <div class="sectionheading"><p>Order Total</p></div>
-              <p>Subtotal price <span class="alignright">[value]<span></p>
+              <p style="border-top: 1px solid lightgrey; padding-top: 5px;">Subtotal price <span class="alignright">[value]<span></p>
               <p>Discount <span class="alignright">[value]<span></p>
               <p>Shipping price <span class="alignright">[value]<span></p>
-              <p><span style="font-weight: bold;">Total price: </span><span class="alignright" style="font-weight: bold;">[value]<span></p>
+              <p style="border-top: 1px solid lightgrey; padding-top: 5px;"><span style="font-weight: bold;">Total price: </span><span class="alignright" style="font-weight: bold;">[value]<span></p>
             </div>
 
             <div class="billingandshipping">
