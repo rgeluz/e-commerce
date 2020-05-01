@@ -68,9 +68,8 @@
       <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
       <!-- Header -->
       <?php
-        include('../header.php');
+        include('product_header.php');
       ?>
-
 
       <!-- Main -->
       <section>
@@ -121,7 +120,7 @@
                     echo "
                             <td>
                               <div class='productcategory-card'>
-                                <a href=''>
+                                <a href='productdetails.php?pageFrom=productcategory_accessories.php&productCategory=".$product['ProductCategory']."&productID=".$product['ProductID']."'>
                                   <img src='".$mainImagePath."' alt='Avatar' style='width:100%'>
                                 </a>
                                 <div class='productcategory-card-container'>
