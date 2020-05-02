@@ -1,3 +1,27 @@
+<?php
+  //get url parameters
+  $orderID=$_GET['orderID'];
+  $productID=$_GET['productID'];
+
+  //Database calls
+  include('../database.php');
+
+  //get product given the product ID
+  $products = getProduct($productID);
+  $product = $products[0]; //retrieve the first element of array
+
+  //get order give order ID
+  $orders = getOrder($orderID);
+  $order = $orders[0]; //retrieve the first element of array
+
+  //get main image
+  //the first element in array is the main image
+  $imageLinksArray = explode(",",$product['ImageLinks']);
+  $mainImagePath = $imageLinksArray[0];
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -82,25 +106,36 @@
 
 
               <p><span style="font-size: 30px;"><i class="fas fa-cart-arrow-down"></i></span></p>
-              <p>{Name}, thank you for your order!</p>
+              <p>
+                <?php echo "".$order['FirstName']." ".$order['LastName'].", thank you for your order!"; ?>
+              </p>
               <p>We've recieved your order and will contact you as soon as your package is shipped.
                 You can find your purchase information below.</p>
             </div>
 
             <div class="ordersummary">
               <div class="sectionheading"><p>Order Summary</p></div>
-              <p>{Date}</p>
+              <p><?php echo " ".$order['OrderDate']."  "; ?></p> <!-- Date of Purchase -->
 
               <div class="productimageandsummary-container">
                 <div class="productimage">
-                  <img class= "product-img" src="../img/products/ps4.jpeg" alt="PS4">
+                  <?php
+                    //<img class= "product-img" src="../img/products/ps4.jpeg" alt="PS4">
+                    echo "<img class='product-img' src='".$mainImagePath."' alt='product image'>"
+                  ?>
                 </div>
                 <div class="productsummary">
-                  <p style="border-top: 1px solid lightgrey; padding-top: 5px;"><span style="font-weight: bold;">{Product Name}</span><span class="alignright">[value]<span></p>
-                  <p>Discount <span class="alignright">[value]<span></p>
-                  <p>Price after discount <span class="alignright">[value]<span></p>
-                  <p>Product ID <span class="alignright">[value]<span></p>
-                  <p>Quantity <span class="alignright">[value]<span></p>
+                  <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
+                    <span style="font-weight: bold;">Product Name</span>
+                    <span class="alignright" style="font-weight: bold;"><?php echo "".$order['OrderProductName'].""; ?><span>
+                  </p>
+                  <p>Product ID <span class="alignright"><?php echo "".$product['ProductID'].""; ?><span><span></p>
+                  <p>Product Price <span class="alignright"><?php echo "$".$product['Price'].""; ?><span></p>
+                  <p>Quantity <span class="alignright"><?php echo "".$order['Quantity'].""; ?><span></p>
+                  <p>Discount <span class="alignright">0%<span></p>
+                  <p>Price after discount <span class="alignright"><?php echo "$".$order['OrderSubtotalPrice'].""; ?><span></p>
+
+
                 </div>
               </div>
 
@@ -108,10 +143,14 @@
 
             <div class="ordertotal">
               <div class="sectionheading"><p>Order Total</p></div>
-              <p style="border-top: 1px solid lightgrey; padding-top: 5px;">Subtotal price <span class="alignright">[value]<span></p>
-              <p>Discount <span class="alignright">[value]<span></p>
-              <p>Shipping price <span class="alignright">[value]<span></p>
-              <p style="border-top: 1px solid lightgrey; padding-top: 5px;"><span style="font-weight: bold;">Total price: </span><span class="alignright" style="font-weight: bold;">[value]<span></p>
+              <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
+                Subtotal price <span class="alignright"><?php echo "$".$order['OrderSubtotalPrice'].""; ?><span></p>
+              <p>Discount <span class="alignright">0%<span></p>
+              <p>Shipping price <span class="alignright"><?php echo "$".$order['OrderShippingPrice'].""; ?><span></p>
+              <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
+                <span style="font-weight: bold;">Total price: </span>
+                <span class="alignright" style="font-weight: bold;"><?php echo "$".$order['OrderTotalPrice'].""; ?><span>
+              </p>
             </div>
 
             <div class="billingandshipping">
@@ -121,27 +160,27 @@
               <div class="billingandshipping-container">
                 <div class="billingandshipping-box">
                   <p><span style="font-weight: bold;">Billing</span></p>
-                  <p>{First and Last Name}</p>
-                  <p>{Address}</p>
-                  <p>{City, State}</p>
-                  <p>{Zip code}</p>
-                  <p>{Country}</p>
+                  <p><?php echo "".$order['FirstName']." ".$order['LastName'].""; ?></p>
+                  <p><?php echo "".$order['Address'].""; ?></p>
+                  <p><?php echo "".$order['City'].", ".$order['State'].""; ?></p>
+                  <p><?php echo "".$order['Zip'].""; ?></p>
+                  <p>USA</p>
                 </div>
                 <div class="billingandshipping-box">
                   <p><span style="font-weight: bold;">Shipping</span></p>
-                  <p>{First and Last Name}</p>
-                  <p>{Address}</p>
-                  <p>{City, State}</p>
-                  <p>{Zip code}</p>
-                  <p>{Country}</p>
+                  <p><?php echo "".$order['FirstName']." ".$order['LastName'].""; ?></p>
+                  <p><?php echo "".$order['Address'].""; ?></p>
+                  <p><?php echo "".$order['City'].", ".$order['State'].""; ?></p>
+                  <p><?php echo "".$order['Zip'].""; ?></p>
+                  <p>USA</p>
                 </div>
                 <div class="billingandshipping-box">
                   <p><span style="font-weight: bold;">Payment method</span></p>
-                  <p>{Payment Method}</p>
+                  <p>Credit Card</p>
                 </div>
                 <div class="billingandshipping-box">
                   <p><span style="font-weight: bold;">Shipping method</span></p>
-                  <p>{Shipping method}</p>
+                  <p><?php echo "".$order['ShippingMethod'].""; ?></p>
                 </div>
               </div>
 

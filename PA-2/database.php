@@ -107,7 +107,7 @@
 
     // prepare the statement. the place holders allow PDO to handle substituting
     // the values, which also prevents SQL injection
-    $stmt = $conn->prepare("SELECT * FROM orderid WHERE orderid=:orderID");
+    $stmt = $conn->prepare("SELECT * FROM `order` WHERE orderid=:orderID");
 
     // bind the parameters
     $stmt -> bindValue(":orderID", $orderID);
@@ -189,16 +189,19 @@
 
     // execute prepared statement
     $rowCount = 0;
+    $orderID;
     if($stmt->execute($data)){
-      $rowCount = $stmt->rowCount();
+      //$rowCount = $stmt->rowCount();
       //echo "New order record created successfully! <br>"; //DEBUG
       //echo $rowCount." record(s) created. <br>"; //DEBUG
+      $orderID = $conn->lastInsertId();
     }
 
     //close connection
     closeConnection($conn);
 
-    return $rowCount;
+    //return $rowCount;
+    return $orderID;
   }
 
 

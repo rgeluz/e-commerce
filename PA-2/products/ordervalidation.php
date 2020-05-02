@@ -132,7 +132,8 @@
   /*
     create order record
   */
-  $rowCount = setOrder(
+  //$rowCount = setOrder(
+  $orderID = setOrder(
     $orderdate, $orderproductname, $ordersubtotalprice, $orderdiscount, $ordershippingprice, $ordertotalprice,
     $fname, $lname, $address, $city, $state, $zip, $shippingmethod,
     $productid, $qty, $cardnumber, $expmonth, $expyear, $cvv,
@@ -146,7 +147,7 @@
 
   if($validationSuccessful) {
     //redirect page to orderconfirmation page after a few seconds
-    //header("refresh: 10; url=orderconfirmation.php");
+    header("refresh: 5; url=orderconfirmation.php?orderID=".$orderID."&productID=".$productid." ");
   }
 
 ?>
