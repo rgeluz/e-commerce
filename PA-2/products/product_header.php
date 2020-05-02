@@ -4,7 +4,7 @@
     <!-- Left-aligned links -->
     <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
     <a href="../index.html">Home</a>
-    <a class="active" href="products.php">Products</a>
+    <a class="active" href="../products.php">Products</a>
 
     <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
     <!--<a href="#about">About</a>-->
