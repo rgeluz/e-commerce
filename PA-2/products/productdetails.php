@@ -160,7 +160,8 @@
 
         <!-- Order Form Card -->
         <div class="w3-card-4 orderform-card" style="width:48%; float:right;">
-          <form action="" name="orderform" onsubmit="return(validate());">
+          <!--<form action="" name="orderform" onsubmit="return(validate());">-->
+          <form method="post" action="ordervalidation.php" name="orderform" onsubmit="return(validate());">
             <div class="col-50">
               <strong><h2>Order Form</h2></strong>
               <h4>Shipping Information</h4>
@@ -298,11 +299,10 @@
               <label for="email">Email</label>
               <input type="text" id="email" name="email" placeholder="john@example.com" required>
 
-              <input type="submit" value="Submit" />
+              <input type="submit" name="submit" value="Submit" />
 
             </div>
           </form>
-
         </div>
         <!-- end of order form card div -->
 

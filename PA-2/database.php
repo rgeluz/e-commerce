@@ -48,13 +48,14 @@
         $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully <br>";
+        //echo "Connected successfully <br>"; //DEBUG
     } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage() . "<br>";
+        //echo "Connection failed: " . $e->getMessage() . "<br>"; //DEBUG
     }
     return $conn;
 
   } //end of openConnection()
+
 
 
 
@@ -66,19 +67,145 @@
     $conn = null;
   }
 
-  /*
-  */
-  function getOrders(){
 
+
+
+  /*
+    Retrieve all order records
+  */
+  function getAllOrders(){
+    //open connection
+    $conn = openConnection();
+
+    // prepare the statement.
+    $stmt = $conn->prepare("SELECT * FROM order");
+
+    // initialize an array for the results
+    $orders = array();
+
+    // execute prepared statement and store results into the array
+    if ($stmt->execute()) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $orders[] = $row;
+      }
+    }
+    //close connection
+    closeConnection($conn);
+
+    return $orders;
   }
 
-  /*
-  */
-  function setOrder(){
 
+
+
+  /*
+    Retrieve order given order id
+  */
+  function getOrder($orderID){
+    //open connection
+    $conn = openConnection();
+
+    // prepare the statement. the place holders allow PDO to handle substituting
+    // the values, which also prevents SQL injection
+    $stmt = $conn->prepare("SELECT * FROM orderid WHERE orderid=:orderID");
+
+    // bind the parameters
+    $stmt -> bindValue(":orderID", $orderID);
+
+    // initialize an array for the results
+    // in theory product ids should be unique
+    // in case it is not and multiple records are return, store results as an array
+    $orders = array();
+    // execute prepared statement and store results into the array
+    if ($stmt->execute()) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $orders[] = $row;
+      }
+    }
+
+    //close connection
+    closeConnection($conn);
+
+    return $orders;
   }
 
+
+
+
   /*
+    Store order record
+  */
+  function setOrder(
+    $orderdate, $orderproductname, $ordersubtotalprice, $orderdiscount, $ordershippingprice, $ordertotalprice,
+    $firstname, $lastname, $address, $city, $state, $zip, $shippingmethod,
+    $productid, $quantity, $creditcardnumber, $expmonth, $expyear, $cvv,
+    $phonenumber,$email
+  ){
+
+    //open connection
+    $conn = openConnection();
+
+    //create array with values
+    $data = [
+      ':OrderDate' => $orderdate,
+      ':OrderProductName' => $orderproductname,
+      ':OrderSubtotalPrice' => $ordersubtotalprice,
+      ':OrderDiscount' => $orderdiscount,
+      ':OrderShippingPrice' => $ordershippingprice,
+      ':OrderTotalPrice' => $ordertotalprice,
+      ':FirstName' => $firstname,
+      ':LastName' => $lastname,
+      ':Address' => $address,
+      ':City' => $city,
+      ':State' => $state,
+      ':Zip' => $zip,
+      ':ShippingMethod' => $shippingmethod,
+      ':ProductID' => $productid,
+      ':Quantity' => $quantity,
+      ':CreditCardNumber' => $creditcardnumber,
+      ':ExpMonth' => $expmonth,
+      ':ExpYear' => $expyear,
+      ':CVV' => $cvv,
+      ':PhoneNumber' => $phonenumber,
+      ':Email' => $email
+    ];
+
+    //DEBUG
+    /*foreach ($data as $key => $value) {
+      echo "key: ".$key. ", value: ".$value." <br>";
+    }*/
+
+    $sql = "INSERT INTO `order` (`OrderDate`, `OrderProductName`, `OrderSubtotalPrice`, `OrderDiscount`,
+                              `OrderShippingPrice`, `OrderTotalPrice`, `FirstName`, `LastName`,
+                              `Address`, `City`, `State`, `Zip`, `ShippingMethod`, `ProductID`, `Quantity`,
+                              `CreditCardNumber`, `ExpMonth`, `ExpYear`, `CVV`, `PhoneNumber`, `Email`)
+                       VALUES (:OrderDate, :OrderProductName, :OrderSubtotalPrice, :OrderDiscount,
+                               :OrderShippingPrice, :OrderTotalPrice, :FirstName, :LastName,
+                               :Address, :City, :State, :Zip, :ShippingMethod, :ProductID, :Quantity,
+                               :CreditCardNumber, :ExpMonth, :ExpYear, :CVV, :PhoneNumber, :Email)";
+
+    // prepare the statement.
+    $stmt = $conn->prepare($sql);
+
+    // execute prepared statement
+    $rowCount = 0;
+    if($stmt->execute($data)){
+      $rowCount = $stmt->rowCount();
+      //echo "New order record created successfully! <br>"; //DEBUG
+      //echo $rowCount." record(s) created. <br>"; //DEBUG
+    }
+
+    //close connection
+    closeConnection($conn);
+
+    return $rowCount;
+  }
+
+
+
+
+  /*
+    Retrive all product records
   */
   function getAllProducts(){
     //open connection
@@ -91,7 +218,7 @@
     // prepare the statement.
     $stmt = $conn->prepare("SELECT * FROM product");
 
-    // initialise an array for the results
+    // initialize an array for the results
     $products = array();
 
     // execute prepared statement and store results into the array
@@ -102,9 +229,15 @@
     }
     //close connection
     closeConnection($conn);
+
+    return $products;
   }
 
+
+
+
   /*
+    Retrieve product records given category
   */
   function getAllProductsByCategory($category){
     //open connection
@@ -136,6 +269,7 @@
   }
 
   /*
+    Retrieve product record given product ID
   */
   function getProduct($productID){
     //open connection
@@ -148,7 +282,7 @@
     // bind the parameters
     $stmt -> bindValue(":productID", $productID);
 
-    // initialise an array for the results
+    // initialize an array for the results
     // in theory product ids should be unique
     // in case it is not and multiple records are return, store results as an array
     $products = array();
@@ -166,6 +300,8 @@
   }
 
 
+
+
   /*
     We probably don't need to implement this,
     as we can add records directly in phpMyAdmin
@@ -173,5 +309,12 @@
   function setProducts(){
 
   }
+
+
+
+
+  /*
+  */
+
 
 ?>

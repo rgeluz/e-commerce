@@ -9,8 +9,8 @@
 
     <!-- external css file -->
     <script src="https://use.fontawesome.com/releases/v5.11.1/js/all.js"></script>
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/orderconfirmation.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/orderconfirmation.css" rel="stylesheet">
 
 
     <!-- JavaScript -->
@@ -66,7 +66,7 @@
       <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
       <!-- Header -->
       <?php
-        include('header.php');
+        include('product_header.php');
       ?>
 
 
@@ -93,7 +93,7 @@
 
               <div class="productimageandsummary-container">
                 <div class="productimage">
-                  <img class= "product-img" src="img/products/ps4.jpeg" alt="PS4">
+                  <img class= "product-img" src="../img/products/ps4.jpeg" alt="PS4">
                 </div>
                 <div class="productsummary">
                   <p style="border-top: 1px solid lightgrey; padding-top: 5px;"><span style="font-weight: bold;">{Product Name}</span><span class="alignright">[value]<span></p>
@@ -146,11 +146,6 @@
               </div>
 
 
-
-
-
-
-
             </div>
           </div> <!--end of redbox class -->
 
@@ -160,7 +155,7 @@
 
       <!-- Footer -->
       <?php
-        include('footer.php');
+        include('../footer.php');
       ?>
     </div>
 
