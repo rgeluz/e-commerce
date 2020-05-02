@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2020 at 04:28 PM
+-- Generation Time: May 02, 2020 at 04:12 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -28,6 +28,13 @@ CREATE DATABASE ecommerce;
 --
 
 CREATE TABLE `order` (
+  `OrderID` int(11) NOT NULL,
+  `OrderDate` date NOT NULL,
+  `OrderProductName` varchar(200) NOT NULL,
+  `OrderSubtotalPrice` decimal(10,0) NOT NULL,
+  `OrderDiscount` decimal(10,0) NOT NULL,
+  `OrderShippingPrice` decimal(10,0) NOT NULL,
+  `OrderTotalPrice` decimal(10,0) NOT NULL,
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
   `Address` varchar(100) NOT NULL,
@@ -44,6 +51,45 @@ CREATE TABLE `order` (
   `PhoneNumber` varchar(100) NOT NULL,
   `Email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`OrderID`, `OrderDate`, `OrderProductName`, `OrderSubtotalPrice`, `OrderDiscount`, `OrderShippingPrice`, `OrderTotalPrice`, `FirstName`, `LastName`, `Address`, `City`, `State`, `Zip`, `ShippingMethod`, `ProductID`, `Quantity`, `CreditCardNumber`, `ExpMonth`, `ExpYear`, `CVV`, `PhoneNumber`, `Email`) VALUES
+(1, '2020-05-02', 'FF7 Remake', '60', '0', '11', '71', 'John', 'Doe5', '542 W St', 'New York', 'AL', 10001, 'overnight', 'FFRE4212', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john5@example.com'),
+(2, '2020-05-02', 'Animal Crossing: New Horizons', '60', '0', '11', '71', 'John', 'Doe', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'AC8X1245', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-111-111-1111', 'john@asdf.com'),
+(3, '2020-05-02', 'Call of Duty: Modern Warfare', '60', '0', '11', '71', 'john', 'doe6', '542 W St', 'New York', 'AL', 11111, 'overnight', 'CD12N35', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john6@example.com'),
+(4, '2020-05-02', 'Street Fighter Group Shot Men\'s T-Shirt', '22', '0', '11', '33', 'john', 'doe7', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', '89GR1235', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john7@example.com'),
+(5, '2020-05-02', 'Street Fighter Character Select Men\'s T-Shirt', '22', '0', '11', '33', 'John', 'Doe8', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', '89SF6235', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john8@example.com'),
+(6, '2020-05-02', 'Halo Infinite', '60', '0', '11', '71', 'john', 'Doe9', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'V9CX7265', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john9@example.com'),
+(7, '2020-05-02', 'Halo Infinite', '60', '0', '11', '71', 'John', 'Doe10', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'V9CX7265', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john10@example.com'),
+(8, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'aadfas', 'adfad', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'adfad@afdadfd.com'),
+(9, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'city', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-2222-3333-4444', 'sept', 2018, 111, '1-111-111-1111', 'a@a.com'),
+(10, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(11, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.ocm'),
+(12, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2018, 111, '1-111-111-1111', 'a@a.com'),
+(13, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(14, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(15, '2020-05-02', 'CORSAIR - Gaming K70 RGB MK.2 SE Mechanical Wired CHERRY MX Speed Switch Keyboard with RGB Back Lighting - Silver Anodized Brushed Aluminum', '140', '0', '11', '151', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '79GX1255', 1, '1111-1111-1111-1111', 'sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(16, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(17, '2020-05-02', 'The Last of Us 2', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'PS4J1735', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(18, '2020-05-02', 'The Last of Us 2', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'PS4J1735', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(19, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(20, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(21, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(22, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(23, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(24, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(25, '2020-05-02', 'Microsoft - Wireless Controller for Xbox One and Windows 10 - Black', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(26, '2020-05-02', 'Microsoft - Wireless Controller for Xbox One and Windows 10 - Black', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
+(27, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'john', 'Doe11', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 111, '1-555-666-7777', 'johndoe11@example.com'),
+(28, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe12', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe12@example.com'),
+(29, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe13', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe13@example.com'),
+(30, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe14', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe14@example.com'),
+(31, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe15', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe15@example.com'),
+(32, '2020-05-02', 'Mario Kart 8 Deluxe', '60', '0', '11', '71', 'John', 'Doe16', '542 W St', 'San Diego', 'CA', 11111, 'overnight', 'SWG1235', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe16@example.com'),
+(33, '2020-05-02', 'Mario Kart 8 Deluxe', '60', '0', '11', '71', 'John', 'Doe17', '542 W St', 'San Diego', 'CA', 11111, 'overnight', 'SWG1235', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe17@example.com');
 
 -- --------------------------------------------------------
 
@@ -91,10 +137,26 @@ INSERT INTO `product` (`ProductName`, `Quantity`, `ProductID`, `ProductCategory`
 --
 
 --
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`OrderID`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -160,7 +160,8 @@
 
         <!-- Order Form Card -->
         <div class="w3-card-4 orderform-card" style="width:48%; float:right;">
-          <form action="" name="orderform" onsubmit="return(validate());">
+          <!--<form action="" name="orderform" onsubmit="return(validate());">-->
+          <form method="post" action="ordervalidation.php" name="orderform" onsubmit="return(validate());">
             <div class="col-50">
               <strong><h2>Order Form</h2></strong>
               <h4>Shipping Information</h4>
@@ -260,7 +261,10 @@
               <div class="row">
                 <div class="col-50">
                   <label for="productid">Product ID</label>
-                  <input type="text" id="productid" name="productid" placeholder="1GA13" pattern=".{5}" required>
+                  <?php
+                    //<input type="text" id="productid" name="productid" placeholder="1GA13" pattern=".{5}" required>
+                    echo"<input type='text' id='productid' name='productid' value='".$product['ProductID']."' readonly required>"
+                  ?>
                 </div>
                 <div class="col-50">
                   <label for="qty">Quantity (5 Max)</label>
@@ -295,11 +299,10 @@
               <label for="email">Email</label>
               <input type="text" id="email" name="email" placeholder="john@example.com" required>
 
-              <input type="submit" value="Submit" />
+              <input type="submit" name="submit" value="Submit" />
 
             </div>
           </form>
-
         </div>
         <!-- end of order form card div -->
 
