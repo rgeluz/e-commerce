@@ -37,7 +37,7 @@
       $pageFrom="";
       switch($productCategory) {
         case "Accessories":
-          $pageFrom="productcategory_accessorieslphp";
+          $pageFrom="productcategory_accessories.php";
           break;
         case "Apparel":
           $pageFrom="productcategory_apparel.php";
