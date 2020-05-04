@@ -100,7 +100,7 @@
     <!-- https://www.w3schools.com/howto/howto_css_topnav_right.asp-->
     <!-- Header -->
     <?php
-      include('header.php');
+      include('header_search.php');
     ?>
 
 
@@ -114,7 +114,7 @@
             <h2 align="center" id="search-page-title">Search Products</h2><br />
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">Search</span>
+                <span class="input-group-addon" style="background-color: red; color: white;"><i class="fas fa-search"></i> </span> <!-- Search  -->
                 <input type="text" name="search_text" id="search_text" placeholder="search our inventory of products" class="form-control" />
               </div>
             </div>

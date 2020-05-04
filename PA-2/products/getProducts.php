@@ -45,7 +45,7 @@
     }
     echo $output;
   } else {
-    echo 'Data Not Found';
+    echo 'No Results';
   }
 
 
