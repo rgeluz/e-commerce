@@ -16,6 +16,10 @@
   <link href="../css/productdetails.css" rel="products stylesheet">
   <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
 
+  <!-- external javascript -->
+  <script src="../js/productdetails.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+
   <!--internal javascript -->
   <script type="text/javascript">
     $(document).ready(function() {
@@ -54,10 +58,88 @@
       expanded.src = imgs.src;
       expanded.parentElement.style.display = "block";
     }
-  </script>
 
-  <!-- external javascript -->
-  <script src="../js/productdetails.js"></script>
+    // -----------Ajax functions--------------
+    $(document).ready(function(){
+      $("#state").keyup(function(){
+        $.ajax({
+        type: "POST",
+        url: "getState.php",
+        data:'keyword='+$(this).val(),
+        beforeSend: function(){
+          console.log("test");
+          $("#state").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+        },
+        success: function(data){
+          // document.getElementById("autofill-box").innerHTML = data;
+          $("#autofill-state").show();
+          $("#autofill-state").html(data);
+          $("#state").css("background","#FFF");
+        }
+        });
+      });
+    });
+
+    $(document).ready(function(){
+      $("#zip").keyup(function(){
+        $.ajax({
+        type: "POST",
+        url: "getZip.php",
+        data:'keyword='+$(this).val(),
+        beforeSend: function(){
+          $("#zip").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+        },
+        success: function(data){
+          document.getElementById("autofill-zip").innerHTML = data;
+          $("#autofill-zip").show();
+          $("#autofill-zip").html(data);
+          $("#zip").css("background","#FFF");
+        }
+        });
+      });
+    });
+
+    function selectState(val) {
+      $("#state").val(val);
+      getTax(val);
+      $("#autofill-state").hide();
+    }
+
+    function selectZip(val) {
+      $("#zip").val(val);
+      fillZipInfo(val);
+      $("#autofill-zip").hide();
+    }
+
+    function getTax(state) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("tax").innerHTML = xmlhttp.responseText;
+        }
+        else {
+            document.getElementById("tax").innerHTML = "error";
+        }
+      };
+      xmlhttp.open("GET", "getTax.php?state=" + state, true);
+      xmlhttp.send(null);
+    }
+
+    function fillZipInfo(zip) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var info = xmlhttp.responseText.split(",");
+          document.getElementById("state").value = info[1];
+          document.getElementById("city").value = info[2];
+          getTax(info[1]);
+        }
+      };
+      xmlhttp.open("GET", "fillAll.php?zip=" + zip, true);
+      xmlhttp.send(null)
+    }
+
+  </script>
 
   <!-- internal css -->
   <style>
@@ -187,7 +269,7 @@
               <div class="row">
                 <div class="col-50">
                   <label for="state">State</label>
-                  <select class="select-css" name="state">
+                  <!-- <select class="select-css" name="state">
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -239,12 +321,15 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                  </select>
+                  </select> -->
+                  <input type="text" id="state" name="state" placeholder="State Name" required/>
+                  <div id="autofill-state"></div>
                 </div>
 
                 <div class="col-50">
                   <label for="zip">Zip</label>
                   <input type="text" id="zip" name="zip" placeholder="10001" required>
+                  <div id="autofill-zip"></div>
                 </div>
 
               </div>
@@ -256,6 +341,8 @@
                 <option value="2-day">2-Days Expedited</option>
                 <option value="6-day">6-Days Ground</option>
               </select>
+
+              <p>Tax: <span id="tax"> 0 </span>% </p><br>
 
               <h4>Billing Information</h4>
               <div class="row">

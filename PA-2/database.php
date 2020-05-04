@@ -313,7 +313,31 @@
 
   }
 
+  /*
+    function used for autocomplete,
+    might need to be converted to use with PDO
+  */
+  function runQuery($query) {
+    $servername = "localhost";
+    $username = "root";
+    $password = "testdb";
+    $databasename= "ecommerce";
+    // $conn = openConnection();
+    $conn = mysqli_connect($servername, $username, $password, $databasename);
 
+    $result = mysqli_query($conn, $query);
+    while($row=mysqli_fetch_assoc($result)) {
+      $resultset[] = $row;
+    }
+
+    if(!empty($resultset)) {
+      closeConnection($conn);
+      return $resultset;
+    }
+    else {
+      closeConnection($conn);
+    }
+  }
 
 
   /*
