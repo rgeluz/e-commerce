@@ -237,7 +237,46 @@
   }
 
 
+  /*
+    Retrieve product records given product name
+  */
+  function getAllProductsByProductName($searchkeyword){
+    //open connection
+    $conn = openConnection();
 
+    //MySQLi extension approach
+    /*$sql = "";
+    $result = $conn->query($sql);*/
+
+    // prepare the statement.
+    $stmt = $conn->prepare("SELECT * FROM product
+                            WHERE productname LIKE CONCAT('%',:searchkeyword,'%')
+                            OR productid LIKE CONCAT('%',:searchkeyword,'%')
+                            OR productcategory LIKE CONCAT('%',:searchkeyword,'%')
+                            OR category LIKE CONCAT('%',:searchkeyword,'%')
+                            OR platform LIKE CONCAT('%',:searchkeyword,'%')
+                            OR price LIKE CONCAT('%',:searchkeyword,'%')
+                            OR quantity LIKE CONCAT('%',:searchkeyword,'%')
+                            OR description LIKE CONCAT('%',:searchkeyword,'%')
+                            ");
+
+    // bind the parameters
+    $stmt -> bindvalue(":searchkeyword",$searchkeyword);
+
+    // initialize an array for the results
+    $products = array();
+
+    // execute prepared statement and store results into the array
+    if ($stmt->execute()) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $products[] = $row;
+      }
+    }
+    //close connection
+    closeConnection($conn);
+
+    return $products;
+  }
 
   /*
     Retrieve product records given category
