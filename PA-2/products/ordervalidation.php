@@ -146,8 +146,8 @@
 
 
   if($validationSuccessful) {
-    //redirect page to orderconfirmation page after a few seconds
-    header("refresh: 5; url=orderconfirmation.php?orderID=".$orderID."&productID=".$productid." ");
+    //redirect page to orderconfirmation page after a two and half seconds
+    header("refresh: 2.5; url=orderconfirmation.php?orderID=".$orderID."&productID=".$productid." ");
   }
 
 ?>
