@@ -60,6 +60,9 @@
     }
 
     // -----------Ajax functions--------------
+    /*
+    For state autofill
+    */
     $(document).ready(function(){
       $("#state").keyup(function(){
         $.ajax({
@@ -80,6 +83,9 @@
       });
     });
 
+    /*
+    For zipcode autofill
+    */
     $(document).ready(function(){
       $("#zip").keyup(function(){
         $.ajax({
@@ -98,6 +104,7 @@
         });
       });
     });
+
 
     function selectState(val) {
       $("#state").val(val);
