@@ -1,18 +1,18 @@
 <?php
-include "../database.php";
+  include "../database.php";
 
-if(!empty($_POST["keyword"])) {
-  $query ="SELECT * FROM zipcode WHERE zip like '" . $_POST["keyword"] . "%' ORDER BY zip LIMIT 0,6";
-  $result = runQuery($query);
+  if(!empty($_POST["keyword"])) {
+    $zipCode = $_POST["keyword"];
+    $results = getZipCode($zipCode);
 
-  if(!empty($result)) {
+    if(!empty($results)) {
+      ?>
+      <ul id="state-list">
+
+    <?php
+    foreach($results as $state) {
     ?>
-    <ul id="state-list">
-
-  <?php
-  foreach($result as $state) {
-  ?>
-  <li onClick="selectZip('<?php echo $state["zip"]; ?>');"><?php echo $state["zip"]; ?></li>
-  <?php } ?>
-  </ul>
+    <li onClick="selectZip('<?php echo $state["zip"]; ?>');"><?php echo $state["zip"]; ?></li>
+    <?php } ?>
+    </ul>
 <?php } } ?>

@@ -4,12 +4,12 @@
     <!-- Left-aligned links -->
     <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
     <a href="index.html">Home</a>
-    <a class="active" href="products.php">Products</a>
-
+    <a href="products.php">Products</a>
+    
     <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
     <!--<a href="#about">About</a>-->
     <div class="subnav">
-      <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+      <button class="active subnavbtn">About <i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
         <a href="company.php">Company</a>
         <a href="team.php">Team</a>

@@ -208,4 +208,33 @@
 	//PDO get the last ID inserted
 	https://stackoverflow.com/questions/10680943/pdo-get-the-last-id-inserted
 
+	//jQuery Tutorial for Beginners		//Playlist 10 videos
+	https://www.youtube.com/playlist?list=PLoYCgNOIyGABdI2V8I_SWo22tFpgh2s6_
 
+	//SELECT query with PDO
+	https://phpdelusions.net/pdo_examples/select
+
+	//Import CSV to existing MySQL table using PhpMyAdmin
+	https://www.youtube.com/watch?v=xppyP5ibbYM
+
+
+	//AJAX Introduction
+	https://www.w3schools.com/xml/ajax_intro.asp
+
+	//Ajax dynamic text box field update
+	https://forum.jquery.com/topic/ajax-dynamic-text-box-field-update
+
+	//Ajax Live Data Search using Jquery PHP MySql
+	https://www.youtube.com/watch?v=wCsPAquMNVw
+
+	//Ajax Live Data Search using Jquery PHP MySql
+	https://www.webslesson.info/2016/03/ajax-live-data-search-using-jquery-php-mysql.html
+
+	//How to create an HTML button that acts like a link?
+	https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link
+
+	//How do I create a PDO parameterized query with a LIKE statement?
+	https://stackoverflow.com/questions/583336/how-do-i-create-a-pdo-parameterized-query-with-a-like-statement
+
+	//How to count all elements or values in an array in PHP
+	https://www.tutorialrepublic.com/faq/how-to-count-all-elements-in-an-array-in-php.php

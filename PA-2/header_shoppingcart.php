@@ -4,7 +4,7 @@
     <!-- Left-aligned links -->
     <!--<a id="topnav-logo" href="index.html"><img src="img/logo_placeholder.png" alt="Logo"></a>-->
     <a href="index.html">Home</a>
-    <a class="active" href="products.php">Products</a>
+    <a href="products.php">Products</a>
 
     <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
     <!--<a href="#about">About</a>-->
@@ -23,7 +23,7 @@
       <!--<a href="#search">Search</a>-->
       <!--<button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>-->
       <button class="searchBtn" onClick="location.href='searchproduct.php';" style="float:left;"><i class="fas fa-search"></i> Search</button>
-      <a href="shoppingcart.php"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+      <a class="active" href="shoppingcart.php"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
     </div>
 
   </div>

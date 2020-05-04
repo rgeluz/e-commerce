@@ -237,7 +237,46 @@
   }
 
 
+  /*
+    Retrieve product records given product name
+  */
+  function getAllProductsByProductName($searchkeyword){
+    //open connection
+    $conn = openConnection();
 
+    //MySQLi extension approach
+    /*$sql = "";
+    $result = $conn->query($sql);*/
+
+    // prepare the statement.
+    $stmt = $conn->prepare("SELECT * FROM product
+                            WHERE productname LIKE CONCAT('%',:searchkeyword,'%')
+                            OR productid LIKE CONCAT('%',:searchkeyword,'%')
+                            OR productcategory LIKE CONCAT('%',:searchkeyword,'%')
+                            OR category LIKE CONCAT('%',:searchkeyword,'%')
+                            OR platform LIKE CONCAT('%',:searchkeyword,'%')
+                            OR price LIKE CONCAT('%',:searchkeyword,'%')
+                            OR quantity LIKE CONCAT('%',:searchkeyword,'%')
+                            OR description LIKE CONCAT('%',:searchkeyword,'%')
+                            ");
+
+    // bind the parameters
+    $stmt -> bindvalue(":searchkeyword",$searchkeyword);
+
+    // initialize an array for the results
+    $products = array();
+
+    // execute prepared statement and store results into the array
+    if ($stmt->execute()) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $products[] = $row;
+      }
+    }
+    //close connection
+    closeConnection($conn);
+
+    return $products;
+  }
 
   /*
     Retrieve product records given category
@@ -256,7 +295,7 @@
     // bind the parameters
     $stmt -> bindvalue(":productcat",$category);
 
-    // initialise an array for the results
+    // initialize an array for the results
     $products = array();
 
     // execute prepared statement and store results into the array
@@ -313,11 +352,39 @@
 
   }
 
+
+  /*
+    Get State
+  */
+  function getState($statename){
+    $query = "SELECT * FROM state WHERE state_name like '" . $statename . "%' ORDER BY state_name LIMIT 0,6";
+    $results = runQuery($query);
+    return $results;
+  }
+
+  /*
+    Get Tax
+  */
+  function getTaxRate($statename){
+    $query = "SELECT * FROM state WHERE state_name= '" . $statename . "'";
+    $results = runQuery($query);
+    return $results;
+  }
+
+  /*
+    Get Zip
+  */
+  function getZipCode($zipcode) {
+    $query ="SELECT * FROM zipcode WHERE zip like '" . $zipcode . "%' ORDER BY zip LIMIT 0,6";
+    $results = runQuery($query);
+    return $results;
+  }
+
   /*
     function used for autocomplete,
     might need to be converted to use with PDO
   */
-  function runQuery($query) {
+  /*function runQuery($query) {
     $servername = "localhost";
     $username = "root";
     $password = "testdb";
@@ -337,11 +404,33 @@
     else {
       closeConnection($conn);
     }
+  }*/
+
+  /*
+    PDO Approach of runQuery
+  */
+  function runQuery($query) {
+    //open connection
+    $conn = openConnection();
+
+    $stmt = $conn->query($query);
+
+    // initialize an array for the results
+    $rows = array();
+
+    // store the results into the array
+    if ($stmt->execute()){
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $rows[] = $row;
+      }
+    }
+    //close connection
+    closeConnection($conn);
+
+    return $rows;
   }
 
 
-  /*
-  */
 
 
 ?>

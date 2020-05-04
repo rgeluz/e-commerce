@@ -74,6 +74,13 @@ html, body {
   font-style : italic;
 }
 
+.topnav-right button.active {
+  background-color: red; /*#4CAF50;*/
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;   font-weight: bold;
+  font-style : italic;
+}
+
 /* Company Logo */
 #topnav-logo {
   padding: 0px;

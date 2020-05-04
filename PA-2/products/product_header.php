@@ -21,7 +21,8 @@
     <!-- Right-aligned links-->
     <div class="topnav-right">
       <!--<a href="#search">Search</a>-->
-      <button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>
+      <!--<button class="searchBtn" onClick="openSearch()" style="float:left;"><i class="fas fa-search"></i> Search</button>-->
+      <button class="searchBtn" onClick="location.href='../searchproduct.php';" style="float:left;"><i class="fas fa-search"></i> Search</button>
       <a href="../shoppingcart.php"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
     </div>
 
