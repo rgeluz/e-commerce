@@ -30,18 +30,49 @@
                   </tr>
                ';
 
+
     foreach($results as $product) {
-      $output .= '
+
+      $productCategory = $product['ProductCategory'];
+      $pageFrom="";
+      switch($productCategory) {
+        case "Accessories":
+          $pageFrom="productcategory_accessorieslphp";
+          break;
+        case "Apparel":
+          $pageFrom="productcategory_apparel.php";
+          break;
+        case "Nintendo Switch":
+          $pageFrom="productcategory_switch.php";
+          break;
+        case "PC Gaming":
+          $pageFrom="productcategory_pc.php";
+          break;
+        case "PlayStation 4":
+          $pageFrom="productcategory_ps4.php";
+          break;
+        case "Xbox One":
+          $pageFrom="productcategory_xbox.php";
+          break;
+      }
+      $productID = $product['ProductID'];
+
+
+      $output .= "
                  <tr>
-                  <td>'.$product['ProductName'].'</td>
-                  <td>'.$product['ProductID'].'</td>
-                  <td>'.$product['Category'].'</td>
-                  <td>'.$product['Platform'].'</td>
-                  <td>'.$product['Price'].'</td>
-                  <td>'.$product['Quantity'].'</td>
-                  <td>'.$product['Description'].'</td>
+                  <td>
+                    <a href='./products/productdetails.php?pageFrom=".$pageFrom."&productCategory=".$productCategory."&productID=".$productID."'>"
+                    .$product['ProductName']."
+                    </a>
+                  </td>
+                  <td>".$product['ProductID']."</td>
+                  <td>".$product['Category']."</td>
+                  <td>".$product['Platform']."</td>
+                  <td>".$product['Price']."</td>
+                  <td>".$product['Quantity']."</td>
+                  <td>".$product['Description']."</td>
                  </tr>
-                ';
+                ";
     }
     echo $output;
   } else {
