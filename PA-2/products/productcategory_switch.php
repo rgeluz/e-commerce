@@ -128,7 +128,7 @@
                                   <h4><b>".$product['ProductName']."</b></h4>
                                   <p>Platform: ".$product['Platform']."</p>
                                   <p>Category: ".$product['Category']."</p>
-                                  <p>Price: ".$product['Price']."</p>
+                                  <p>Price: <span style='color:red'>$".$product['Price']."</span></p>
                                   <p>Currently In Stock: ".$product['Quantity']."</p>
                                 </div>
                               </div>
