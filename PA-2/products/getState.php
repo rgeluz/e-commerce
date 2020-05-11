@@ -3,6 +3,7 @@
 
   if(!empty($_POST["keyword"])) {
     $statename = $_POST["keyword"];
+    $productprice = $_POST["productprice"];
     $results = getState($statename);
 
     if(!empty($results)) {
@@ -12,7 +13,7 @@
     <?php
     foreach($results as $state) {
     ?>
-    <li onClick="selectState('<?php echo $state["state_name"]; ?>');"><?php echo $state["state_name"]; ?></li>
+    <li onClick="selectState('<?php echo $state["state_name"]; ?>', <?php echo $productprice; ?>);"><?php echo $state["state_name"]; ?></li>
     <?php } ?>
     </ul>
 <?php } } ?>
