@@ -136,7 +136,9 @@
     Store order record
   */
   function setOrder(
-    $orderdate, $orderproductname, $ordersubtotalprice, $orderdiscount, $ordershippingprice, $ordertotalprice,
+    $orderdate, $orderproductname, $orderpricequantity,
+    $orderdiscount, $ordersubtotal_afterdiscount, $ordershippingprice, $ordersubtotal_aftershipping,
+    $ordertaxrate, $orderamounttaxed, $ordersubtotal_aftertax, $ordertotalprice,
     $firstname, $lastname, $address, $city, $state, $zip, $shippingmethod,
     $productid, $quantity, $creditcardnumber, $expmonth, $expyear, $cvv,
     $phonenumber,$email
@@ -149,9 +151,14 @@
     $data = [
       ':OrderDate' => $orderdate,
       ':OrderProductName' => $orderproductname,
-      ':OrderSubtotalPrice' => $ordersubtotalprice,
+      ':OrderPriceQuantity'=> $orderpricequantity,
       ':OrderDiscount' => $orderdiscount,
+      ':OrderSubtotalAfterDiscount'=> $ordersubtotal_afterdiscount,
       ':OrderShippingPrice' => $ordershippingprice,
+      ':OrderSubtotalAfterShipping'=> $ordersubtotal_aftershipping,
+      ':OrderTaxRate'=> $ordertaxrate,
+      ':OrderAmountTaxed'=> $orderamounttaxed,
+      ':OrderSubtotalAfterTax'=> $ordersubtotal_aftertax,
       ':OrderTotalPrice' => $ordertotalprice,
       ':FirstName' => $firstname,
       ':LastName' => $lastname,
@@ -175,12 +182,18 @@
       echo "key: ".$key. ", value: ".$value." <br>";
     }*/
 
-    $sql = "INSERT INTO `order` (`OrderDate`, `OrderProductName`, `OrderSubtotalPrice`, `OrderDiscount`,
-                              `OrderShippingPrice`, `OrderTotalPrice`, `FirstName`, `LastName`,
+    $sql = "INSERT INTO `order` (`OrderDate`, `OrderProductName`, `OrderPriceQuantity`,
+                              `OrderDiscount`,`OrderSubtotalAfterDiscount`,
+                              `OrderShippingPrice`, `OrderSubtotalAfterShipping`,
+                              `OrderTaxRate`, `OrderAmountTaxed`, `OrderSubtotalAfterTax`,`OrderTotalPrice`,
+                              `FirstName`, `LastName`,
                               `Address`, `City`, `State`, `Zip`, `ShippingMethod`, `ProductID`, `Quantity`,
                               `CreditCardNumber`, `ExpMonth`, `ExpYear`, `CVV`, `PhoneNumber`, `Email`)
-                       VALUES (:OrderDate, :OrderProductName, :OrderSubtotalPrice, :OrderDiscount,
-                               :OrderShippingPrice, :OrderTotalPrice, :FirstName, :LastName,
+                       VALUES (:OrderDate, :OrderProductName, :OrderPriceQuantity,
+                               :OrderDiscount, :OrderSubtotalAfterDiscount,
+                               :OrderShippingPrice, :OrderSubtotalAfterShipping,
+                               :OrderTaxRate, :OrderAmountTaxed, :OrderSubtotalAfterTax, :OrderTotalPrice,
+                               :FirstName, :LastName,
                                :Address, :City, :State, :Zip, :ShippingMethod, :ProductID, :Quantity,
                                :CreditCardNumber, :ExpMonth, :ExpYear, :CVV, :PhoneNumber, :Email)";
 
@@ -376,6 +389,15 @@
   */
   function getZipCode($zipcode) {
     $query ="SELECT * FROM zipcode WHERE zip like '" . $zipcode . "%' ORDER BY zip LIMIT 0,6";
+    $results = runQuery($query);
+    return $results;
+  }
+
+  /*
+    Get Shipping Price
+  */
+  function getShippingPrice($shippingmethod){
+    $query = "SELECT * FROM shipping WHERE shipping_method= '". $shippingmethod. "'";
     $results = runQuery($query);
     return $results;
   }

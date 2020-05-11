@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2020 at 10:41 PM
+-- Generation Time: May 11, 2020 at 03:02 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -31,10 +31,15 @@ CREATE TABLE `order` (
   `OrderID` int(11) NOT NULL,
   `OrderDate` date NOT NULL,
   `OrderProductName` varchar(200) NOT NULL,
-  `OrderSubtotalPrice` decimal(10,0) NOT NULL,
-  `OrderDiscount` decimal(10,0) NOT NULL,
-  `OrderShippingPrice` decimal(10,0) NOT NULL,
-  `OrderTotalPrice` decimal(10,0) NOT NULL,
+  `OrderPriceQuantity` decimal(15,2) NOT NULL,
+  `OrderDiscount` decimal(15,2) NOT NULL,
+  `OrderSubtotalAfterDiscount` decimal(15,2) NOT NULL,
+  `OrderShippingPrice` decimal(15,2) NOT NULL,
+  `OrderSubtotalAfterShipping` decimal(15,2) NOT NULL,
+  `OrderTaxRate` decimal(15,2) NOT NULL,
+  `OrderAmountTaxed` decimal(15,2) NOT NULL,
+  `OrderSubtotalAfterTax` decimal(15,2) NOT NULL,
+  `OrderTotalPrice` decimal(15,2) NOT NULL,
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
   `Address` varchar(100) NOT NULL,
@@ -56,51 +61,21 @@ CREATE TABLE `order` (
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`OrderID`, `OrderDate`, `OrderProductName`, `OrderSubtotalPrice`, `OrderDiscount`, `OrderShippingPrice`, `OrderTotalPrice`, `FirstName`, `LastName`, `Address`, `City`, `State`, `Zip`, `ShippingMethod`, `ProductID`, `Quantity`, `CreditCardNumber`, `ExpMonth`, `ExpYear`, `CVV`, `PhoneNumber`, `Email`) VALUES
-(1, '2020-05-02', 'FF7 Remake', '60', '0', '11', '71', 'John', 'Doe5', '542 W St', 'New York', 'AL', 10001, 'overnight', 'FFRE4212', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john5@example.com'),
-(2, '2020-05-02', 'Animal Crossing: New Horizons', '60', '0', '11', '71', 'John', 'Doe', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'AC8X1245', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-111-111-1111', 'john@asdf.com'),
-(3, '2020-05-02', 'Call of Duty: Modern Warfare', '60', '0', '11', '71', 'john', 'doe6', '542 W St', 'New York', 'AL', 11111, 'overnight', 'CD12N35', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john6@example.com'),
-(4, '2020-05-02', 'Street Fighter Group Shot Men\'s T-Shirt', '22', '0', '11', '33', 'john', 'doe7', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', '89GR1235', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john7@example.com'),
-(5, '2020-05-02', 'Street Fighter Character Select Men\'s T-Shirt', '22', '0', '11', '33', 'John', 'Doe8', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', '89SF6235', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john8@example.com'),
-(6, '2020-05-02', 'Halo Infinite', '60', '0', '11', '71', 'john', 'Doe9', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'V9CX7265', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john9@example.com'),
-(7, '2020-05-02', 'Halo Infinite', '60', '0', '11', '71', 'John', 'Doe10', '542 W St', 'Los Angeles', 'CA', 11111, 'overnight', 'V9CX7265', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'john10@example.com'),
-(8, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'aadfas', 'adfad', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'adfad@afdadfd.com'),
-(9, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'city', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-2222-3333-4444', 'sept', 2018, 111, '1-111-111-1111', 'a@a.com'),
-(10, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(11, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.ocm'),
-(12, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2018, 111, '1-111-111-1111', 'a@a.com'),
-(13, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(14, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '89GX1MN5', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(15, '2020-05-02', 'CORSAIR - Gaming K70 RGB MK.2 SE Mechanical Wired CHERRY MX Speed Switch Keyboard with RGB Back Lighting - Silver Anodized Brushed Aluminum', '140', '0', '11', '151', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '79GX1255', 1, '1111-1111-1111-1111', 'sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(16, '2020-05-02', 'Final Fantasy VII Remake', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(17, '2020-05-02', 'The Last of Us 2', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'PS4J1735', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(18, '2020-05-02', 'The Last of Us 2', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', 'PS4J1735', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(19, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(20, '2020-05-02', 'DualShock 4 Wireless Controller for Sony PlayStation 4 - Magma (red)', '65', '0', '11', '76', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '92GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(21, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(22, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(23, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(24, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'a', 'b', 'c', 'd', 'CA', 1111, 'overnight', '56SH682', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(25, '2020-05-02', 'Microsoft - Wireless Controller for Xbox One and Windows 10 - Black', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(26, '2020-05-02', 'Microsoft - Wireless Controller for Xbox One and Windows 10 - Black', '60', '0', '11', '71', 'a', 'b', 'c', 'd', 'CA', 11111, 'overnight', '89GX1235', 1, '1111-1111-1111-1111', 'Sept', 2020, 111, '1-111-111-1111', 'a@a.com'),
-(27, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'john', 'Doe11', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 111, '1-555-666-7777', 'johndoe11@example.com'),
-(28, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe12', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe12@example.com'),
-(29, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe13', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe13@example.com'),
-(30, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe14', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe14@example.com'),
-(31, '2020-05-02', 'Legend of Zelda: Breadth of the Wild', '60', '0', '11', '71', 'John', 'Doe15', '542 W St', 'San Diego', 'CA', 11111, 'overnight', '66LJL89', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe15@example.com'),
-(32, '2020-05-02', 'Mario Kart 8 Deluxe', '60', '0', '11', '71', 'John', 'Doe16', '542 W St', 'San Diego', 'CA', 11111, 'overnight', 'SWG1235', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe16@example.com'),
-(33, '2020-05-02', 'Mario Kart 8 Deluxe', '60', '0', '11', '71', 'John', 'Doe17', '542 W St', 'San Diego', 'CA', 11111, 'overnight', 'SWG1235', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe17@example.com'),
-(34, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'John', 'Smith', '5555 Sesame St', 'San Francisco', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johnsmith@example.com'),
-(35, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'john', 'smith1', '5555 Sesame St', 'San Francisco', 'CA', 11111, 'overnight', '89GX1MN5', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johnsmith1@example.com'),
-(36, '2020-05-02', 'Vintage Metroid cotton t-shirt', '19', '0', '11', '30', 'john', 'smith2', '5555 Sesame St', 'San Francisco', 'CA', 11111, 'overnight', '56SH682', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johnsmith2@example.com'),
-(37, '2020-05-02', 'Call of Duty: Modern Warfare', '60', '0', '11', '71', 'John', 'Smith3', '1111 Sesame St', 'San Francisco', 'CA', 11111, 'overnight', 'CD12N35', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johnsmith3@example.com'),
-(38, '2020-05-02', 'Animal Crossing: New Horizons', '60', '0', '11', '71', 'Ann', 'Cross', '1234 Sesame St', 'San Diego', 'CA', 11111, 'overnight', 'AC8X1245', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-555-5555', 'anncross1234@example.com'),
-(39, '2020-05-02', 'Minecraft Creeper T-Shirt', '10', '0', '11', '21', 'Bob', 'Glob', '5555 Sesame St', 'San Diego', 'CA', 90000, 'overnight', '89GX1MN5', 1, '1111-2222-3333-4444', 'September', 2020, 352, '1-444-555-7777', 'bobglob1111@yahoo.com'),
-(40, '2020-05-02', 'Minecraft Creeper T-Shirt', '50', '0', '4', '54', 'albert', 'bert', '5555 main st', 'Cityville', 'CA', 55555, '6-day', '89GX1MN5', 5, '1111-2222-3333-4444', 'September', 2018, 352, '1-777-777-7777', 'albertbert7777@gmail5555.com'),
-(41, '2020-05-02', 'Call of Duty: Modern Warfare', '240', '0', '7', '247', 'John', 'Smith', '7777 Main St', 'Mainville', 'CA', 11111, '2-day', 'CD12N35', 4, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johnsmith11111@asdf.com'),
-(42, '2020-05-03', 'Final Fantasy VII Remake', '300', '0', '11', '311', 'john', 'Doe77', '7777 Main St', 'San Diego', 'California', 10001, 'overnight', 'FFRE4212', 5, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'johndoe77@example.com'),
-(43, '2020-05-03', 'Halo Infinite', '300', '0', '11', '311', 'john', 'doe', '1234 Sesame St', 'Acme City', 'California', 10001, 'overnight', 'V9CX7265', 5, '1111-2222-3333-4444', 'March', 2020, 352, '1-111-111-1111', 'johndoe@example.com'),
-(44, '2020-05-03', 'Vintage Metroid cotton t-shirt', '93', '0', '11', '104', 'John', 'Doe55', '5555 Main St', 'Honolulu', 'Hawaii', 96817, 'overnight', '56SH682', 5, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-555-5555', 'johndoe55@example.com');
+INSERT INTO `order` (`OrderID`, `OrderDate`, `OrderProductName`, `OrderPriceQuantity`, `OrderDiscount`, `OrderSubtotalAfterDiscount`, `OrderShippingPrice`, `OrderSubtotalAfterShipping`, `OrderTaxRate`, `OrderAmountTaxed`, `OrderSubtotalAfterTax`, `OrderTotalPrice`, `FirstName`, `LastName`, `Address`, `City`, `State`, `Zip`, `ShippingMethod`, `ProductID`, `Quantity`, `CreditCardNumber`, `ExpMonth`, `ExpYear`, `CVV`, `PhoneNumber`, `Email`) VALUES
+(52, '2020-05-10', 'Final Fantasy VII Remake', '60.00', '0.00', '60.00', '11.00', '71.00', '0.00', '3.00', '74.00', '74.00', 'John', 'Doe', '542 W 15st', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 1, '1111-2222-3333-4444', 'Septembe', 2018, 352, '1-555-666-7777', 'johndoe@example.com'),
+(53, '2020-05-10', 'Final Fantasy VII Remake', '60.00', '0.00', '60.00', '11.00', '71.00', '0.00', '3.00', '74.00', '74.00', 'John', 'Doe55', '111 abc st', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'September', 2018, 352, '1-555-555-5555', 'johndoe@example.com'),
+(54, '2020-05-10', 'Final Fantasy VII Remake', '300.00', '0.00', '300.00', '11.00', '311.00', '0.00', '12.00', '323.00', '323.00', 'Jo', 'Do', 'a st.', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 5, '1111-1111-1111-1111', 'September', 2018, 352, '1-555-555-5555', 'jodo@example.com'),
+(55, '2020-05-10', 'Final Fantasy VII Remake', '59.99', '0.00', '59.99', '11.00', '70.99', '0.04', '2.84', '73.83', '73.83', 'jo', 'do', '5555 st', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 1, '1111-1111-1111-1111', 'September', 2018, 352, '1-555-555-5555', 'jodo@example.com'),
+(56, '2020-05-11', 'Final Fantasy VII Remake', '299.95', '0.00', '299.95', '11.00', '310.95', '0.04', '12.44', '323.39', '323.39', 'Jo', 'Do', '542 W St', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 5, '1111-1111-1111-1111', 'September', 2018, 352, '1-555-555-5555', 'jodod@example.com'),
+(57, '2020-05-11', 'Animal Crossing: New Horizons', '239.96', '0.00', '239.96', '11.00', '250.96', '0.07', '18.19', '269.15', '269.15', 'John', 'Doe', '542W 15th st', 'San Diego', 'California', 92101, 'overnight', 'AC8X1245', 4, '1111-2222-3333-4444', 'Septembe', 2018, 352, '1-555-555-5555', 'johndoe@example.com'),
+(58, '2020-05-11', 'Animal Crossing: New Horizons', '239.96', '0.00', '239.96', '11.00', '250.96', '7.25', '18.19', '269.15', '269.15', 'John', 'Doe', '5555 W st', 'San Diego', 'California', 92101, 'overnight', 'AC8X1245', 4, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-555-5555', 'johndoe@example.com'),
+(59, '2020-05-11', 'Animal Crossing: New Horizons', '59.99', '0.00', '59.99', '4.00', '63.99', '4.00', '2.56', '66.55', '66.55', 'a', 'b', 'c', 'New York', 'New York', 10001, '6-day', 'AC8X1245', 1, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'johndoe@example.com'),
+(60, '2020-05-11', 'Animal Crossing: New Horizons', '299.95', '0.00', '299.95', '11.00', '310.95', '4.00', '12.44', '323.39', '323.39', 'a', 'b', 'c', 'New York', 'New York', 10001, 'overnight', 'AC8X1245', 5, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-666-7777', 'johndoe@example.com'),
+(61, '2020-05-11', 'Final Fantasy VII Remake', '299.95', '0.00', '299.95', '11.00', '310.95', '4.00', '12.44', '323.39', '323.39', 'John', 'Doe', '542 W 15 St', 'New York', 'New York', 10001, 'overnight', 'FFRE4212', 5, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-666-7777', 'johndoe@example.com'),
+(62, '2020-05-11', 'Vintage Metroid cotton t-shirt', '93.15', '0.00', '93.15', '4.00', '97.15', '4.00', '3.89', '101.04', '101.04', 'john', 'doe', '55555 st', 'New York', 'New York', 10001, '6-day', '56SH682', 5, '1111-2222-3333-4444', 'September', 2018, 352, '1-555-555-5555', 'johndoe@example.com'),
+(63, '2020-05-11', 'Vintage Metroid cotton t-shirt', '93.15', '0.00', '93.15', '11.00', '104.15', '4.00', '4.17', '108.32', '108.32', 'john', 'doe', '5555 W St', 'New York', 'New York', 10001, 'overnight', '56SH682', 5, '1111-2222-3333-44444', 'September', 2018, 352, '1-555-555-5555', 'johndoe@example.com'),
+(64, '2020-05-11', 'Vintage Metroid cotton t-shirt', '93.15', '0.00', '93.15', '11.00', '104.15', '4.00', '4.17', '108.32', '108.32', 'john', 'doe', '5555 W St', 'New York', 'New York', 10001, 'overnight', '56SH682', 5, '1111-2222-3333-44444', 'September', 2018, 352, '1-555-555-5555', 'johndoe@example.com'),
+(65, '2020-05-11', 'Legend of Zelda: Breadth of the Wild', '299.95', '0.00', '299.95', '7.00', '306.95', '7.25', '22.25', '329.20', '329.20', 'john', 'doe', '44444 street', 'San Diego', 'California', 92101, '2-day', '66LJL89', 5, '1111-2222-3333-4444', 'September', 2020, 352, '1-555-555-5555', 'johndoe@example.com');
 
 -- --------------------------------------------------------
 
@@ -142,6 +117,26 @@ INSERT INTO `product` (`ProductName`, `Quantity`, `ProductID`, `ProductCategory`
 ('The Last of Us 2', 100, 'PS4J1735', 'PlayStation 4', 'Action', 'PS4', 59.99, 'Five years after their dangerous journey across the post-pandemic United States, Ellie and Joel have settled down in Jackson, Wyoming. Living amongst a thriving community of survivors has allowed them peace and stability, despite the constant threat of the infected and other, more desperate survivors.', '../img/products/TLOU2/TLOU2.png,../img/products/TLOU2/TLOU201.jpg,../img/products/TLOU2/TLOU202.jpg,../img/products/TLOU2/TLOU203.jpg,../img/products/TLOU2/TLOU204.jpg'),
 ('Mario Kart 8 Deluxe', 100, 'SWG1235', 'Nintendo Switch', 'Racing Game', 'Nintendo Switch', 59.99, 'Battle new enemies on a host of fun tracks with Mario Kart 8 Deluxe for the Nintendo Switch. Three new vehicles and a smart steering feature make this game perfect for both beginners or seasoned pros. In Mario Kart 8 Deluxe you can hold up to two items at a time to attack your enemies.', '../img/products/mariokart8/mariokart8.jpg,../img/products/mariokart8/mariokartgameplay.jpg,../img/products/mariokart8/mariokartgameplay1.jpg,../img/products/mariokart8/mariokartgameplay2.jpg,../img/products/mariokart8/mariokartgameplay3.jpg'),
 ('Halo Infinite', 100, 'V9CX7265', 'Xbox One', 'FPS', 'Xbox One', 59.99, 'The Master Chief returns in Halo Infinite – the next chapter of the legendary franchise beginning holiday 2020! Developed by 343 Industries for the entire Xbox family of devices, including Project Scarlett and Windows PCs, Halo Infinite continues the Halo 5: Guardians storyline and takes the franchise in ambitious and unexpected directions, powered by the all-new Slipspace Engine.', '../img/products/HaloInfinite/Halo.jpg,../img/products/HaloInfinite/halo01.jpg,../img/products/HaloInfinite/halo02.jpg,../img/products/HaloInfinite/halo03.jpg,../img/products/HaloInfinite/halo04.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping`
+--
+
+CREATE TABLE `shipping` (
+  `shipping_method` varchar(50) NOT NULL,
+  `price` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shipping`
+--
+
+INSERT INTO `shipping` (`shipping_method`, `price`) VALUES
+('overnight', '11'),
+('2-day', '7'),
+('6-day', '4');
 
 -- --------------------------------------------------------
 
@@ -29738,7 +29733,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

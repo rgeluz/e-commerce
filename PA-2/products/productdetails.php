@@ -67,12 +67,13 @@
       $("#state").keyup(function(){
         var state = $('#state').val();
         var price = $('#price').text();
+        var shippingprice = $('#shippingprice').text();
 
         $.ajax({
         type: "POST",
         url: "getState.php",
         // data:'keyword='+$(this).val(),
-        data:{"keyword": state, "productprice": price},
+        data:{"keyword": state, "productprice": price, "shippingprice": shippingprice},
         beforeSend: function(){
           $("#state").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
         },
@@ -87,18 +88,19 @@
     });
 
     /*
-    For zipcode autofill
+      For zipcode autofill
     */
     $(document).ready(function(){
       $("#zip").keyup(function(){
         var zip = $('#zip').val();
         var price = $('#price').text();
+        var shippingprice = $('#shippingprice').text();
 
         $.ajax({
         type: "POST",
         url: "getZip.php",
         // data:'keyword='+$(this).val(),
-        data: {"keyword":zip, "productprice":price},
+        data: {"keyword":zip, "productprice":price, "shippingprice": shippingprice},
         beforeSend: function(){
           $("#zip").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
         },
@@ -112,37 +114,70 @@
       });
     });
 
+    /*
+      For quantity
+    */
     $(document).ready(function() {
       $("#qty").keyup(function() {
         var quantity = $('#qty').val();
         var price = $('#price').text();
         var tax = $('#tax').text();
+        var shippingprice = $('#shippingprice').text();
 
         $.ajax({
           type: "POST",
           url: "getQuantity.php",
-          data: {"quantity": quantity, "productprice": price, "tax": tax},
+          data: {"quantity": quantity, "productprice": price, "tax": tax, "shippingprice": shippingprice},
           success: function(data) {
-            console.log("test");
+            console.log("test ");
             $("#total").html(data);
           }
         });
       });
     });
 
-    function selectState(val, productprice) {
+    /*
+      For shipping method
+    */
+    $(document).ready(function() {
+
+      $("#shippingmethod").val($("#shippingmethod option:first").val() ); //make sure first option is selected
+      displayShippingPrice();
+      $(document).on('change','select', function() {
+        displayShippingPrice();
+      });
+    });
+
+
+    /**/function displayShippingPrice(){
+      var e = document.getElementById("shippingmethod");
+      var shippingmethod = e.options[e.selectedIndex].value;
+
+
+      $.ajax({
+        type: "POST",
+        url: "getShipping.php",
+        data: {"shippingmethod": shippingmethod },
+        success: function(data) {
+          console.log("test displayShippingPrice()");
+          $("#shippingprice").html(data);
+        }
+      });
+    }
+
+    function selectState(val, productprice, shippingprice) {
       $("#state").val(val);
-      getTax(val, productprice);
+      getTax(val, productprice, shippingprice);
       $("#autofill-state").hide();
     }
 
-    function selectZip(val, productprice) {
+    function selectZip(val, productprice, shippingprice) {
       $("#zip").val(val);
-      fillZipInfo(val, productprice);
+      fillZipInfo(val, productprice, shippingprice);
       $("#autofill-zip").hide();
     }
 
-    function getTax(state, productprice) {
+    function getTax(state, productprice, shippingprice) {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -155,18 +190,18 @@
             document.getElementById("tax").innerHTML = "error";
         }
       };
-      xmlhttp.open("GET", "getTax.php?state=" + state + "&productprice=" + productprice, true);
+      xmlhttp.open("GET", "getTax.php?state=" + state + "&productprice=" + productprice +"&shippingprice=" + shippingprice, true);
       xmlhttp.send(null);
     }
 
-    function fillZipInfo(zip, productprice) {
+    function fillZipInfo(zip, productprice, shippingprice) {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           var info = xmlhttp.responseText.split(",");
           document.getElementById("state").value = info[1];
           document.getElementById("city").value = info[2];
-          getTax(info[1], productprice);
+          getTax(info[1], productprice, shippingprice);
         }
       };
       xmlhttp.open("GET", "fillAll.php?zip=" + zip, true);
@@ -316,9 +351,9 @@
 
               </div>
 
-              <label for="Shippng Method">Shipping Method:</label>
+              <label for="shippingmethod">Shipping Method:</label>
 
-              <select class="select-css" id="Shipping Method" name="shippingmethod">
+              <select class="select-css" id="shippingmethod" name="shippingmethod">
                 <option value="overnight">Overnight</option>
                 <option value="2-day">2-Days Expedited</option>
                 <option value="6-day">6-Days Ground</option>
@@ -341,13 +376,16 @@
 
               <div class="row">
                 <div class="col-50">
+                  <p>Discount: $0.00</p>
+                  <p>Shipping Price: $<span id="shippingprice"> 0.00</span></p>
                   <p>Tax Rate: <span id="tax"> 0 </span>%</p>
                 </div>
                 <div class="col-50">
                   <p>Total Price: $
                     <span id="total">
                       <?php echo $product['Price'] ?>
-                    </span></p>
+                    </span>
+                  </p>
                 </div>
               </div>
               <br>

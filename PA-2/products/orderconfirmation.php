@@ -132,8 +132,9 @@
                   <p>Product ID <span class="alignright"><?php echo "".$product['ProductID'].""; ?><span><span></p>
                   <p>Product Price <span class="alignright"><?php echo "$".$product['Price'].""; ?><span></p>
                   <p>Quantity <span class="alignright"><?php echo "".$order['Quantity'].""; ?><span></p>
+                  <p>Product Price X Quantity <span class="alignright"><?php echo "$".$order['OrderPriceQuantity'].""; ?><span></p>
                   <p>Discount <span class="alignright">0%<span></p>
-                  <p>Price after discount <span class="alignright"><?php echo "$".$order['OrderSubtotalPrice'].""; ?><span></p>
+                  <p>Price After Discount <span class="alignright"><?php echo "$".$order['OrderSubtotalAfterDiscount'].""; ?><span></p>
 
 
                 </div>
@@ -144,12 +145,13 @@
             <div class="ordertotal">
               <div class="sectionheading"><p>Order Total</p></div>
               <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
-                Subtotal price <span class="alignright"><?php echo "$".$order['OrderSubtotalPrice'].""; ?><span></p>
-              <p>Discount <span class="alignright">0%<span></p>
-              <p>Shipping price <span class="alignright"><?php echo "$".$order['OrderShippingPrice'].""; ?><span></p>
+                Subtotal price <span class="alignright"><?php echo "$".$order['OrderPriceQuantity'].""; ?><span></p>
+              <p>Discount <span class="alignright">(0% discount rate) -$0.00<span></p>
+              <p>Shipping price <span class="alignright"><?php echo "+$".$order['OrderShippingPrice'].""; ?><span></p>
+              <P>Tax <span class="alignright"><?php echo " (".$order['OrderTaxRate']."% tax rate) +$".$order['OrderAmountTaxed'].""; ?><span></p>
               <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
                 <span style="font-weight: bold;">Total price: </span>
-                <span class="alignright" style="font-weight: bold;"><?php echo "$".$order['OrderTotalPrice'].""; ?><span>
+                <span class="alignright" style="font-weight: bold; color: red;"><?php echo "$".$order['OrderTotalPrice'].""; ?><span>
               </p>
             </div>
 

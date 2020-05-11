@@ -13,15 +13,25 @@
   //Use this for DEBUGGING
   /*function echoPOSTArray(){
     echo "Display all values in POST Array!";
+    echo "<table>";
     foreach ($_POST as $key => $value) {
-      echo '<p>'.$key.'</p>';
-      foreach($value as $k => $v)
-      {
-        echo '<p>'.$k.'</p>';
-        echo '<p>'.$v.'</p>';
-        echo '<hr />';
-      }
+      //echo '<p>'.$key.'</p>';
+      //foreach($value as $k => $v)
+      //{
+        //echo '<p>'.$k.'</p>';
+        //echo '<p>'.$v.'</p>';
+        //echo '<hr />';
+      //}
+        echo "<tr>";
+        echo "<td>";
+        echo $key;
+        echo "</td>";
+        echo "<td>";
+        echo $value;
+        echo "</td>";
+        echo "</tr>";
     }
+    echo "</table>";
   }
 
   //Display values of POST Array
@@ -93,48 +103,68 @@
   $product = $products[0]; //retrieve the first element of array
   $orderproductname = $product['ProductName'];
   $price = $product['Price'];
+  $stateTableResults = getTaxRate($state);
+  $stateTableResult = $stateTableResults[0]; //get first element of array
+  $ordertaxrate  = $stateTableResult['tax']; //tax rate is in percentage
+  $taxRateDecimal = $ordertaxrate * 0.01; //convert percent into decimal
 
-  $ordersubtotalprice = 0;
+  $ordersubtotalprice = 0; //This will be a running total and will not be stored in order table.
 
-  // price * quantity = subtotal
+  //Calculate price and quantity:
+  //subtotal = price * quantity
   $ordersubtotalprice = $price * $qty;
+  $orderpricequantity = $ordersubtotalprice;  //save this value into order table
 
-  // subtotal * discount = amountdiscounted
-  // subtotal - amountdiscounted = newsubtotal
-  $orderdiscount = 0;  //currently we don't provide discounts, so set to zero
+  //Calculate subtotal after discount:
+  // amountdiscounted = subtotal * discount
+  // newsubtotal = subtotal - amountdiscounted
+  $orderdiscount = 0.00;  //currently we don't provide discounts, so set to zero
   $amountdiscounted = $ordersubtotalprice * $orderdiscount;
-  $ordersubtotalprice -= $amountdiscounted;
+  $ordersubtotalprice -= $amountdiscounted; //deduct discount
+  $ordersubtotal_afterdiscount = $ordersubtotalprice; //save this value into order table
 
   // newsubtotal + shippingprice = totalprice  //shippingprice is based on shippingmethod
   $ordershippingprice = 0;
-  switch ($shippingmethod) {
-    case "overnight":
-      $ordershippingprice = 11.00;
-      break;
-    case "2-day":
-      $ordershippingprice = 7.00;
-      break;
-    case "6-day":
-      $ordershippingprice = 4.00;
-      break;
-    default:
-  }
-  $ordertotalprice = 0;
-  $ordertotalprice = $ordersubtotalprice + $ordershippingprice;
+  $shippingTableResults = getShippingPrice($shippingmethod);
+  $shippingTableResult = $shippingTableResults[0]; //get first element of array
+  $ordershippingprice = $shippingTableResult['price'];
+
+  //Calculate price after shipping
+  // newsubtotal = newsubtotal + shipping price
+  $ordersubtotalprice += $ordershippingprice; //add shipping price
+  $ordersubtotal_aftershipping = $ordersubtotalprice; //save this value into order table
+
+  //Calculate price after tax
+  // newsubtotal = newsubtotal + amount taxed
+  $orderamounttaxed = $ordersubtotalprice * $taxRateDecimal; //save this value into order table
+  $ordersubtotalprice += $orderamounttaxed;  //add tax
+  $ordersubtotal_aftertax = $ordersubtotalprice;    //save this value into order table
+
+  //Subtotal after tax is the Total Price.
+  $ordertotalprice = 0; //save this value into order table
+  $ordertotalprice += $ordersubtotalprice; //total price = (price * qty) - discount + shipping + tax.
+
 
   //DEBUG
   //echo "Display all values to be inserted into order table!  <br>";
-  /*echo "<< | ".$orderdate." | ".$orderproductname." | ".$ordersubtotalprice." | ".$orderdiscount." | ".$ordershippingprice." | ".$ordertotalprice." | ".
+  /*echo "<< | ".$orderdate." | ".$orderproductname." | ".$orderpricequantity." | ".
+  $orderdiscount." | ".$ordersubtotal_afterdiscount." | ".
+  $ordershippingprice." |".$ordersubtotal_aftershipping." | ".
+  $ordertaxrate." | ".$orderamounttaxed." | ".$ordersubtotal_aftertax." | ".$ordertotalprice." | ".
   $fname." | ".$lname." | ".$address." | ".$city." | ".$state." | ".$zip." | ".$shippingmethod." | ".
   $productid." | ".$qty." | ".$cardnumber." | ".$expmonth." | ".$expyear." | ".$cvv." | ".
-  $phone." | ".$email." | "." >>  <br>";*/
+  $phone." | ".$email." | "." >>  <br>";
+  */
 
   /*
     create order record
   */
   //$rowCount = setOrder(
   $orderID = setOrder(
-    $orderdate, $orderproductname, $ordersubtotalprice, $orderdiscount, $ordershippingprice, $ordertotalprice,
+    $orderdate, $orderproductname, $orderpricequantity,
+    $orderdiscount, $ordersubtotal_afterdiscount,
+    $ordershippingprice, $ordersubtotal_aftershipping,
+    $ordertaxrate, $orderamounttaxed, $ordersubtotal_aftertax, $ordertotalprice,
     $fname, $lname, $address, $city, $state, $zip, $shippingmethod,
     $productid, $qty, $cardnumber, $expmonth, $expyear, $cvv,
     $phone, $email
