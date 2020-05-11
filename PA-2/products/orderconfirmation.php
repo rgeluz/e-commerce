@@ -146,9 +146,9 @@
               <div class="sectionheading"><p>Order Total</p></div>
               <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
                 Subtotal price <span class="alignright"><?php echo "$".$order['OrderPriceQuantity'].""; ?><span></p>
-              <p>Discount <span class="alignright">(0% discount rate) -$0.00<span></p>
-              <p>Shipping price <span class="alignright"><?php echo "+$".$order['OrderShippingPrice'].""; ?><span></p>
-              <P>Tax <span class="alignright"><?php echo " (".$order['OrderTaxRate']."% tax rate) +$".$order['OrderAmountTaxed'].""; ?><span></p>
+              <p>Discount <span class="alignright">(0% discount rate) - $0.00<span></p>
+              <p>Shipping price <span class="alignright"><?php echo "(".$order['ShippingMethod'].") + $".$order['OrderShippingPrice'].""; ?><span></p>
+              <P>Tax <span class="alignright"><?php echo " (".$order['OrderTaxRate']."% tax rate) + $".$order['OrderAmountTaxed'].""; ?><span></p>
               <p style="border-top: 1px solid lightgrey; padding-top: 5px;">
                 <span style="font-weight: bold;">Total price: </span>
                 <span class="alignright" style="font-weight: bold; color: red;"><?php echo "$".$order['OrderTotalPrice'].""; ?><span>
