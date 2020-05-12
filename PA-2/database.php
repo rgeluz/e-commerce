@@ -39,7 +39,7 @@
     */
 
 
-    $servername = 127.0.0.1;   //"localhost";
+    $servername = "127.0.0.1";   //"localhost";
     $username = "root";
     $password = "testdb";
     $databasename= "ecommerce";
