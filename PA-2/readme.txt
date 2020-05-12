@@ -287,3 +287,15 @@
 
 	//How to count all elements or values in an array in PHP
 	https://www.tutorialrepublic.com/faq/how-to-count-all-elements-in-an-array-in-php.php
+
+	//How do I print all POST results when a form is submitted? [duplicate]
+	https://stackoverflow.com/questions/9332718/how-do-i-print-all-post-results-when-a-form-is-submitted
+	
+	//How do I import an SQL file using the command line in MySQL?
+https://stackoverflow.com/questions/17666249/how-do-i-import-an-sql-file-using-the-command-line-in-mysql
+
+	//How to "Import SQL file to MySQL"
+	https://www.youtube.com/watch?v=T3A-wfqtjZA
+
+	//How to Use the Linux Screen Tool
+	https://www.youtube.com/watch?v=3txYaF_IVZQ
