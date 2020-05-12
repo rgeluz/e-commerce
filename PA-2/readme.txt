@@ -12,11 +12,10 @@
 	ID# 21497606
 
 	//Link to the site:
-	http://circinus-6.ics.uci.edu:8080/project1/index.html
+	http://circinus-6.ics.uci.edu:8081/PA-2/
 
-	
 	//MySQL Database 
-	Servername = localhost
+	Servername = 127.0.0.1
 	Username = root
 	Passowrd = testdb
 	Databasename = ecommerce
