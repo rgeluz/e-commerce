@@ -60,14 +60,21 @@
     }
 
     // -----------Ajax functions--------------
+    /*
+    For state autofill
+    */
     $(document).ready(function(){
       $("#state").keyup(function(){
+        var state = $('#state').val();
+        var price = $('#price').text();
+        var shippingprice = $('#shippingprice').text();
+
         $.ajax({
         type: "POST",
         url: "getState.php",
-        data:'keyword='+$(this).val(),
+        // data:'keyword='+$(this).val(),
+        data:{"keyword": state, "productprice": price, "shippingprice": shippingprice},
         beforeSend: function(){
-          console.log("test");
           $("#state").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
         },
         success: function(data){
@@ -80,17 +87,25 @@
       });
     });
 
+    /*
+      For zipcode autofill
+    */
     $(document).ready(function(){
       $("#zip").keyup(function(){
+        var zip = $('#zip').val();
+        var price = $('#price').text();
+        var shippingprice = $('#shippingprice').text();
+
         $.ajax({
         type: "POST",
         url: "getZip.php",
-        data:'keyword='+$(this).val(),
+        // data:'keyword='+$(this).val(),
+        data: {"keyword":zip, "productprice":price, "shippingprice": shippingprice},
         beforeSend: function(){
           $("#zip").css("background","#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
         },
         success: function(data){
-          document.getElementById("autofill-zip").innerHTML = data;
+          // document.getElementById("autofill-zip").innerHTML = data;
           $("#autofill-zip").show();
           $("#autofill-zip").html(data);
           $("#zip").css("background","#FFF");
@@ -99,40 +114,94 @@
       });
     });
 
-    function selectState(val) {
+    /*
+      For quantity
+    */
+    $(document).ready(function() {
+      $("#qty").keyup(function() {
+        var quantity = $('#qty').val();
+        var price = $('#price').text();
+        var tax = $('#tax').text();
+        var shippingprice = $('#shippingprice').text();
+
+        $.ajax({
+          type: "POST",
+          url: "getQuantity.php",
+          data: {"quantity": quantity, "productprice": price, "tax": tax, "shippingprice": shippingprice},
+          success: function(data) {
+            console.log("test ");
+            $("#total").html(data);
+          }
+        });
+      });
+    });
+
+    /*
+      For shipping method
+    */
+    $(document).ready(function() {
+
+      $("#shippingmethod").val($("#shippingmethod option:first").val() ); //make sure first option is selected
+      displayShippingPrice();
+      $(document).on('change','select', function() {
+        displayShippingPrice();
+      });
+    });
+
+
+    /**/function displayShippingPrice(){
+      var e = document.getElementById("shippingmethod");
+      var shippingmethod = e.options[e.selectedIndex].value;
+
+
+      $.ajax({
+        type: "POST",
+        url: "getShipping.php",
+        data: {"shippingmethod": shippingmethod },
+        success: function(data) {
+          console.log("test displayShippingPrice()");
+          $("#shippingprice").html(data);
+        }
+      });
+    }
+
+    function selectState(val, productprice, shippingprice) {
       $("#state").val(val);
-      getTax(val);
+      getTax(val, productprice, shippingprice);
       $("#autofill-state").hide();
     }
 
-    function selectZip(val) {
+    function selectZip(val, productprice, shippingprice) {
       $("#zip").val(val);
-      fillZipInfo(val);
+      fillZipInfo(val, productprice, shippingprice);
       $("#autofill-zip").hide();
     }
 
-    function getTax(state) {
+    function getTax(state, productprice, shippingprice) {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          document.getElementById("tax").innerHTML = xmlhttp.responseText;
+          var info = xmlhttp.responseText.split(";");
+          document.getElementById("tax").innerHTML = info[0];
+          document.getElementById("total").innerHTML = info[1];
+          document.getElementById("qty").value = 1;
         }
         else {
             document.getElementById("tax").innerHTML = "error";
         }
       };
-      xmlhttp.open("GET", "getTax.php?state=" + state, true);
+      xmlhttp.open("GET", "getTax.php?state=" + state + "&productprice=" + productprice +"&shippingprice=" + shippingprice, true);
       xmlhttp.send(null);
     }
 
-    function fillZipInfo(zip) {
+    function fillZipInfo(zip, productprice, shippingprice) {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           var info = xmlhttp.responseText.split(",");
           document.getElementById("state").value = info[1];
           document.getElementById("city").value = info[2];
-          getTax(info[1]);
+          getTax(info[1], productprice, shippingprice);
         }
       };
       xmlhttp.open("GET", "fillAll.php?zip=" + zip, true);
@@ -229,7 +298,7 @@
                       <h4 id='productname'><b>".$product['ProductName']."</b></h4>
                       <p>Platform: ".$product['Platform']."</p>
                       <p>Category: ".$product['Category']."</p>
-                      <p id='productprice'>Price: ".$product['Price']."</p>
+                      <p id='productprice'>Price: <span style='color: red'>$".$product['Price']."</span></p>
                       <p>Currently In Stock: ".$product['Quantity']."</p>
                       <p>Product ID: ".$product['ProductID']."</p>
                       <p>Description: ".$product['Description']."</p>
@@ -270,59 +339,6 @@
               <div class="row">
                 <div class="col-50">
                   <label for="state">State</label>
-                  <!-- <select class="select-css" name="state">
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="DC">District Of Columbia</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                  </select> -->
                   <input type="text" id="state" name="state" placeholder="State Name" required/>
                   <div id="autofill-state"></div>
                 </div>
@@ -335,15 +351,13 @@
 
               </div>
 
-              <label for="Shippng Method">Shipping Method:</label>
+              <label for="shippingmethod">Shipping Method:</label>
 
-              <select class="select-css" id="Shipping Method" name="shippingmethod">
+              <select class="select-css" id="shippingmethod" name="shippingmethod">
                 <option value="overnight">Overnight</option>
                 <option value="2-day">2-Days Expedited</option>
                 <option value="6-day">6-Days Ground</option>
               </select>
-
-              <p>Tax: <span id="tax"> 0 </span>% </p><br>
 
               <h4>Billing Information</h4>
               <div class="row">
@@ -359,6 +373,22 @@
                   <input type="number" id="qty" name="qty" placeholder="1" min="0" max="5" required>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-50">
+                  <p>Discount: $0.00</p>
+                  <p>Shipping Price: $<span id="shippingprice"> 0.00</span></p>
+                  <p>Tax Rate: <span id="tax"> 0 </span>%</p>
+                </div>
+                <div class="col-50">
+                  <p>Total Price: $
+                    <span id="total">
+                      <?php echo $product['Price'] ?>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <br>
 
               <label for="ccnum">Credit card number</label>
               <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
@@ -395,6 +425,7 @@
         <!-- end of order form card div -->
 
         <br>
+        <p id="price", hidden=true><?php echo $product["Price"]; ?></p>
 
       </div>
       <!-- end of main div -->
