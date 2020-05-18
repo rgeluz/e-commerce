@@ -12,8 +12,8 @@
   	<url-pattern>/add</url-pattern>
   </servlet-mapping>
   
-   <!--  Square Servlet -->
-   <servlet>
+  <!--  Square Servlet -->
+  <servlet>
   	<servlet-name>squareservlettest</servlet-name>
   	<servlet-class>com.gamehub.SquareServletTest</servlet-class>
   </servlet>
@@ -21,5 +21,17 @@
   	<servlet-name>squareservlettest</servlet-name>
   	<url-pattern>/sq</url-pattern>
   </servlet-mapping>
+  
+  <!-- Database Servlet Test  -->
+    <servlet>
+  	<servlet-name>databaseservlettest</servlet-name>
+  	<servlet-class>com.gamehub.DatabaseServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>databaseservlettest</servlet-name>
+  	<url-pattern>/dbtest</url-pattern>
+  </servlet-mapping>
+  
+  
   
 </web-app>
