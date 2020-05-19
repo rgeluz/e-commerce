@@ -156,11 +156,10 @@ public class ProdCatApparel extends HttpServlet {
    
 	   				//ADD PRODUCT CARDS
 	   				ArrayList<Map<String, Object>> productList = Database.getAllProductsByCategory("Apparel");
-	   				for(Map<String, Object> product : productList) {
-	   					int i=0;
-	   						
+	   				int i=0;
+	   				for(Map<String, Object> product : productList) {	
 	   					if( (i%3)==0 ) {
-	   						p("</tr>");
+	   						p("<tr>");
 	   					}
 	   					
 	   					//Retrieve the main image. This is the first image in the array.
@@ -184,7 +183,7 @@ public class ProdCatApparel extends HttpServlet {
 		                  "</td>\n" +
 	   					  "");	
 	   					  
-	   					if( (i%3)==0 ) {
+	   					if( (i%3)==2 ) {
 	   						p("</tr>");
 	   					} 
 	   					 i++;
