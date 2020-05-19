@@ -23,7 +23,7 @@
   </servlet-mapping>
   
   <!-- Database Servlet Test  -->
-    <servlet>
+  <servlet>
   	<servlet-name>databaseservlettest</servlet-name>
   	<servlet-class>com.gamehub.DatabaseServletTest</servlet-class>
   </servlet>
@@ -33,5 +33,60 @@
   </servlet-mapping>
   
   
+  
+  <!--  Product Category Servlet -->
+  <servlet>
+  	<servlet-name>prodcat_accessories</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatAccessories</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_accessories</servlet-name>
+  	<url-pattern>/productcategory_accessories</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>prodcat_apparel</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatApparel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_apparel</servlet-name>
+  	<url-pattern>/productcategory_apparel</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>prodcat_pc</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatPC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_pc</servlet-name>
+  	<url-pattern>/productcategory_pc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>prodcat_ps4</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatPS4</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_ps4</servlet-name>
+  	<url-pattern>/productcategory_ps4</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>prodcat_switch</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatSwitch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_switch</servlet-name>
+  	<url-pattern>/productcategory_switch</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>prodcat_xbox</servlet-name>
+  	<servlet-class>com.gamehub.ProdCatXbox</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>prodcat_xbox</servlet-name>
+  	<url-pattern>/productcategory_xbox</url-pattern>
+  </servlet-mapping>
   
 </web-app>
