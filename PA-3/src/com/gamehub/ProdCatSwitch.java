@@ -169,7 +169,7 @@ public class ProdCatSwitch extends HttpServlet {
 				
 				  p("<td>\n" +
                "<div class=\"productcategory-card\">\n" +
-                 "<a href=\"productdetails?pageFrom=\">\n" +
+                 "<a href=\"productdetails?pageFrom=productcategory_switch&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
                    "<img src=\""+mainImage+"\" alt=\"Avatar\" style=\"width:100%\">\n" +
                  "</a>\n" +
                  "<div class=\"productcategory-card-container\">\n" +
