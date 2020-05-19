@@ -23,7 +23,7 @@
   </servlet-mapping>
   
   <!-- Database Servlet Test  -->
-    <servlet>
+   <servlet>
   	<servlet-name>databaseservlettest</servlet-name>
   	<servlet-class>com.gamehub.DatabaseServletTest</servlet-class>
   </servlet>
