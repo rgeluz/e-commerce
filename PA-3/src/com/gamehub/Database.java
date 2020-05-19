@@ -2,6 +2,9 @@ package com.gamehub;
 
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Database {
 	
@@ -36,7 +39,7 @@ public class Database {
 	
 
 	
-	public static void getProducts(PrintWriter out) {
+	public static void getProductsTest(PrintWriter out) {
 		
 		Connection conn = openConnection();
 		
@@ -72,6 +75,75 @@ public class Database {
 
 	}
 	
+	
+	public static ArrayList<Map<String, Object>> getAllProductsByCategory(String category) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+			
+			String sql;
+		    sql = "SELECT * FROM ecommerce.product WHERE productcategory=?";
+		    
+		    //prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+		    ps.setString(1, category);
+		    
+		    ResultSet rs = ps.executeQuery();
+		    
+		    //used to printing the results of ResultSet
+		    //and store ResultSet into an arraylist of hashmaps
+		    ResultSetMetaData rsmd = rs.getMetaData();
+		    System.out.println("querying " + sql + "(?= " + category + ")");
+		    int columnsNumber = rsmd.getColumnCount();
+		    
+		    while(rs.next()){
+		    	//Retrieve by column name
+		    	//String productName = rs.getString("ProductName");
+		    	//String productID = rs.getString("ProductID"); 
+			
+		    	//System.out.print("product name: " + productName);
+		    	//System.out.println(", product id: " + productID); 
+		    	
+		    	Map<String, Object> row = new HashMap<String, Object>();
+		    	
+		    	//outuput result set values
+		        //for (int i = 1; i <= columnsNumber; i++) {
+		            //if (i > 1) System.out.print(",  ");
+		            //String columnValue = rs.getString(i);
+		            //System.out.print(columnValue + " " + rsmd.getColumnName(i));
+
+		            //row.put(rsmd.getColumnName(i),rs.getObject(i));
+		        //}
+		        //System.out.println("");
+		        
+		        row.put("ProductName",rs.getString("ProductName"));
+		        row.put("Quantity",rs.getInt("Quantity"));
+		        row.put("ProductID",rs.getString("ProductID"));
+		        row.put("ProductCategory",rs.getString("ProductCategory"));
+		        row.put("Category",rs.getString("Category"));
+		        row.put("Platform",rs.getString("Platform"));
+		        row.put("Price",rs.getFloat("Price"));
+		        row.put("Description",rs.getString("Description"));
+		        row.put("ImageLinks",rs.getString("ImageLinks"));
+		        list.add(row);
+		    }  
+		
+		  	rs.close();
+		  	//stmt.close();
+		  	conn.close();
+		  	
+		  	
+		  
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return list;  
+
+	}
 	
 	
 
