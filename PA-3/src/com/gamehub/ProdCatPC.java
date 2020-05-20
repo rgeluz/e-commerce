@@ -154,11 +154,10 @@ public class ProdCatPC extends HttpServlet {
    
 	        //ADD PRODUCT CARDS
 	        ArrayList<Map<String, Object>> productList = Database.getAllProductsByCategory("PC Gaming");
+	        int i=0;
 			for(Map<String, Object> product : productList) {
-				int i=0;
-					
 				if( (i%3)==0 ) {
-					p("</tr>");
+					p("<tr>");
 				}
 				
 				//Retrieve the main image. This is the first image in the array.
@@ -168,7 +167,7 @@ public class ProdCatPC extends HttpServlet {
 				
 				  p("<td>\n" +
                "<div class=\"productcategory-card\">\n" +
-                 "<a href=\"productdetails?pageFrom=\">\n" +
+                 "<a href=\"productdetails?pageFrom=productcategory_pc&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
                    "<img src=\""+mainImage+"\" alt=\"Avatar\" style=\"width:100%\">\n" +
                  "</a>\n" +
                  "<div class=\"productcategory-card-container\">\n" +
@@ -182,7 +181,7 @@ public class ProdCatPC extends HttpServlet {
              "</td>\n" +
 				  "");	
 				  
-				if( (i%3)==0 ) {
+				if( (i%3)==2 ) {
 					p("</tr>");
 				} 
 				 i++;

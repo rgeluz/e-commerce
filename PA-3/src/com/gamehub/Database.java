@@ -38,7 +38,10 @@ public class Database {
 	}
 	
 
-	
+	/**
+	 * 
+	 * @param out
+	 */
 	public static void getProductsTest(PrintWriter out) {
 		
 		Connection conn = openConnection();
@@ -75,7 +78,11 @@ public class Database {
 
 	}
 	
-	
+	/**
+	 * 
+	 * @param category
+	 * @return
+	 */
 	public static ArrayList<Map<String, Object>> getAllProductsByCategory(String category) {
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Connection conn = openConnection();
@@ -145,6 +152,51 @@ public class Database {
 
 	}
 	
+	/**
+	 * 
+	 * @param productID
+	 * @return
+	 */
+	public static Map<String, Object> getProduct(String productID) {
+		Map<String, Object> row = new HashMap<String, Object>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+			
+			String sql;
+		    sql = "SELECT * FROM ecommerce.product WHERE productid=?";
+		    
+		    //prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+		    ps.setString(1, productID);
+		    
+		    ResultSet rs = ps.executeQuery();
+		    
+		    while(rs.next()){
+		        row.put("ProductName",rs.getString("ProductName"));
+		        row.put("Quantity",rs.getInt("Quantity"));
+		        row.put("ProductID",rs.getString("ProductID"));
+		        row.put("ProductCategory",rs.getString("ProductCategory"));
+		        row.put("Category",rs.getString("Category"));
+		        row.put("Platform",rs.getString("Platform"));
+		        row.put("Price",rs.getFloat("Price"));
+		        row.put("Description",rs.getString("Description"));
+		        row.put("ImageLinks",rs.getString("ImageLinks"));
+		    }  
+		
+		  	rs.close();
+		  	//stmt.close();
+		  	conn.close();
+		  	
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return row;
+	}
 	
 
 }

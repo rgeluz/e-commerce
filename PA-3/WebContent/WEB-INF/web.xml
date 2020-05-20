@@ -98,4 +98,14 @@
   	<url-pattern>/viewHistory</url-pattern>
   </servlet-mapping>
   
+  <!-- Product Detail -->
+  <servlet>
+  	<servlet-name>productdetails</servlet-name>
+  	<servlet-class>com.gamehub.ProductDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>productdetails</servlet-name>
+  	<url-pattern>/productdetails</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
