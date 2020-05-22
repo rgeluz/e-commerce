@@ -1,0 +1,52 @@
+
+.shoppingcartcard{
+	padding: 20px;
+}
+.ordersummarycard{
+	padding: 20px;
+}
+.productrow {
+	float: left;
+	width: 100%;
+	padding: 10px;
+	border-color: red;
+	border-style: solid;
+	border-width: 1px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th {
+	color: #ff8080;
+}
+td, th {
+	text-align: left;
+	padding: 8px;
+	
+}
+tr {
+	border: 1px solid #ff8080;
+}
+/*tr:nth-child(even) {
+	background-color: #dddddd;
+}*/
+img {
+	max-width: 120px;
+	height: auto;
+}
+
+.alignright {
+	float: right;
+}
+#checkoutbutton {
+	padding: 20px; 
+	border: none; 
+	background-color:red; 
+	font-size: 15px; 
+	color: white; 
+	cursor:pointer;
+	font-weight: bold;
+    width: 100%;
+}
