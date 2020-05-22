@@ -41,6 +41,7 @@ public class ShoppingCart extends HttpServlet {
 		  "<script src=\"https://use.fontawesome.com/releases/v5.11.1/js/all.js\"></script>\n" +
 		  "<link href=\"./css/style.css\" rel=\"stylesheet\">\n" +
 		  "<link href=\"./css/shoppingcart.css\" rel=\"stylesheet\">\n" +
+		  "<link href=\"./css/productcategory.css\" rel=\"productCat stylesheet\">\n" +
 		  "<link href=\"https://www.w3schools.com/w3css/4/w3.css\" rel=\"stylesheet\">\n" +
 
 		  
@@ -174,8 +175,9 @@ public class ShoppingCart extends HttpServlet {
 		 	p("<!-- Main -->\n" +
 		 	  "<section>\n" +
 		      "<div class=\"main\">\n" +
-		      	
- 					"<p><a href=\"products.html\"><i class=\"fas fa-arrow-left\"></i> Continue Shopping</a></p>\n" +
+		 			"");
+		 		
+ 					p("<p><a href=\"products.html\"><i class=\"fas fa-arrow-left\"></i> Continue Shopping</a></p>\n" +
  					"<br>\n" +
 		 			"");
  					
@@ -191,6 +193,8 @@ public class ShoppingCart extends HttpServlet {
 		 				"<th>PRODUCT</th>\n" +
 		 				"<th>QTY</th>\n" +
 		 				"<th>PRICE</th>\n" +
+		 				"<th></th>\n" +
+		 				"<th></th>\n" +
 		 			"</tr>\n" +
 		 			"");
 		 			
@@ -199,6 +203,8 @@ public class ShoppingCart extends HttpServlet {
 		      			Integer qty = entry.getValue();
 		      			String qtyString = Integer.toString(qty);
 		      			Map<String, Object> product = Database.getProduct(prodID);
+		      			String productname = (String) product.get("ProductName");
+		      			String productprice = Float.toString( (float) product.get("Price") );
 		      			
 		      			//Retrieve the main image. This is the first image in the array.
 		    			String imageLinks = (String) product.get("ImageLinks"); 
@@ -210,12 +216,66 @@ public class ShoppingCart extends HttpServlet {
 		      			"</div>\n");*/
 		      			p("<tr>\n" +
 		      				"<td><center><img src=\""+mainImage+"\" alt=\"product image\"></center></td>\n" +
-		      				"<td>"+product.get("ProductName")+"</td>\n" +
-		      				"<td>"+qtyString+"</td>\n" +
-		      				"<td>"+product.get("Price")+"</td>\n" +
+		      				"<td>"+productname+"</td>\n" +
+		      				"<td>"+qtyString+"</td>\n" +			
+		      				"<td>"+productprice+"</td>\n" +
+		      				"<td><button id=\"button_edit\" class=\"smallbtn\" onclick=\"editItem()\"><i class=\"fas fa-edit\"></i></button></td>\n" +
+		      				"<td><button id=\"button_trash\" class=\"smallbtn\" onclick=\"deleteItem()\"><i class=\"fas fa-trash-alt\"></i></button></td>\n" +
+		      			
+		      				
+		      				
+		      				//Modal Windows
+		      				"<div id=\"editmodal\" class=\"modal\">\n" +
+		      					"<div class=\"modal-content\">\n" +
+		      					"<span id=\"editmodal-close\" class=\"modal-close\">X</span>\n" +
+		      					"<p>Edit Quantity</p>\n" +
+		      					"</div>\n" +
+		      				"</div>\n" +
+		      				"<div id=\"trashmodal\" class=\"modal\">\n" +
+		      					"<div class=\"modal-content\">\n" +
+		      					"<span id=\"trashmodal-close\" class=\"modal-close\">X</span>\n" +
+		      					"<p>Are you sure you want to delete item?</p>\n" +
+		      					"</div>\n" +
+		      				"</div>\n" +
+		      					
+							//Button Script
+								 "<script>\n" +
+		      						"var editmodal = document.getElementById(\"editmodal\");\n" +
+		      						"var trashmodal= document.getElementById(\"trashmodal\");\n" +
+									"var closeeditmodalbtn = document.getElementById(\"editmodal-close\");\n"+
+		      						"var closetrashmodalbtn = document.getElementById(\"trashmodal-close\")\n" + 
+		      						
+		      						"//open edit item modal\n" +
+		      						"function editItem() {\n" +
+										"editmodal.style.display = \"block\";\n" +
+									"}\n" +
+		      						"//open trash item modal\n" +
+									"function deleteItem() {\n" +
+										"trashmodal.style.display = \"block\";\n" +
+									"}\n" +
+									
+									"//close modal when x is clicked\n" +
+									"closeeditmodalbtn.onclick = function(){\n" +
+										"editmodal.style.display = \"none\";\n" +
+									"}\n" +
+										
+									"closetrashmodalbtn.onclick = function(){\n" +
+										"trashmodal.style.display = \"none\";\n" +
+									"}\n" +
+									"//close modal when anywhere outside is clicked\n" +
+									"window.onclick = function(event) {\n" +
+										"if((event.target == editmodal) || (event.target == trashmodal) ) {\n" +
+											"editmodal.style.display = \"none\";\n" +
+											"trashmodal.style.display = \"none\";\n" +
+										"}\n" +
+									"}\n" +
+							  "</script>\n" +
+		      				
 		      			"</tr>\n" +
 		      			"");
 		      		}
+		      		
+
 		 			p("</table>");
 		 			
 		      		p("</div>\n" +
@@ -236,10 +296,46 @@ public class ShoppingCart extends HttpServlet {
 					"</div>\n" +
 					"<!-- end of order form card div -->\n" +
 		      		"");
+		      		
+		      		//Viewed Items
+		      		if (viewed != null) {
+		      			p("<!-- Shopping Cart Detail Card -->\n" +
+		    		 	  "<div class=\"w3-card-4 ordersummarycard\" style=\"width:48%; float:left;\">\n" +
+		    		 	  	"<center><strong><h2>Most Recent Viewed Items</h2></strong></center>\n" +
+		    		 			"");
+			      			p("<div class=\"product-table\"> \n" + 
+									"<table>\n" + 
+						              "<tbody>\n" +
+						              "");
+			      			for (String id : viewed) {
+								Map<String, Object> product = Database.getProduct(id);
+								String imgLinks = (String) product.get("ImageLinks");
+								String[] imgLinksArray = imgLinks.split(",");
+								String mainImg = imgLinksArray[0];
+								p(
+										"<td>\n" +
+										"<div class=\"productcategory-card\"> \n" +
+											"<a href=\"productdetails?pageFrom=productcategory_"+ ((String)product.get("Platform")).toLowerCase() +"&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
+												"<img src=\""+mainImg+"\" alt=\"cover\" style=\"width:100%\">" +
+											"</a> \n" +
+												"<div class=\"productcategory-card-container\">\n" +
+													"<p>Product Name:" + product.get("ProductName") + "</p> \n" +
+													"<p>Price: " + product.get("Price") + "</p> \n" +
+												"</div> \n" +
+										"</div> \n"+
+										"</td>");
+							}
+							p(
+										"</tbody>\n" + 
+									"</table> \n" 
+												);
+		      		}
+
 		      p("</div>\n" +
 			 "<!-- end of main div -->\n" +
 			"</section>\n" +
 			"");
+		   
 		
 		
 		  //FOOTER TAG

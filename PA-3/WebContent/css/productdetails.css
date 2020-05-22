@@ -19,6 +19,9 @@
 	font-weight: bold;
     width: 100%;
 }
+#add-to-cartbutton:hover {
+	background-color: darkred;
+}
 
  .row {
    display: -ms-flexbox; /* IE10 */
