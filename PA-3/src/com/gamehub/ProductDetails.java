@@ -15,11 +15,11 @@ public class ProductDetails extends HttpServlet {
 	HttpServletResponse response;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		HttpSession s = req.getSession(true);
-		LinkedList<String> viewed = (LinkedList<String>) s.getAttribute("viewed");
+		HttpSession session = req.getSession(true);
+		LinkedList<String> viewed = (LinkedList<String>) session.getAttribute("viewed");
 		if (viewed == null) {
-			s.setAttribute("viewed", new LinkedList<String>());
-			viewed = (LinkedList<String>) s.getAttribute("viewed");
+			session.setAttribute("viewed", new LinkedList<String>());
+			viewed = (LinkedList<String>) session.getAttribute("viewed");
 		}
 		String id = req.getParameter("productID");
 //		String n = "PS4";
@@ -32,6 +32,7 @@ public class ProductDetails extends HttpServlet {
 		
 		renderPage(req,res);
 	}
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		renderPage(req,res);
 	}
@@ -151,7 +152,11 @@ public class ProductDetails extends HttpServlet {
 		        "<div class=\"topnav-right\">\n" +
 		          "<!--<a href=\"#search\">Search</a>-->\n" +
 		          "<button class=\"searchBtn\" onClick=\"openSearch()\" style=\"float:left;\"><i class=\"fas fa-search\"></i> Search</button>\n" +
+<<<<<<< HEAD
+		          "<a href=\"./shoppingcart\"><i class=\"fas fa-shopping-cart\"></i> Shopping Cart</a>\n" +
+=======
 		          "<a href=\"shoppingcart\"><i class=\"fas fa-shopping-cart\"></i> Shopping Cart</a>\n" +
+>>>>>>> de08a39f3d2204b70ffd32174ca03e05bbf97797
 		        "</div>\n" +
 
 		      "</div>\n" +
