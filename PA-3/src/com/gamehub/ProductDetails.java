@@ -209,7 +209,19 @@ public class ProductDetails extends HttpServlet {
 		        "</div>\n" +
 		        "<!-- end of product detail card div -->\n" +
 
-		        
+				"<!-- Order Form Card -->\n" +
+		        "<div class=\"w3-card-4 orderform-card\" style=\"width:48%; float:right;\">\n" +
+		          "<div class=\"container\" align=\"left\">\n" +
+		          	"<form action=\"shoppingcart.html\" align=\"left\">\n" +
+		          		"<label align=\"left\">Quantity (5 Max)\n" +
+		          		"<input type=\"number\" id=\"qty\" name=\"qty\" placeholder=\"1\" min=\"0\" max=\"5\" required>\n" +
+		          		"</label>\n" +		
+		          		"<button id=\"contact-submitbutton\" type=\"submit\" style=\"padding: 20px; border: none; background:red; font-size: 15px; color: white; cursor:pointer;\"><i class=\"fas fa-cart-plus\"></i> ADD TO CART</button>\n" +
+		          	"</form>\n" +
+	              "</div>\n" +
+		         "</div>\n" +
+		        "<!-- end of order form card div -->\n" +
+		          
 		        "<br>\n" +
 
 		      "</div>\n" +
