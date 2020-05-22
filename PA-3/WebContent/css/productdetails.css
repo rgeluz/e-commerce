@@ -9,7 +9,16 @@
   padding: 20px;
 }
 
-
+#add-to-cartbutton {
+	padding: 20px; 
+	border: none; 
+	background-color:red; 
+	font-size: 15px; 
+	color: white; 
+	cursor:pointer;
+	font-weight: bold;
+    width: 100%;
+}
 
  .row {
    display: -ms-flexbox; /* IE10 */
