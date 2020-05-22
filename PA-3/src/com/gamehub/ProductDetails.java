@@ -151,7 +151,7 @@ public class ProductDetails extends HttpServlet {
 		        "<div class=\"topnav-right\">\n" +
 		          "<!--<a href=\"#search\">Search</a>-->\n" +
 		          "<button class=\"searchBtn\" onClick=\"openSearch()\" style=\"float:left;\"><i class=\"fas fa-search\"></i> Search</button>\n" +
-		          "<a href=\"./shoppingcart.html\"><i class=\"fas fa-shopping-cart\"></i> Shopping Cart</a>\n" +
+		          "<a href=\"shoppingcart\"><i class=\"fas fa-shopping-cart\"></i> Shopping Cart</a>\n" +
 		        "</div>\n" +
 
 		      "</div>\n" +
@@ -217,7 +217,7 @@ public class ProductDetails extends HttpServlet {
 		          		"<label align=\"left\">Quantity (5 Max)\n" +
 		          		"<input type=\"number\" id=\"qty\" name=\"qty\" placeholder=\"1\" min=\"0\" max=\"5\" required>\n" +
 		          		"</label>\n" +		
-		          		"<button id=\"contact-submitbutton\" type=\"submit\" style=\"padding: 20px; border: none; background:red; font-size: 15px; color: white; cursor:pointer;\"><i class=\"fas fa-cart-plus\"></i> ADD TO CART</button>\n" +
+		          		"<button id=\"add-to-cartbutton\" type=\"submit\" ><i class=\"fas fa-cart-plus\"></i> ADD TO CART</button>\n" +
 		          	"</form>\n" +
 	              "</div>\n" +
 		         "</div>\n" +

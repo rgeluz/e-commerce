@@ -39,9 +39,10 @@ public class ShoppingCart extends HttpServlet {
 		  "<!-- external css file -->\n" +
 		  "<script src=\"https://use.fontawesome.com/releases/v5.11.1/js/all.js\"></script>\n" +
 		  "<link href=\"./css/style.css\" rel=\"stylesheet\">\n" +
-		  "<link href=\"./css/productdetails.css\" rel=\"products stylesheet\">\n" +
+		  "<link href=\"./css/shoppingcart.css\" rel=\"stylesheet\">\n" +
 		  "<link href=\"https://www.w3schools.com/w3css/4/w3.css\" rel=\"stylesheet\">\n" +
 
+		  
 		  "<!--internal javascript -->\n" +
 		  "<script type=\"text/javascript\">\n" +
 		    "$(document).ready(function() {\n" +
@@ -171,17 +172,67 @@ public class ShoppingCart extends HttpServlet {
 		    "<section>\n" +
 		      "<div class=\"main\">\n" +
 		      	
- 					"<p><a href=\"products.html\">Back to Product Page</a></p>\n" +
+ 					"<p><a href=\"products.html\"><i class=\"fas fa-arrow-left\"></i> Continue Shopping</a></p>\n" +
+ 					"<br>\n" +
 		 			"");
  					
+		 			p("<!-- Shopping Cart Detail Card -->\n" +
+		 			"<div class=\"w3-card-4 shoppingcartcard\" style=\"width:48%; float:left;\">\n" +
+		 				"<center><strong><h2>YOUR SHOPPING CART</h2></strong></center>\n" +
+		 			"");
+		 			
+		 			p("<table>");
+		 			
+		 			p("<tr>\n" +
+		 				"<th></th>\n" +
+		 				"<th>PRODUCT</th>\n" +
+		 				"<th>QTY</th>\n" +
+		 				"<th>PRICE</th>\n" +
+		 			"</tr>\n" +
+		 			"");
+		 			
 		      		for(Map.Entry<String, Integer> entry: cart.entrySet()) {
 		      			String prodID = entry.getKey();
 		      			Integer qty = entry.getValue();
+		      			String qtyString = Integer.toString(qty);
+		      			Map<String, Object> product = Database.getProduct(prodID);
 		      			
-		      			p("<p>product id: "+prodID+", quantity: "+qty+"</p>");
+		      			//Retrieve the main image. This is the first image in the array.
+		    			String imageLinks = (String) product.get("ImageLinks"); 
+		    			String[] imageLinksArray = imageLinks.split(",");
+		    			String mainImage = imageLinksArray[0];
+		      			
+		      			/*p("<div class=\"productrow\">\n" +
+		      			"<p>product id: "+prodID+", quantity: "+qty+"</p>\n" +
+		      			"</div>\n");*/
+		      			p("<tr>\n" +
+		      				"<td><center><img src=\""+mainImage+"\" alt=\"product image\"></center></td>\n" +
+		      				"<td>"+product.get("ProductName")+"</td>\n" +
+		      				"<td>"+qtyString+"</td>\n" +
+		      				"<td>"+product.get("Price")+"</td>\n" +
+		      			"</tr>\n" +
+		      			"");
 		      		}
-		      		
-		      		
+		 			p("</table>");
+		 			
+		      		p("</div>\n" +
+			        "<!-- end of product detail card div -->\n" +
+		      		"");
+			        
+		      		p("<!-- Order Summery Card -->\n" +
+					"<div class=\"w3-card-4 ordersummarycard\" style=\"width:48%; float:right;\">\n" +
+						"<center><strong><h2>ORDER SUMMARY</h2></strong></center>\n" +
+						"<p>SUBTOTAL<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
+						"<p>DISCOUNT<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
+						"<p>ESTIMATED TOTAL<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
+						"<div class=\"container\" align=\"left\">\n" +
+			          	"<form action=\"shoppingcart\" align=\"left\">\n" +	
+			          		"<button id=\"checkoutbutton\" type=\"submit\" ><i class=\"fas fa-arrow-right\"></i> PROCEED TO CHECKOUT</button>\n" +
+			          	"</form>\n" +
+		              "</div>\n" +
+					"</div>\n" +
+					"<!-- end of order form card div -->\n" +
+		      		"");
 		      p("</div>\n" +
 			 "<!-- end of main div -->\n" +
 			"</section>\n" +
