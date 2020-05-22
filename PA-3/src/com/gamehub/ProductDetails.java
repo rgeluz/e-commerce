@@ -212,7 +212,8 @@ public class ProductDetails extends HttpServlet {
 				"<!-- Order Form Card -->\n" +
 		        "<div class=\"w3-card-4 orderform-card\" style=\"width:48%; float:right;\">\n" +
 		          "<div class=\"container\" align=\"left\">\n" +
-		          	"<form action=\"shoppingcart.html\" align=\"left\">\n" +
+		          	"<form action=\"shoppingcart\" align=\"left\">\n" +
+		          		"<input type=\"hidden\" id=\"productID\" name=\"productID\" value=\""+product.get("ProductID")+"\">\n" +
 		          		"<label align=\"left\">Quantity (5 Max)\n" +
 		          		"<input type=\"number\" id=\"qty\" name=\"qty\" placeholder=\"1\" min=\"0\" max=\"5\" required>\n" +
 		          		"</label>\n" +		

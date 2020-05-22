@@ -108,4 +108,14 @@
   	<url-pattern>/productdetails</url-pattern>
   </servlet-mapping>
   
+	  <!-- Shopping Cart -->
+  <servlet>
+  	<servlet-name>shoppingcart</servlet-name>
+  	<servlet-class>com.gamehub.ShoppingCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>shoppingcart</servlet-name>
+  	<url-pattern>/shoppingcart</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
