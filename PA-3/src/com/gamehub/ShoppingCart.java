@@ -40,12 +40,7 @@ public class ShoppingCart extends HttpServlet {
 		  "<!-- external css file -->\n" +
 		  "<script src=\"https://use.fontawesome.com/releases/v5.11.1/js/all.js\"></script>\n" +
 		  "<link href=\"./css/style.css\" rel=\"stylesheet\">\n" +
-<<<<<<< HEAD
-		  "<link href=\"./css/productdetails.css\" rel=\"products stylesheet\">\n" +
-		  "<link href=\"./css/productcategory.css\" rel=\"productCat stylesheet\">\n" +
-=======
 		  "<link href=\"./css/shoppingcart.css\" rel=\"stylesheet\">\n" +
->>>>>>> de08a39f3d2204b70ffd32174ca03e05bbf97797
 		  "<link href=\"https://www.w3schools.com/w3css/4/w3.css\" rel=\"stylesheet\">\n" +
 
 		  
@@ -179,13 +174,10 @@ public class ShoppingCart extends HttpServlet {
 		 	p("<!-- Main -->\n" +
 		 	  "<section>\n" +
 		      "<div class=\"main\">\n" +
-<<<<<<< HEAD
- 					"<p><a href=\"products.html\">Back to Product Page</a></p>\n" +
 		 			"");
 		 		
-=======
-		      	
- 					"<p><a href=\"products.html\"><i class=\"fas fa-arrow-left\"></i> Continue Shopping</a></p>\n" +
+    	
+ 					p("<p><a href=\"products.html\"><i class=\"fas fa-arrow-left\"></i> Continue Shopping</a></p>\n" +
  					"<br>\n" +
 		 			"");
  					
@@ -206,7 +198,6 @@ public class ShoppingCart extends HttpServlet {
 		 			"</tr>\n" +
 		 			"");
 		 			
->>>>>>> de08a39f3d2204b70ffd32174ca03e05bbf97797
 		      		for(Map.Entry<String, Integer> entry: cart.entrySet()) {
 		      			String prodID = entry.getKey();
 		      			Integer qty = entry.getValue();
@@ -283,46 +274,11 @@ public class ShoppingCart extends HttpServlet {
 		      			"</tr>\n" +
 		      			"");
 		      		}
-<<<<<<< HEAD
-		      		
-		      		PrintWriter out = res.getWriter();
-		      		if (viewed != null) {
-						out.println("<div class=\"most-recent-viewed\"><h3>Most recent viewed items</h3></div>");
-					
-						out.print(
-								"<div class=\"product-table\"> \n" + 
-									"<table>\n" + 
-						              "<tbody>\n" +
-						              ""
-								);
-						
-						
-						for (String id : viewed) {
-							Map<String, Object> product = Database.getProduct(id);
-							String imgLinks = (String) product.get("ImageLinks");
-							String[] imgLinksArray = imgLinks.split(",");
-							String mainImg = imgLinksArray[0];
-							out.println(
-									"<td>\n" +
-									"<div class=\"productcategory-card\"> \n" +
-										"<a href=\"productdetails?pageFrom=productcategory_"+ ((String)product.get("Platform")).toLowerCase() +"&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
-											"<img src=\""+mainImg+"\" alt=\"cover\" style=\"width:100%\">" +
-										"</a> \n" +
-											"<div class=\"productcategory-card-container\">\n" +
-												"<p>Product Name:" + product.get("ProductName") + "</p> \n" +
-												"<p>Price: " + product.get("Price") + "</p> \n" +
-											"</div> \n" +
-									"</div> \n"+
-									"</td>");
-						}
-						out.println(
-									"</tbody>\n" + 
-								  "</table> \n" + 
-							   "</div>");
-					}
 		      		
 		      		
-=======
+		      		
+		      		
+
 		 			p("</table>");
 		 			
 		      		p("</div>\n" +
@@ -343,7 +299,7 @@ public class ShoppingCart extends HttpServlet {
 					"</div>\n" +
 					"<!-- end of order form card div -->\n" +
 		      		"");
->>>>>>> de08a39f3d2204b70ffd32174ca03e05bbf97797
+
 		      p("</div>\n" +
 			 "<!-- end of main div -->\n" +
 			"</section>\n" +
