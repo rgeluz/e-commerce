@@ -58,14 +58,14 @@ public class ViewHistory extends HttpServlet{
 					String[] imgLinksArray = imgLinks.split(",");
 					String mainImg = imgLinksArray[0];
 					out.println(
-							"<td>\n" +
+							"<td> \n" +
 							"<div class=\"productcategory-card\"> \n" +
 								"<a href=\"productdetails?pageFrom=productcategory_"+ ((String)product.get("Platform")).toLowerCase() +"&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
 									"<img src=\""+mainImg+"\" alt=\"cover\" style=\"width:100%\">" +
 								"</a>" +
 									"<div class=\"productcategory-card-container\">\n" +
-										"<p>" + product.get("ProductName") + "</p> \n" +
-										"<p>" + product.get("Price") + "</p> \n" +
+										"<p>Product Name:" + product.get("ProductName") + "</p> \n" +
+										"<p>Price: " + product.get("Price") + "</p> \n" +
 									"</div>\n" +
 							"</div> \n" +
 							"</td>");
