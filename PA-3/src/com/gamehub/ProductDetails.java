@@ -2,17 +2,34 @@ package com.gamehub;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ProductDetails extends HttpServlet {
 	PrintWriter output;
 	HttpServletResponse response;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		HttpSession s = req.getSession(true);
+		LinkedList<String> viewed = (LinkedList<String>) s.getAttribute("viewed");
+		if (viewed == null) {
+			s.setAttribute("viewed", new LinkedList<String>());
+			viewed = (LinkedList<String>) s.getAttribute("viewed");
+		}
+		String id = req.getParameter("productID");
+//		String n = "PS4";
+		if (viewed.size() >= 5 && !viewed.contains(id)) {
+			viewed.poll();
+			viewed.add(id);
+		}
+		else if (!viewed.contains(id))
+			viewed.add(id);
+		
 		renderPage(req,res);
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -171,7 +188,7 @@ public class ProductDetails extends HttpServlet {
 		            "");  
 		    
 		            p("<div class=\"row\">");
-		              for(int i=0; i<imageLinksArray.length; i++) {
+		              for(int i=1; i<imageLinksArray.length; i++) {
 		            	  p("<div class=\"column\">\n" +
 		                    "<img src=\""+imageLinksArray[i]+"\" alt=\"screenshot0"+i+"\" style=\"width:100%\" onclick=\"expandIMG(this);\">\n" +
 		                    "</div>\n");

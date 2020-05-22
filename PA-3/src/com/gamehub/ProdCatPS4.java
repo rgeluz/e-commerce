@@ -17,21 +17,6 @@ public class ProdCatPS4 extends HttpServlet {
 	HttpServletResponse response;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		HttpSession s = req.getSession(true);
-		LinkedList<String> viewed = (LinkedList<String>) s.getAttribute("viewed");
-		if (viewed == null) {
-			s.setAttribute("viewed", new LinkedList<String>());
-			viewed = (LinkedList<String>) s.getAttribute("viewed");
-		}
-//		String n = req.getParameter();
-		String n = "PS4";
-		if (viewed.size() >= 5 && !viewed.contains(n)) {
-			viewed.poll();
-			viewed.add(n);
-		}
-		else if (!viewed.contains(n))
-			viewed.add(n);
-		
 		renderPage(req,res);
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
