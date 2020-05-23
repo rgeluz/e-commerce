@@ -1,121 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-
-  
-  <!-- Add Servlet -->
   <servlet>
-  	<servlet-name>addservlettest</servlet-name>
-  	<servlet-class>com.gamehub.AddServletTest</servlet-class>
+    <servlet-name>addservlettest</servlet-name>
+    <servlet-class>com.gamehub.AddServletTest</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>addservlettest</servlet-name>
-  	<url-pattern>/add</url-pattern>
+    <servlet-name>addservlettest</servlet-name>
+    <url-pattern>/add</url-pattern>
   </servlet-mapping>
-  
-  <!--  Square Servlet -->
   <servlet>
-  	<servlet-name>squareservlettest</servlet-name>
-  	<servlet-class>com.gamehub.SquareServletTest</servlet-class>
+    <servlet-name>squareservlettest</servlet-name>
+    <servlet-class>com.gamehub.SquareServletTest</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>squareservlettest</servlet-name>
-  	<url-pattern>/sq</url-pattern>
+    <servlet-name>squareservlettest</servlet-name>
+    <url-pattern>/sq</url-pattern>
   </servlet-mapping>
-  
-  <!-- Database Servlet Test  -->
   <servlet>
-  	<servlet-name>databaseservlettest</servlet-name>
-  	<servlet-class>com.gamehub.DatabaseServletTest</servlet-class>
+    <servlet-name>databaseservlettest</servlet-name>
+    <servlet-class>com.gamehub.DatabaseServletTest</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>databaseservlettest</servlet-name>
-  	<url-pattern>/dbtest</url-pattern>
+    <servlet-name>databaseservlettest</servlet-name>
+    <url-pattern>/dbtest</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  <!--  Product Category Servlet -->
   <servlet>
-  	<servlet-name>prodcat_accessories</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatAccessories</servlet-class>
+    <servlet-name>prodcat_accessories</servlet-name>
+    <servlet-class>com.gamehub.ProdCatAccessories</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_accessories</servlet-name>
-  	<url-pattern>/productcategory_accessories</url-pattern>
+    <servlet-name>prodcat_accessories</servlet-name>
+    <url-pattern>/productcategory_accessories</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>prodcat_apparel</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatApparel</servlet-class>
+    <servlet-name>prodcat_apparel</servlet-name>
+    <servlet-class>com.gamehub.ProdCatApparel</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_apparel</servlet-name>
-  	<url-pattern>/productcategory_apparel</url-pattern>
+    <servlet-name>prodcat_apparel</servlet-name>
+    <url-pattern>/productcategory_apparel</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>prodcat_pc</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatPC</servlet-class>
+    <servlet-name>prodcat_pc</servlet-name>
+    <servlet-class>com.gamehub.ProdCatPC</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_pc</servlet-name>
-  	<url-pattern>/productcategory_pc</url-pattern>
+    <servlet-name>prodcat_pc</servlet-name>
+    <url-pattern>/productcategory_pc</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>prodcat_ps4</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatPS4</servlet-class>
+    <servlet-name>prodcat_ps4</servlet-name>
+    <servlet-class>com.gamehub.ProdCatPS4</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_ps4</servlet-name>
-  	<url-pattern>/productcategory_ps4</url-pattern>
+    <servlet-name>prodcat_ps4</servlet-name>
+    <url-pattern>/productcategory_ps4</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>prodcat_switch</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatSwitch</servlet-class>
+    <servlet-name>prodcat_switch</servlet-name>
+    <servlet-class>com.gamehub.ProdCatSwitch</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_switch</servlet-name>
-  	<url-pattern>/productcategory_switch</url-pattern>
+    <servlet-name>prodcat_switch</servlet-name>
+    <url-pattern>/productcategory_switch</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>prodcat_xbox</servlet-name>
-  	<servlet-class>com.gamehub.ProdCatXbox</servlet-class>
+    <servlet-name>prodcat_xbox</servlet-name>
+    <servlet-class>com.gamehub.ProdCatXbox</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>prodcat_xbox</servlet-name>
-  	<url-pattern>/productcategory_xbox</url-pattern>
+    <servlet-name>prodcat_xbox</servlet-name>
+    <url-pattern>/productcategory_xbox</url-pattern>
   </servlet-mapping>
-
   <servlet>
-  	<servlet-name>view_history</servlet-name>
-  	<servlet-class>com.gamehub.ViewHistory</servlet-class>
+    <servlet-name>view_history</servlet-name>
+    <servlet-class>com.gamehub.ViewHistory</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>view_history</servlet-name>
-  	<url-pattern>/viewHistory</url-pattern>
+    <servlet-name>view_history</servlet-name>
+    <url-pattern>/viewHistory</url-pattern>
   </servlet-mapping>
-  
-  <!-- Product Detail -->
   <servlet>
-  	<servlet-name>productdetails</servlet-name>
-  	<servlet-class>com.gamehub.ProductDetails</servlet-class>
+    <servlet-name>productdetails</servlet-name>
+    <servlet-class>com.gamehub.ProductDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>productdetails</servlet-name>
-  	<url-pattern>/productdetails</url-pattern>
+    <servlet-name>productdetails</servlet-name>
+    <url-pattern>/productdetails</url-pattern>
   </servlet-mapping>
-  
-	  <!-- Shopping Cart -->
   <servlet>
-  	<servlet-name>shoppingcart</servlet-name>
-  	<servlet-class>com.gamehub.ShoppingCart</servlet-class>
+    <servlet-name>shoppingcart</servlet-name>
+    <servlet-class>com.gamehub.ShoppingCart</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>shoppingcart</servlet-name>
-  	<url-pattern>/shoppingcart</url-pattern>
+    <servlet-name>shoppingcart</servlet-name>
+    <url-pattern>/shoppingcart</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>checkout</servlet-name>
+    <servlet-class>com.gamehub.Checkout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkout</servlet-name>
+    <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
 </web-app>

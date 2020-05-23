@@ -289,7 +289,7 @@ public class ShoppingCart extends HttpServlet {
 						"<p>DISCOUNT<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
 						"<p>ESTIMATED TOTAL<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
 						"<div class=\"container\" align=\"left\">\n" +
-			          	"<form action=\"shoppingcart\" align=\"left\">\n" +	
+			          	"<form action = \"checkout\" align=\"left\">\n" +	
 			          		"<button id=\"checkoutbutton\" type=\"submit\" ><i class=\"fas fa-arrow-right\"></i> PROCEED TO CHECKOUT</button>\n" +
 			          	"</form>\n" +
 		              "</div>\n" +
