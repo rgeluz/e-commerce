@@ -183,7 +183,7 @@ public class ShoppingCart extends HttpServlet {
  					
 		 			p("<!-- Shopping Cart Detail Card -->\n" +
 		 			"<div class=\"w3-card-4 shoppingcartcard\" style=\"width:48%; float:left;\">\n" +
-		 				"<center><strong><h2>YOUR SHOPPING CART</h2></strong></center>\n" +
+		 				"<center><strong><h2>Your Shopping Cart</h2></strong></center>\n" +
 		 			"");
 		 			
 		 			p("<table>");
@@ -198,13 +198,19 @@ public class ShoppingCart extends HttpServlet {
 		 			"</tr>\n" +
 		 			"");
 		 			
+		 			//Order Summary
+		 			Float subtotal = (float) 0;
 		      		for(Map.Entry<String, Integer> entry: cart.entrySet()) {
 		      			String prodID = entry.getKey();
 		      			Integer qty = entry.getValue();
 		      			String qtyString = Integer.toString(qty);
 		      			Map<String, Object> product = Database.getProduct(prodID);
 		      			String productname = (String) product.get("ProductName");
-		      			String productprice = Float.toString( (float) product.get("Price") );
+		      			float price = (float) product.get("Price");
+		      			String productprice = Float.toString( price );
+		      			
+		      			// add to subtotal
+		      			subtotal+= (qty * price);
 		      			
 		      			//Retrieve the main image. This is the first image in the array.
 		    			String imageLinks = (String) product.get("ImageLinks"); 
@@ -284,19 +290,57 @@ public class ShoppingCart extends HttpServlet {
 			        
 		      		p("<!-- Order Summery Card -->\n" +
 					"<div class=\"w3-card-4 ordersummarycard\" style=\"width:48%; float:right;\">\n" +
-						"<center><strong><h2>ORDER SUMMARY</h2></strong></center>\n" +
-						"<p>SUBTOTAL<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
-						"<p>DISCOUNT<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
-						"<p>ESTIMATED TOTAL<span class=\"alignright\" style=\"\">$XX</span></p>\n" +
+						"<center><strong><h2>Order Summary</h2></strong></center>\n" +
+						"<p>SUBTOTAL<span class=\"alignright\" style=\"\">$"+subtotal+"</span></p>\n" +
+						"<p>DISCOUNT<span class=\"alignright\" style=\"\">$0.00</span></p>\n" +
+						"<p>ESTIMATED TOTAL<span class=\"alignright\" style=\"\">$"+subtotal+"</span></p>\n" +
 						"<div class=\"container\" align=\"left\">\n" +
 			          	"<form action = \"checkout\" align=\"left\">\n" +	
 			          		"<button id=\"checkoutbutton\" type=\"submit\" ><i class=\"fas fa-arrow-right\"></i> PROCEED TO CHECKOUT</button>\n" +
 			          	"</form>\n" +
-		              "</div>\n" +
+			          	"<br>\n" +
+			          	"<center><strong><h2>Most Recent Viewed Items</h2></strong></center>\n" +
+		      				"");
+						p("<table>");
+			 			
+			 			p("<tr>\n" +
+			 				"<th></th>\n" +
+			 				"<th>PRODUCT</th>\n" +
+			 				"<th>PRICE</th>\n" +
+			 				"<th></th>\n" +
+			 			"</tr>\n" +
+			 			"");
+			 			
+			 			//Viewed Items  p(   );
+			      		if (viewed != null) {	
+			      			for (String id : viewed) {
+								Map<String, Object> product = Database.getProduct(id);
+								String imgLinks = (String) product.get("ImageLinks");
+								String[] imgLinksArray = imgLinks.split(",");
+								String mainImg = imgLinksArray[0];
+								
+								String productname = (String) product.get("ProductName");
+				      			String productprice = Float.toString( (float) product.get("Price") );
+				      			String productcategory = (String) product.get("ProductCategory");
+				      			String pageFrom = getProductCategoryServletName(productcategory);
+								
+								p("<tr>\n" +
+					      				"<td><center><img src=\""+mainImg+"\" alt=\"product image\"></center></td>\n" +	
+					      				"<td><a href=\"productdetails?pageFrom="+pageFrom+"&productCategory="+productcategory+"&productID="+product.get("ProductID")+"\">"+productname+"</a></td>\n" +
+					      				"<td>"+productprice+"</td>\n" +
+					      				"<td><button id=\"button_edit\" class=\"smallbtn\" onclick=\"addItem()\"><i class=\"fas fa-shopping-cart\"></i> Add </button></td>\n" +	
+							      "</tr>\n" +
+						      	"");		
+								
+			      			}
+			      		}
+			 			p("</table>");
+		              
+			 			p("</div>\n" +
 					"</div>\n" +
 					"<!-- end of order form card div -->\n" +
 		      		"");
-		      		
+		      		/*
 		      		//Viewed Items
 		      		if (viewed != null) {
 		      			p("<!-- Shopping Cart Detail Card -->\n" +
@@ -329,7 +373,7 @@ public class ShoppingCart extends HttpServlet {
 										"</tbody>\n" + 
 									"</table> \n" 
 												);
-		      		}
+		      		} */
 
 		      p("</div>\n" +
 			 "<!-- end of main div -->\n" +
@@ -371,6 +415,25 @@ public class ShoppingCart extends HttpServlet {
 			output.println(message);
 		} else {
 			output = response.getWriter();
+		}
+	}
+	
+	private String getProductCategoryServletName(String productCategory) {
+		switch(productCategory) {
+			case "Accessories":
+				return "productcategory_accessories";
+			case "Apparel":
+				return "productcategory_apparel";
+			case "Nintendo Switch":
+				return "productcategory_switch";
+			case "PC Gaming":
+				return "productcategory_pc";
+			case "PlayStation 4":
+				return "productcategory_ps4";
+			case "Xbox One":
+				return "productcategory_xbox";
+			default:
+				return "";
 		}
 	}
 	

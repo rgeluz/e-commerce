@@ -23,6 +23,21 @@
 	background-color: darkred;
 }
 
+#submitbtn {
+	padding: 20px; 
+	border: none; 
+	background-color:red; 
+	font-size: 15px; 
+	color: white; 
+	cursor:pointer;
+	font-weight: bold;
+    width: 100%;
+}
+
+#submitbtn:hover {
+	background-color: darkred;
+}
+
  .row {
    display: -ms-flexbox; /* IE10 */
    display: flex;

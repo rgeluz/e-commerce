@@ -45,6 +45,7 @@ public class Checkout extends HttpServlet {
 				+ "<script src=\"https://use.fontawesome.com/releases/v5.11.1/js/all.js\"></script>\n"
 				+ "<link href=\"./css/style.css\" rel=\"stylesheet\">\n"
 				+ "<link href=\"./css/shoppingcart.css\" rel=\"stylesheet\">\n"
+				+ "<link href=\"./css/productdetails.css\" rel=\"products stylesheet\">\n"
 				+ "<link href=\"./css/productcategory.css\" rel=\"productCat stylesheet\">\n"
 				+ "<link href=\"https://www.w3schools.com/w3css/4/w3.css\" rel=\"stylesheet\">\n" +
 
@@ -115,15 +116,36 @@ public class Checkout extends HttpServlet {
 		// Get the cart
 		Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
 		
+		//Order Summary
+		Float subtotal = (float) 0;
+		for(Map.Entry<String, Integer> entry: cart.entrySet()) {
+			String prodID = entry.getKey();
+			Integer qty = entry.getValue();
+			Map<String, Object> product = Database.getProduct(prodID);
+			float price = (float) product.get("Price");
+			// add to subtotal
+  			subtotal+= (qty * price);
+		}
+		p("<!-- Main -->\n" + 
+		"<section>\n" + 
+		"<div class=\"main\">\n" + 
+		"");
 
-		p("<!-- Main -->\n" + "<section>\n" + "<div class=\"main\">\n" + "");
-
-		p("<p><a href=\"shoppingcart\"><i class=\"fas fa-arrow-left\"></i> Back To Checkout</a></p>\n" + "<br>\n"
+		p("<p><a href=\"shoppingcart\"><i class=\"fas fa-arrow-left\"></i> Back to Shopping Cart page</a></p>\n" + "<br>\n"
 				+ "");
 	 					
  			p("<!-- Shopping Cart Detail Card -->\n" +
  			"<div class=\"w3-card-4 shoppingcartcard\" style=\"width:48%; float:left;\">\n" +
- 				"<center><strong><h2>YOUR SHOPPING CART</h2></strong></center>\n" +
+	 			"<center><strong><h2>Order Summary</h2></strong></center>\n" +
+				"<p>SUBTOTAL<span class=\"alignright\" style=\"\">$"+subtotal+"</span></p>\n" +
+				"<p>DISCOUNT<span class=\"alignright\" style=\"\">$0.00</span></p>\n" +
+				"<p>ESTIMATED TOTAL<span class=\"alignright\" style=\"\">$"+subtotal+"</span></p>\n" +
+			"<div class=\"container\" align=\"left\">\n" +
+	          	/*"<form action = \"checkout\" align=\"left\">\n" +	
+	          		"<button id=\"checkoutbutton\" type=\"submit\" ><i class=\"fas fa-arrow-right\"></i> PROCEED TO CHECKOUT</button>\n" +
+	          	"</form>\n" +*/
+	          	"<br>\n" +	
+ 				"<center><strong><h2>Your Shopping Cart</h2></strong></center>\n" +
  			"");
  			
  			p("<table>");
@@ -133,8 +155,6 @@ public class Checkout extends HttpServlet {
  				"<th>PRODUCT</th>\n" +
  				"<th>QTY</th>\n" +
  				"<th>PRICE</th>\n" +
- 				"<th></th>\n" +
- 				"<th></th>\n" +
  			"</tr>\n" +
  			"");
  			
@@ -158,71 +178,21 @@ public class Checkout extends HttpServlet {
       				"<td><center><img src=\""+mainImage+"\" alt=\"product image\"></center></td>\n" +
       				"<td>"+productname+"</td>\n" +
       				"<td>"+qtyString+"</td>\n" +			
-      				"<td>"+productprice+"</td>\n" +
-      				"<td><button id=\"button_edit\" class=\"smallbtn\" onclick=\"editItem()\"><i class=\"fas fa-edit\"></i></button></td>\n" +
-      				"<td><button id=\"button_trash\" class=\"smallbtn\" onclick=\"deleteItem()\"><i class=\"fas fa-trash-alt\"></i></button></td>\n" +
-      			
-      				
-      				
-      				//Modal Windows
-      				"<div id=\"editmodal\" class=\"modal\">\n" +
-      					"<div class=\"modal-content\">\n" +
-      					"<span id=\"editmodal-close\" class=\"modal-close\">X</span>\n" +
-      					"<p>Edit Quantity</p>\n" +
-      					"</div>\n" +
-      				"</div>\n" +
-      				"<div id=\"trashmodal\" class=\"modal\">\n" +
-      					"<div class=\"modal-content\">\n" +
-      					"<span id=\"trashmodal-close\" class=\"modal-close\">X</span>\n" +
-      					"<p>Are you sure you want to delete item?</p>\n" +
-      					"</div>\n" +
-      				"</div>\n" +
-      					
-					//Button Script
-						 "<script>\n" +
-      						"var editmodal = document.getElementById(\"editmodal\");\n" +
-      						"var trashmodal= document.getElementById(\"trashmodal\");\n" +
-							"var closeeditmodalbtn = document.getElementById(\"editmodal-close\");\n"+
-      						"var closetrashmodalbtn = document.getElementById(\"trashmodal-close\")\n" + 
-      						
-      						"//open edit item modal\n" +
-      						"function editItem() {\n" +
-								"editmodal.style.display = \"block\";\n" +
-							"}\n" +
-      						"//open trash item modal\n" +
-							"function deleteItem() {\n" +
-								"trashmodal.style.display = \"block\";\n" +
-							"}\n" +
-							
-							"//close modal when x is clicked\n" +
-							"closeeditmodalbtn.onclick = function(){\n" +
-								"editmodal.style.display = \"none\";\n" +
-							"}\n" +
-								
-							"closetrashmodalbtn.onclick = function(){\n" +
-								"trashmodal.style.display = \"none\";\n" +
-							"}\n" +
-							"//close modal when anywhere outside is clicked\n" +
-							"window.onclick = function(event) {\n" +
-								"if((event.target == editmodal) || (event.target == trashmodal) ) {\n" +
-									"editmodal.style.display = \"none\";\n" +
-									"trashmodal.style.display = \"none\";\n" +
-								"}\n" +
-							"}\n" +
-					  "</script>\n" +
-      				
-      			"</tr>\n" +
-      			"");
+      			 	"<td>"+productprice+"</td>\n" +
+      			 "</tr>\n" +
+      			 "");
       		}
       		
 
  			p("</table>");
  			
       		p("</div>\n" +
+      		"</div>\n" +
 	        "<!-- end of product detail card div -->\n" +
       		"");
       		
-      		
+
+
       		p("<!-- Order Form Card -->");
             p("<div class=\"w3-card-4 orderform-card\" style=\"width:48%; float:right;\">\n" +
               "<form action=\"\" name=\"orderform\" onsubmit=\"return(validate());\">\n" +
@@ -352,25 +322,50 @@ public class Checkout extends HttpServlet {
                   "<label for=\"email\">Email</label>\n" +
                   "<input type=\"text\" id=\"email\" name=\"email\" placeholder=\"john@example.com\" required>\n" +
 
-                  "<input type=\"submit\" value=\"Submit\" />\n" +
-
+                  //"<input type=\"submit\" id=\"submitbtn\" value=\"Submit\" />\n" +
+                  "<button id=\"submitbtn\" type=\"submit\" value=\"Submit\" >SUBMIT</button>\n" +
                 "</div>\n" +
               "</form>\n" +
 
             "</div>\n" +
             "<!-- end of order form card div -->" );
 
+
             p("<br>\n" +
 
-          "</div>");
+          "</div>\n" +
+          "<!-- end of main div -->\n" +
+		  "</section>\n" +
+		  "");
+            
+         //FOOTER TAG
+   		 p("<!-- Footer --> \n" +
+   		    "<!-- \n" +
+   		      "<div class=\"footer\"> \n" +
+   		        "<p>Footer</p> \n" +
+   		      "</div> --> \n" +
+   		    "<footer> \n" +
+   		      "<p>Acme Web Design, Copyright &copy; 2020</p> \n" +
+   		    "</footer> \n" +
+   		  "</div> \n" +
+
+   		  "<!-- go to top button --> \n" +
+   		  "<a class=\"gotopbtn\" href=\"#\"><span class=\"fas fa-caret-square-up\"></span></a> \n" +
+   		  "");
+   		p("</body>");
+   		p("</html>");
 		
-		
-		
+        //clean up
 		output = null;
 		response = null;
 
 	}
-
+	
+	/**
+	 * Helper Method
+	 * @param message
+	 * @throws IOException
+	 */
 	private void p(String message) throws IOException {
 		if (output != null) {
 			output.println(message);
