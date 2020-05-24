@@ -195,7 +195,7 @@ public class Checkout extends HttpServlet {
 
       		p("<!-- Order Form Card -->");
             p("<div class=\"w3-card-4 orderform-card\" style=\"width:48%; float:right;\">\n" +
-              "<form action=\"\" name=\"orderform\" onsubmit=\"return(validate());\">\n" +
+              "<form action=\"orderprocessing\" method=\"post\" name=\"orderform\" onsubmit=\"\">\n" +
                 "<div class=\"col-50\">\n" +
                   "<strong><h2>Order Form</h2></strong>\n" +
                   "<h4>Shipping Information</h4>\n" +

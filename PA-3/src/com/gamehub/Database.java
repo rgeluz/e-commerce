@@ -16,7 +16,7 @@ public class Database {
 	static final String PASS = "testdb124";
 	
 	/**
-	 * 
+	 * openConnection
 	 * @return
 	 */
 	private static Connection openConnection() {
@@ -39,7 +39,7 @@ public class Database {
 	
 
 	/**
-	 * 
+	 * getProductsTest
 	 * @param out
 	 */
 	public static void getProductsTest(PrintWriter out) {
@@ -79,7 +79,7 @@ public class Database {
 	}
 	
 	/**
-	 * 
+	 * getAllProductsByCategory
 	 * @param category
 	 * @return
 	 */
@@ -98,6 +98,7 @@ public class Database {
 		    PreparedStatement ps = conn.prepareStatement(sql);
 		    ps.setString(1, category);
 		    
+		    //execute statement
 		    ResultSet rs = ps.executeQuery();
 		    
 		    //used to printing the results of ResultSet
@@ -153,7 +154,7 @@ public class Database {
 	}
 	
 	/**
-	 * 
+	 * getProduct
 	 * @param productID
 	 * @return
 	 */
@@ -172,6 +173,7 @@ public class Database {
 		    PreparedStatement ps = conn.prepareStatement(sql);
 		    ps.setString(1, productID);
 		    
+		    //execute statement
 		    ResultSet rs = ps.executeQuery();
 		    
 		    while(rs.next()){
@@ -198,5 +200,234 @@ public class Database {
 	    return row;
 	}
 	
+	/**
+	 * getOrder
+	 * @param orderID
+	 * @return
+	 */
+	public static Map<String, Object> getOrder(String orderID) {
+		Map<String, Object> row = new HashMap<String, Object>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+	    	
+	    	String sql;
+	    	sql = "SELECT * FROM ecommerce.order WHERE orderid=?";
+	    	
+	    	//prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+	    	ps.setString(1, orderID);
+	    	
+	    	//execute statement
+	    	ResultSet rs = ps.executeQuery();
+	    	
+	    	while(rs.next()){
+	    		row.put("OrderID", rs.getInt("OrderID"));
+	    		row.put("OrderDate", rs.getDate("OrderDate"));
+	    		row.put("OrderProductName", rs.getString("OrderProductName"));
+	    		row.put("OrderPriceQuantity", rs.getFloat("OrderPriceQuantity"));
+	    		row.put("OrderDiscount", rs.getFloat("OrderDiscount"));
+	    		row.put("OrderSubtotalAfterDiscount", rs.getFloat("OrderSubtotalAfterDiscount"));
+	    		row.put("OrderShippingPrice", rs.getFloat("OrderShippingPrice"));
+	    		row.put("OrderSubtotalAfterShipping",rs.getFloat("OrderSubtotalAfterShipping"));
+	    		row.put("OrderTaxRate",rs.getFloat("OrderTaxRate"));
+	    		row.put("OrderAmountTaxed",rs.getFloat("OrderAmountTaxed"));
+	    		row.put("OrderSubtotalAfterTax",rs.getFloat("OrderSubtotalAfterTax"));
+	    		row.put("OrderTotalPrice", rs.getFloat("OrderTotalPrice"));
+	    		row.put("FirstName", rs.getString("FirstName"));
+	    		row.put("LastName", rs.getString("LastName"));
+	    		row.put("Address", rs.getString("Address"));
+	    		row.put("City", rs.getString("City"));
+	    		row.put("State", rs.getString("State"));
+	    		row.put("Zip", rs.getInt("Zip"));
+	    		row.put("ShippingMethod", rs.getString("ShippingMethod"));
+	    		row.put("ProductID", rs.getString("ProductID"));
+	    		row.put("Quantity",rs.getInt("Quantity"));
+	    		row.put("CreditCardNumber", rs.getString("CreditCardNumber"));
+	    		row.put("ExpMonth", rs.getString("ExpMonth"));
+	    		row.put("ExpYear",rs.getInt("ExpYear"));
+	    		row.put("CVV", rs.getInt("CVV"));
+	    		row.put("PhoneNumber",rs.getString("PhoneNumber"));
+	    		row.put("Email",rs.getString("Email"));
+	    	}  
+			
+		  	rs.close();
+		  	//stmt.close();
+		  	conn.close();
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return row;
+	}
+	
+	
+	
+	
+	public static int setOrder(
+			java.util.Date todaysDate,
+			String orderproductname,
+			float orderpricequantity,
+			float orderdiscount,
+			float ordersubtotal_afterdiscount,
+			float ordershippingprice,
+			float ordersubtotal_aftershipping,
+			float ordertaxrate,
+			float orderamounttaxed,
+			float ordersubtotal_aftertax,
+			float ordertotalprice,
+			String firstname,
+			String lastname,
+			String address,
+			String city,
+			String state,
+			int zip,
+			String shippingmethod,
+			String orderproductid,
+			String productIDList,
+			int orderquantity,
+			String quantityList,
+			String cardnumber,
+			String expmonth,
+			int expyear,
+			int cvv,
+			String phone,
+			String email
+			) {
+		
+		// return value
+		int numOfRowsUpdated = 0;
+		
+		// convert java date to mysql date
+		java.sql.Date mysqlTodaysDate = new java.sql.Date( todaysDate.getTime() );
+		
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+	    	String sql;
+	    	sql = "INSERT INTO ecommerce.order (orderdate, orderproductname, orderpricequantity, orderdiscount, " + 
+	    			                           "ordersubtotalafterdiscount, ordershippingprice, ordersubtotalaftershipping, " + 
+	    			                           "ordertaxrate, orderamounttaxed, ordersubtotalaftertax, ordertotalprice, " + 
+	    			                           "firstname, lastname, address, city, state, zip, shippingmethod, productid, " + 
+	    			                           "productlist, quantity, quantitylist, creditcardnumber, expmonth, expyear, cvv, " + 
+	    			                           "phonenumber, email)" + 
+	    			                           " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	    	//prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+		    ps.setDate(1, mysqlTodaysDate);
+		    ps.setString(2, orderproductname);
+		    ps.setDouble(3,orderpricequantity);
+		    ps.setDouble(4,orderdiscount);
+		    ps.setDouble(5,ordersubtotal_afterdiscount);
+		    ps.setDouble(6,ordershippingprice);
+		    ps.setDouble(7,ordersubtotal_aftershipping);
+		    ps.setDouble(8,ordertaxrate);
+		    ps.setDouble(9,orderamounttaxed);
+		    ps.setDouble(10,ordersubtotal_aftertax);
+		    ps.setDouble(11,ordertotalprice);
+			ps.setString(12,firstname);
+			ps.setString(13,lastname);
+			ps.setString(14,address);
+			ps.setString(15,city);
+			ps.setString(16,state);
+			ps.setInt(17,zip);
+			ps.setString(18,shippingmethod);
+			ps.setString(19,orderproductid);
+			ps.setString(20,productIDList);
+			ps.setInt(21,orderquantity);
+			ps.setString(22,quantityList);
+			ps.setString(23,cardnumber);
+			ps.setString(24,expmonth);
+			ps.setInt(25,expyear);
+			ps.setInt(26,cvv);
+			ps.setString(27,phone);
+			ps.setString(28,email);
+		    
 
+		    //execute statement
+			numOfRowsUpdated = ps.executeUpdate();
+		    System.out.println(numOfRowsUpdated + " row(s) inserted in order table. ");
+	    	
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return numOfRowsUpdated;
+	}
+	
+	
+	public static Map<String, Object> getTaxRate(String statename) {
+		Map<String, Object> row = new HashMap<String, Object>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+	    	String sql;
+	    	sql = "SELECT * FROM state WHERE state_name=?";
+	    	
+	    	//prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+		    ps.setString(1, statename);
+		    
+		    //execute statement
+		    ResultSet rs = ps.executeQuery();
+	    	
+	    	while(rs.next()){
+	    		row.put("state_name",rs.getString("state_name"));
+	    		row.put("tax", rs.getFloat("tax"));
+	    	} 	
+	    		
+	    	rs.close();
+		  	//stmt.close();
+		  	conn.close();		
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return row;
+	}
+	
+	/**
+	 * getShippingPrice
+	 * @param shippingmethod
+	 * @return
+	 */
+	public static Map<String, Object> getShippingPrice(String shippingmethod) {
+		Map<String, Object> row = new HashMap<String, Object>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+	    	
+	    	String sql;
+	    	sql = "SELECT * FROM shipping WHERE shipping_method=?";
+	
+	    	//prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+	    	ps.setString(1, shippingmethod);
+	    	
+	    	//execute statement
+	    	ResultSet rs = ps.executeQuery();
+	    	
+	    	while(rs.next()){
+	    		row.put("shipping_method", rs.getString("shipping_method"));
+	    		row.put("price", rs.getFloat("price"));
+	    	} 
+	    	
+	    	rs.close();
+		  	//stmt.close();
+		  	conn.close();		
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return row;
+	}
+	
 }

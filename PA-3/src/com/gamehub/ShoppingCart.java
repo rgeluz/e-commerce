@@ -150,6 +150,7 @@ public class ShoppingCart extends HttpServlet {
 			
 			// Get the cart
 			Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
+			
 			// Get viewed items
 			LinkedList<String> viewed = (LinkedList<String>)session.getAttribute("viewed");
 			
