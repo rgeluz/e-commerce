@@ -13,7 +13,7 @@ public class Database {
 	static final String DB_URL = "jdbc:mysql://localhost/ecommerce?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	//  Database credentials
 	static final String USER = "root";
-	static final String PASS = "testdb124";
+	static final String PASS = "testdb";//"testdb124";
 	
 	/**
 	 * openConnection
