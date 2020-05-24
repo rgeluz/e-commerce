@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,14 +18,14 @@ import javax.servlet.http.HttpSession;
 
 public class OrderProcessing extends HttpServlet {
 	
-	private static float TAX_RATE = 0.0725f; //7.25%
+	private static float TAX_RATE = 0.0725f; //7.25%. Now using tax rates from state table
 	private static float DISCOUNT_RATE = 0.0f; //0%
 	
 	PrintWriter output;
 	HttpServletResponse response;
 	
 	
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		response = res;
 		response.setContentType("text/html;charset=UTF-8");
 		
@@ -172,45 +174,60 @@ public class OrderProcessing extends HttpServlet {
   		String orderproductname = "See ProductList for complete product list";
   		String orderproductid = "See ProductList for complete produt list";
   		int orderquantity = 0; //will not use this field "Quantity" in order table, will use QuantityList instead to record string list of quantities
-  		int numOfRowsUpdated = Database.setOrder(
-									  				todaysDate,
-									  				orderproductname,
-									  				orderpricequantity,
-									  				orderdiscount,
-									  				ordersubtotal_afterdiscount,
-									  				ordershippingprice,
-									  				ordersubtotal_aftershipping,
-									  				ordertaxrate,
-									  				orderamounttaxed,
-									  				ordersubtotal_aftertax,
-									  				ordertotalprice,
-									  				firstname,
-									  				lastname,
-									  				address,
-									  				city,
-									  				state,
-									  				zipInt,
-									  				shippingmethod,
-									  				orderproductid,
-									  				productIDList,
-									  				orderquantity,
-									  				quantityList,
-									  				cardnumber,
-									  				expmonth,
-									  				expyearInt,
-									  				cvvInt,
-									  				phone,
-									  				email
-									  			);
+  		int newrecordID = 0;
+  		newrecordID = Database.setOrder(
+					  				todaysDate,
+					  				orderproductname,
+					  				orderpricequantity,
+					  				orderdiscount,
+					  				ordersubtotal_afterdiscount,
+					  				ordershippingprice,
+					  				ordersubtotal_aftershipping,
+					  				ordertaxrate,
+					  				orderamounttaxed,
+					  				ordersubtotal_aftertax,
+					  				ordertotalprice,
+					  				firstname,
+					  				lastname,
+					  				address,
+					  				city,
+					  				state,
+					  				zipInt,
+					  				shippingmethod,
+					  				orderproductid,
+					  				productIDList,
+					  				orderquantity,
+					  				quantityList,
+					  				cardnumber,
+					  				expmonth,
+					  				expyearInt,
+					  				cvvInt,
+					  				phone,
+					  				email
+					  			);
 		
-  		if(numOfRowsUpdated>0) {
-  			p(numOfRowsUpdated + " row(s) inserted in order table. ");
+  		if(newrecordID != 0) {
+  			p("record: " + newrecordID + " created!");
   		}
   		/**/
+  		
+  		// Set orderrecord session attribute
+  		session.setAttribute("orderrecordid", newrecordID);
+  		
   		
 		//clean up
 		output = null;
 		response = null;
+		
+		
+		//Send to next servlet
+		//Call a servlet from a servlet using RequestDispatcher
+		//RequestDispatcher rd = req.getRequestDispatcher("sq");
+				//rd.forward(req, res); //this forwards the req and res objects to the sq servlet
+		
+		RequestDispatcher rd = req.getRequestDispatcher("orderconfirmation");
+		rd.forward(req, res); //this forwards the req and res objects to the order confirmation servlet
+  		
 	}
 	
 	/**

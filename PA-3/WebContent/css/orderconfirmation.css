@@ -61,6 +61,30 @@
    padding: 3px;
 }
 
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th {
+	color: #ff8080;
+}
+td, th {
+	text-align: left;
+	padding: 8px;
+	
+}
+tr {
+	padding: 8px;
+	border: 1px solid #ff8080;
+}
+/*tr:nth-child(even) {
+	background-color: #dddddd;
+}*/
+img {
+	max-width: 120px;
+	height: auto;
+}
+
 .productsummary {
   border-color: lightblue;
   border-width: 0.5px;

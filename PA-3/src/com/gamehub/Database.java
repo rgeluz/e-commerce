@@ -205,7 +205,7 @@ public class Database {
 	 * @param orderID
 	 * @return
 	 */
-	public static Map<String, Object> getOrder(String orderID) {
+	public static Map<String, Object> getOrder(int orderID) {
 		Map<String, Object> row = new HashMap<String, Object>();
 		Connection conn = openConnection();
 		
@@ -218,7 +218,7 @@ public class Database {
 	    	
 	    	//prepare statement
 		    PreparedStatement ps = conn.prepareStatement(sql);
-	    	ps.setString(1, orderID);
+	    	ps.setInt(1, orderID);
 	    	
 	    	//execute statement
 	    	ResultSet rs = ps.executeQuery();
@@ -244,7 +244,9 @@ public class Database {
 	    		row.put("Zip", rs.getInt("Zip"));
 	    		row.put("ShippingMethod", rs.getString("ShippingMethod"));
 	    		row.put("ProductID", rs.getString("ProductID"));
-	    		row.put("Quantity",rs.getInt("Quantity"));
+	    		row.put("ProductList", rs.getString("ProductList"));
+	    		row.put("Quantity", rs.getInt("Quantity"));
+	    		row.put("QuantityList", rs.getString("QuantityList"));
 	    		row.put("CreditCardNumber", rs.getString("CreditCardNumber"));
 	    		row.put("ExpMonth", rs.getString("ExpMonth"));
 	    		row.put("ExpYear",rs.getInt("ExpYear"));
@@ -298,6 +300,7 @@ public class Database {
 			) {
 		
 		// return value
+		int recordID = 0;
 		int numOfRowsUpdated = 0;
 		
 		// convert java date to mysql date
@@ -317,7 +320,7 @@ public class Database {
 	    			                           "phonenumber, email)" + 
 	    			                           " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	    	//prepare statement
-		    PreparedStatement ps = conn.prepareStatement(sql);
+		    PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		    ps.setDate(1, mysqlTodaysDate);
 		    ps.setString(2, orderproductname);
 		    ps.setDouble(3,orderpricequantity);
@@ -352,11 +355,23 @@ public class Database {
 			numOfRowsUpdated = ps.executeUpdate();
 		    System.out.println(numOfRowsUpdated + " row(s) inserted in order table. ");
 	    	
+		    // return record id of newly inserted record
+		    if(numOfRowsUpdated == 0) {
+		    	throw new SQLException("Creating order record failed, no rows affected.");
+		    }
+		    try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+		    	if(generatedKeys.next()) {
+		    		recordID = (int) generatedKeys.getLong(1);
+		    	} else {
+		    		throw new SQLException("Creating order record failed, no record ID obtained.");
+		    	}
+		    }
+		    
 	    } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    return numOfRowsUpdated;
+	    return recordID;
 	}
 	
 	

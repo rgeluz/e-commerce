@@ -141,7 +141,7 @@ public class ProdCatXbox extends HttpServlet {
 	          "<!-- Product Table -->\n" +
 	          "<div class=\"product-table\">\n" +
 	            "<table>\n" +
-	              "<caption><h1>Java Servlet Generated: Xbox One</h1></caption>\n" +
+	              "<caption><h1>Xbox One</h1></caption>\n" +
 	              "<thead>\n" +
 	                "<tr>\n" +
 	                  "<!--<th>Table Header</th>-->\n" +

@@ -138,7 +138,7 @@ public class ProdCatPC extends HttpServlet {
 	          "<!-- Product Table -->\n" +
 	          "<div class=\"product-table\">\n" +
 	            "<table>\n" +
-	              "<caption><h1>Java Servlet Generated: PC Gaming</h1></caption>\n" +
+	              "<caption><h1>PC Gaming</h1></caption>\n" +
 	              "<thead>\n" +
 	                "<tr>\n" +
 	                  "<!--<th>Table Header</th>-->\n" +

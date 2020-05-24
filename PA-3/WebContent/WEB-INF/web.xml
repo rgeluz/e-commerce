@@ -104,7 +104,7 @@
     <servlet-name>checkout</servlet-name>
     <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>orderprocessing</servlet-name>
     <servlet-class>com.gamehub.OrderProcessing</servlet-class>
   </servlet>
@@ -112,5 +112,12 @@
     <servlet-name>orderprocessing</servlet-name>
     <url-pattern>/orderprocessing</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>orderconfirmation</servlet-name>
+    <servlet-class>com.gamehub.OrderConfirmation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>orderconfirmation</servlet-name>
+    <url-pattern>/orderconfirmation</url-pattern>
+  </servlet-mapping>
 </web-app>
