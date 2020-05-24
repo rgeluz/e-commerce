@@ -172,7 +172,7 @@ public class OrderProcessing extends HttpServlet {
   		
 		// Save order to database
   		String orderproductname = "See ProductList for complete product list";
-  		String orderproductid = "See ProductList for complete produt list";
+  		String orderproductid = "See ProductList for complete product list";
   		int orderquantity = 0; //will not use this field "Quantity" in order table, will use QuantityList instead to record string list of quantities
   		int newrecordID = 0;
   		newrecordID = Database.setOrder(
