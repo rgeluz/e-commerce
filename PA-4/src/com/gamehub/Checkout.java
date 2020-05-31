@@ -102,7 +102,7 @@ public class Checkout extends HttpServlet {
 
 				"<!-- Right-aligned links-->\n" + "<div class=\"topnav-right\">\n"
 				+ "<!--<a href=\"#search\">Search</a>-->\n"
-				+ "<button class=\"searchBtn\" onClick=\"openSearch()\" style=\"float:left;\"><i class=\"fas fa-search\"></i> Search</button>\n"
+				+ "<button class=\"searchBtn\" onClick=\"location.href='./products/searchproduct.jsp';\" style=\"float:left;\"><i class=\"fas fa-search\"></i> Search</button>\n"
 				+ "<a class=\"active\" href=\"shoppingcart\"><i class=\"fas fa-shopping-cart\"></i> Shopping Cart</a>\n"
 				+ "</div>\n" +
 

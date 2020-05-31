@@ -78,6 +78,93 @@ public class Database {
 
 	}
 	
+	public static ArrayList<Map<String, Object>> getAllProductsBySearchKeyword(String searchkeyword) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Connection conn = openConnection();
+		
+		//Statement stmt = null;
+	    System.out.println("Creating statement...");
+	    try {
+			
+			String sql;
+		    sql = "SELECT * FROM ecommerce.product " + 
+		    		"WHERE productname LIKE CONCAT('%',?,'%') " +
+		    		"OR productid LIKE CONCAT('%',?,'%')" +
+		    		"OR productcategory LIKE CONCAT('%',?,'%')" +
+		    		"OR category LIKE CONCAT('%',?,'%')" +
+		    		"OR platform LIKE CONCAT('%',?,'%')" +
+		    		"OR price LIKE CONCAT('%',?,'%')" +
+		    		"OR quantity LIKE CONCAT('%',?,'%')" + 
+		    		"OR description LIKE CONCAT('%',?,'%')" +
+		    		"";
+		    
+		    //prepare statement
+		    PreparedStatement ps = conn.prepareStatement(sql);
+		    ps.setString(1,searchkeyword);
+		    ps.setString(2,searchkeyword);
+		    ps.setString(3,searchkeyword);
+		    ps.setString(4,searchkeyword);
+		    ps.setString(5,searchkeyword);
+		    ps.setString(6,searchkeyword);
+		    ps.setString(7,searchkeyword);
+		    ps.setString(8,searchkeyword);
+		    
+		    //execute statement
+		    ResultSet rs = ps.executeQuery();
+		    
+		    //used to printing the results of ResultSet
+		    //and store ResultSet into an arraylist of hashmaps
+		    ResultSetMetaData rsmd = rs.getMetaData();
+		    System.out.println("querying " + sql + "(?= " + searchkeyword + ")");
+		    int columnsNumber = rsmd.getColumnCount();
+		    
+		    while(rs.next()){
+		    	//Retrieve by column name
+		    	//String productName = rs.getString("ProductName");
+		    	//String productID = rs.getString("ProductID"); 
+			
+		    	//System.out.print("product name: " + productName);
+		    	//System.out.println(", product id: " + productID); 
+		    	
+		    	Map<String, Object> row = new HashMap<String, Object>();
+		    	
+		    	//outuput result set values
+		        //for (int i = 1; i <= columnsNumber; i++) {
+		            //if (i > 1) System.out.print(",  ");
+		            //String columnValue = rs.getString(i);
+		            //System.out.print(columnValue + " " + rsmd.getColumnName(i));
+
+		            //row.put(rsmd.getColumnName(i),rs.getObject(i));
+		        //}
+		        //System.out.println("");
+		        
+		        row.put("ProductName",rs.getString("ProductName"));
+		        row.put("Quantity",rs.getInt("Quantity"));
+		        row.put("ProductID",rs.getString("ProductID"));
+		        row.put("ProductCategory",rs.getString("ProductCategory"));
+		        row.put("Category",rs.getString("Category"));
+		        row.put("Platform",rs.getString("Platform"));
+		        row.put("Price",rs.getFloat("Price"));
+		        row.put("Description",rs.getString("Description"));
+		        row.put("ImageLinks",rs.getString("ImageLinks"));
+		        list.add(row);
+		    }  
+		
+		  	rs.close();
+		  	//stmt.close();
+		  	conn.close();
+		  	
+		  	
+		  
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return list;  
+
+	}
+	
+	
 	/**
 	 * getAllProductsByCategory
 	 * @param category
