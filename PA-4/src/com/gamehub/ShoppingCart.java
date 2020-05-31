@@ -217,12 +217,13 @@ public class ShoppingCart extends HttpServlet {
 		    			String imageLinks = (String) product.get("ImageLinks"); 
 		    			String[] imageLinksArray = imageLinks.split(",");
 		    			String mainImage = imageLinksArray[0];
+		    			String mainImageRemoveDoubleDots = mainImage.replace("..",".");
 		      			
 		      			/*p("<div class=\"productrow\">\n" +
 		      			"<p>product id: "+prodID+", quantity: "+qty+"</p>\n" +
 		      			"</div>\n");*/
 		      			p("<tr>\n" +
-		      				"<td><center><img src=\""+mainImage+"\" alt=\"product image\"></center></td>\n" +
+		      				"<td><center><img src=\""+mainImageRemoveDoubleDots+"\" alt=\"product image\"></center></td>\n" +
 		      				"<td>"+productname+"</td>\n" +
 		      				"<td>"+qtyString+"</td>\n" +			
 		      				"<td>"+productprice+"</td>\n" +
@@ -319,6 +320,7 @@ public class ShoppingCart extends HttpServlet {
 								String imgLinks = (String) product.get("ImageLinks");
 								String[] imgLinksArray = imgLinks.split(",");
 								String mainImg = imgLinksArray[0];
+								String mainImageRemoveDoubleDots = mainImg.replace("..",".");
 								
 								String productname = (String) product.get("ProductName");
 				      			String productprice = Float.toString( (float) product.get("Price") );
@@ -326,8 +328,8 @@ public class ShoppingCart extends HttpServlet {
 				      			String pageFrom = getProductCategoryServletName(productcategory);
 								
 								p("<tr>\n" +
-					      				"<td><center><img src=\""+mainImg+"\" alt=\"product image\"></center></td>\n" +	
-					      				"<td><a href=\"productdetails?pageFrom="+pageFrom+"&productCategory="+productcategory+"&productID="+product.get("ProductID")+"\">"+productname+"</a></td>\n" +
+					      				"<td><center><img src=\""+mainImageRemoveDoubleDots+"\" alt=\"product image\"></center></td>\n" +	
+					      				"<td><a href=\"./products/productdetails.jsp?pageFrom="+pageFrom+"&productCategory="+productcategory+"&productID="+product.get("ProductID")+"\">"+productname+"</a></td>\n" +
 					      				"<td>"+productprice+"</td>\n" +
 					      				"<td><button id=\"button_edit\" class=\"smallbtn\" onclick=\"addItem()\"><i class=\"fas fa-shopping-cart\"></i> Add </button></td>\n" +	
 							      "</tr>\n" +
@@ -422,17 +424,17 @@ public class ShoppingCart extends HttpServlet {
 	private String getProductCategoryServletName(String productCategory) {
 		switch(productCategory) {
 			case "Accessories":
-				return "productcategory_accessories";
+				return "productcategory_accessories.jsp";
 			case "Apparel":
-				return "productcategory_apparel";
+				return "productcategory_apparel.jsp";
 			case "Nintendo Switch":
-				return "productcategory_switch";
+				return "productcategory_switch.jsp";
 			case "PC Gaming":
-				return "productcategory_pc";
+				return "productcategory_pc.jsp";
 			case "PlayStation 4":
-				return "productcategory_ps4";
+				return "productcategory_ps4.jsp";
 			case "Xbox One":
-				return "productcategory_xbox";
+				return "productcategory_xbox.jsp";
 			default:
 				return "";
 		}

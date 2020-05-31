@@ -80,14 +80,14 @@
     <servlet-name>view_history</servlet-name>
     <url-pattern>/viewHistory</url-pattern>
   </servlet-mapping>
-  <servlet>
+  <!-- <servlet>
     <servlet-name>productdetails</servlet-name>
     <servlet-class>com.gamehub.ProductDetails</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>productdetails</servlet-name>
     <url-pattern>/productdetails</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  -->
   <servlet>
     <servlet-name>shoppingcart</servlet-name>
     <servlet-class>com.gamehub.ShoppingCart</servlet-class>

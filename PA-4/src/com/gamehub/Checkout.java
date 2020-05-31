@@ -170,12 +170,13 @@ public class Checkout extends HttpServlet {
     			String imageLinks = (String) product.get("ImageLinks"); 
     			String[] imageLinksArray = imageLinks.split(",");
     			String mainImage = imageLinksArray[0];
+    			String mainImageRemoveDoubleDots = mainImage.replace("..",".");
       			
       			/*p("<div class=\"productrow\">\n" +
       			"<p>product id: "+prodID+", quantity: "+qty+"</p>\n" +
       			"</div>\n");*/
       			p("<tr>\n" +
-      				"<td><center><img src=\""+mainImage+"\" alt=\"product image\"></center></td>\n" +
+      				"<td><center><img src=\""+mainImageRemoveDoubleDots+"\" alt=\"product image\"></center></td>\n" +
       				"<td>"+productname+"</td>\n" +
       				"<td>"+qtyString+"</td>\n" +			
       			 	"<td>"+productprice+"</td>\n" +

@@ -171,7 +171,7 @@
 	   					
 	   					  out.println("<td>\n" +
 		                    "<div class=\"productcategory-card\">\n" +
-		                    "<a href=\"../productdetails?pageFrom=productcategory_apparel.jsp&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
+		                    "<a href=\"productdetails.jsp?pageFrom=productcategory_apparel.jsp&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
 		                        "<img src=\""+mainImage+"\" alt=\"Avatar\" style=\"width:100%\">\n" +
 		                      "</a>\n" +
 		                      "<div class=\"productcategory-card-container\">\n" +
