@@ -261,7 +261,8 @@ public class Database {
 		    ps.setString(1, productID);
 		    
 		    //execute statement
-		    ResultSet rs = ps.executeQuery();
+		    ResultSet rs = ps.executeQuery();   
+		    System.out.println("querying " + sql + "(?= " + productID + ")");
 		    
 		    while(rs.next()){
 		        row.put("ProductName",rs.getString("ProductName"));
@@ -309,6 +310,7 @@ public class Database {
 	    	
 	    	//execute statement
 	    	ResultSet rs = ps.executeQuery();
+	    	System.out.println("querying" + sql + "(?= " + orderID + ")");
 	    	
 	    	while(rs.next()){
 	    		row.put("OrderID", rs.getInt("OrderID"));
@@ -478,6 +480,7 @@ public class Database {
 		    
 		    //execute statement
 		    ResultSet rs = ps.executeQuery();
+		    System.out.println("querying" + sql + "(?=" + statename + ")");
 	    	
 	    	while(rs.next()){
 	    		row.put("state_name",rs.getString("state_name"));
@@ -516,6 +519,7 @@ public class Database {
 	    	
 	    	//execute statement
 	    	ResultSet rs = ps.executeQuery();
+	    	System.out.println("querying" + sql + "(?=" + shippingmethod + ")");
 	    	
 	    	while(rs.next()){
 	    		row.put("shipping_method", rs.getString("shipping_method"));
