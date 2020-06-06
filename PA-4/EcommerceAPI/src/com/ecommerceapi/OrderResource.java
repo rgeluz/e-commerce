@@ -18,10 +18,10 @@ public class OrderResource {
 	@Produces( { MediaType.APPLICATION_JSON } )
 	public Response getOrderByID( @PathParam("id") Integer orderID ) {
 		Order order = OrderService.getOrderByID(orderID);
-		if(order == null) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+		if( order.isValid() ) {
+			return Response.ok(order).build();
 		}
-		return Response.ok(order).build();
+		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 	
 	@POST

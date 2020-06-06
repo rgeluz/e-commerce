@@ -16,9 +16,9 @@ public class ShippingResource {
 	@Produces( { MediaType.APPLICATION_JSON } )
 	public Response getShippingPrice( @PathParam("shippingmethod") String shippingmethod) {
 		Shipping shipping = ShippingService.getShippingPrice(shippingmethod);
-		if(shipping == null) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+		if(shipping.isValid()) {
+			return Response.ok(shipping).build();
 		}
-		return Response.ok(shipping).build();
+		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 }

@@ -22,6 +22,9 @@ public class ShippingService {
 	 */
 	private static Shipping convertShippingMapToShippingPojo(Map<String, Object> shippingmap) {
 		Shipping shipping = new Shipping();
+		if(shippingmap.isEmpty()) {
+			System.out.println("");
+		}
 		shipping.setShipping_method( (String) shippingmap.get("shipping_method"));
 		shipping.setPrice((float) shippingmap.get("price"));
 		return shipping;

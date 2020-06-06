@@ -24,5 +24,7 @@ public class State {
 		this.state_name = state_name;
 	}
 	
-	
+	public boolean isValid() {
+		return state_name != null;
+	}
 }

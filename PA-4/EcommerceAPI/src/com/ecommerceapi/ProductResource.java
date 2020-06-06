@@ -17,10 +17,10 @@ public class ProductResource {
 	@Produces( { MediaType.APPLICATION_JSON } )
 	public Response getProductByID( @PathParam("id") String prouductID ) {
 		Product product = ProductService.getProductByID(prouductID);
-		if(product == null) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+		if(product.isValid()) {		
+			return Response.ok(product).build();
 		}
-		return Response.ok(product).build();
+		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 	
 	@Path("category/{category}")
