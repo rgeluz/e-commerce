@@ -78,6 +78,11 @@ public class Database {
 
 	}
 	
+	/**
+	 * 
+	 * @param searchkeyword
+	 * @return
+	 */
 	public static ArrayList<Map<String, Object>> getAllProductsBySearchKeyword(String searchkeyword) {
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Connection conn = openConnection();
@@ -356,7 +361,38 @@ public class Database {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param todaysDate
+	 * @param orderproductname
+	 * @param orderpricequantity
+	 * @param orderdiscount
+	 * @param ordersubtotal_afterdiscount
+	 * @param ordershippingprice
+	 * @param ordersubtotal_aftershipping
+	 * @param ordertaxrate
+	 * @param orderamounttaxed
+	 * @param ordersubtotal_aftertax
+	 * @param ordertotalprice
+	 * @param firstname
+	 * @param lastname
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param shippingmethod
+	 * @param orderproductid
+	 * @param productIDList
+	 * @param orderquantity
+	 * @param quantityList
+	 * @param cardnumber
+	 * @param expmonth
+	 * @param expyear
+	 * @param cvv
+	 * @param phone
+	 * @param email
+	 * @return
+	 */
 	public static int setOrder(
 			java.util.Date todaysDate,
 			String orderproductname,
@@ -464,7 +500,11 @@ public class Database {
 	    return recordID;
 	}
 	
-	
+	/**
+	 * 
+	 * @param statename
+	 * @return
+	 */
 	public static Map<String, Object> getTaxRate(String statename) {
 		Map<String, Object> row = new HashMap<String, Object>();
 		Connection conn = openConnection();

@@ -39,7 +39,7 @@ public class OrderConfirmation extends HttpServlet {
 		int orderrecordid = (int) session.getAttribute("orderrecordid");
 		
 		//Get order
-		Map<String, Object> order = EcommerceAPIService.getOrder(orderrecordid); //Database.getOrder(orderrecordid);
+		Map<String, Object> order = EcommerceAPIService.getOrder(orderrecordid); 
 		
 		int OrderID = (int) order.get("OrderID");
 		Date OrderDate = (Date) order.get("OrderDate");
@@ -229,7 +229,7 @@ public class OrderConfirmation extends HttpServlet {
 		              			String prodID = entry.getKey();
 				      			Integer qty = entry.getValue();
 				      			String qtyString = Integer.toString(qty);
-				      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
+				      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID);
 				      			String productname = (String) product.get("ProductName");
 				      			float price = (float) product.get("Price");
 				      			String productprice = Float.toString( price );

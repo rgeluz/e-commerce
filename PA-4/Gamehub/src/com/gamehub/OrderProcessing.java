@@ -29,7 +29,6 @@ public class OrderProcessing extends HttpServlet {
 		response = res;
 		response.setContentType("text/html;charset=UTF-8");
 		
-		
 		// Get session object
 		HttpSession session = req.getSession();
 		
@@ -41,8 +40,6 @@ public class OrderProcessing extends HttpServlet {
 			cart = new HashMap<String, Integer>();
 			session.setAttribute("cart", cart);
 		}
-		
-		
 		
 		//Print parameters passed by post method
   		String firstname = req.getParameter("firstname");
@@ -108,7 +105,7 @@ public class OrderProcessing extends HttpServlet {
   			String prodID = entry.getKey();
   			Integer qty = entry.getValue();
   			String qtyString = Integer.toString(qty);
-  			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
+  			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); 
   			String productname = (String) product.get("ProductName");
   			float price = (float) product.get("Price");
   			String productprice = Float.toString( price );
@@ -153,13 +150,13 @@ public class OrderProcessing extends HttpServlet {
   		float ordersubtotal_afterdiscount = workingTotal;
   		
   		// Calculate shipping price
-  		Map<String, Object> shippingPrice = EcommerceAPIService.getShippingPrice(shippingmethod); //Database.getShippingPrice(shippingmethod);
+  		Map<String, Object> shippingPrice = EcommerceAPIService.getShippingPrice(shippingmethod); 
   		float ordershippingprice = (float) shippingPrice.get("price");
   		workingTotal+=ordershippingprice;
   		float ordersubtotal_aftershipping = workingTotal;
   		
 		// Calculate price after tax
-  		Map<String, Object> taxRate = EcommerceAPIService.getTaxRate(state); //Database.getTaxRate(state);
+  		Map<String, Object> taxRate = EcommerceAPIService.getTaxRate(state); 
   		float ordertaxratePercent = (float) taxRate.get("tax");
   		float ordertaxrate = (float) (ordertaxratePercent * 0.01); //convert percent to decimal
   		float orderamounttaxed = workingTotal * ordertaxrate;
@@ -206,53 +203,18 @@ public class OrderProcessing extends HttpServlet {
 					  				email
 					  			); 
   				
-  				
-  				/* Database.setOrder(
-					  				todaysDate,
-					  				orderproductname,
-					  				orderpricequantity,
-					  				orderdiscount,
-					  				ordersubtotal_afterdiscount,
-					  				ordershippingprice,
-					  				ordersubtotal_aftershipping,
-					  				ordertaxrate,
-					  				orderamounttaxed,
-					  				ordersubtotal_aftertax,
-					  				ordertotalprice,
-					  				firstname,
-					  				lastname,
-					  				address,
-					  				city,
-					  				state,
-					  				zipInt,
-					  				shippingmethod,
-					  				orderproductid,
-					  				productIDList,
-					  				orderquantity,
-					  				quantityList,
-					  				cardnumber,
-					  				expmonth,
-					  				expyearInt,
-					  				cvvInt,
-					  				phone,
-					  				email
-					  			); */
-		
-  		
+  	  		
   	
   		if(newrecordID != 0) {
   			p("record: " + newrecordID + " created!");
   		}
-  		
-  		
+ 	 		
   		// Set orderrecord session attribute
   		session.setAttribute("orderrecordid", newrecordID);
-  		
-  		
+  			
 		//clean up
 		output = null;
 		response = null;
-		
 		
 		//Send to next servlet
 		//Call a servlet from a servlet using RequestDispatcher

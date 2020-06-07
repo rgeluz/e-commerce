@@ -12,6 +12,12 @@ import javax.ws.rs.core.Response;
 
 @Path("/taxrate")
 public class StateResource {
+	
+	/**
+	 * 
+	 * @param statename
+	 * @return
+	 */
 	@Path("{statename}")
 	@GET
 	@Produces( { MediaType.APPLICATION_JSON })

@@ -12,6 +12,12 @@ import javax.ws.rs.core.Response;
 
 @Path("/products")
 public class ProductResource {
+	
+	/**
+	 * 
+	 * @param prouductID
+	 * @return
+	 */
 	@Path("id/{id}")
 	@GET
 	@Produces( { MediaType.APPLICATION_JSON } )
@@ -23,6 +29,11 @@ public class ProductResource {
 		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 	
+	/**
+	 * 
+	 * @param category
+	 * @return
+	 */
 	@Path("category/{category}")
 	@GET
 	@Produces( { MediaType.APPLICATION_JSON } )
@@ -34,7 +45,11 @@ public class ProductResource {
 		return Response.ok(products).build();
 	}
 	
-	
+	/**
+	 * 
+	 * @param keyword
+	 * @return
+	 */
 	@Path("search/{keyword}")
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON } )

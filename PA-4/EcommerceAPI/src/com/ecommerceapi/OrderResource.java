@@ -13,6 +13,11 @@ import javax.ws.rs.core.Response;
 
 @Path("/orders")
 public class OrderResource {
+	/**
+	 * 
+	 * @param orderID
+	 * @return
+	 */
 	@Path("id/{id}")
 	@GET
 	@Produces( { MediaType.APPLICATION_JSON } )
@@ -24,6 +29,11 @@ public class OrderResource {
 		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 	
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
 	@POST
 	@Consumes( { MediaType.APPLICATION_JSON } )
 	public Response addOrder(Order order) {

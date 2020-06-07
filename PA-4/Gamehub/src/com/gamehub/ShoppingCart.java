@@ -205,7 +205,7 @@ public class ShoppingCart extends HttpServlet {
 		      			String prodID = entry.getKey();
 		      			Integer qty = entry.getValue();
 		      			String qtyString = Integer.toString(qty);
-		      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
+		      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); 
 		      			String productname = (String) product.get("ProductName");
 		      			float price = (float) product.get("Price");
 		      			String productprice = Float.toString( price );
@@ -316,7 +316,7 @@ public class ShoppingCart extends HttpServlet {
 			 			//Viewed Items  p(   );
 			      		if (viewed != null) {	
 			      			for (String id : viewed) {
-								Map<String, Object> product = EcommerceAPIService.getProduct(id); //Database.getProduct(id);
+								Map<String, Object> product = EcommerceAPIService.getProduct(id); 
 								String imgLinks = (String) product.get("ImageLinks");
 								String[] imgLinksArray = imgLinks.split(",");
 								String mainImg = imgLinksArray[0];
@@ -343,40 +343,7 @@ public class ShoppingCart extends HttpServlet {
 					"</div>\n" +
 					"<!-- end of order form card div -->\n" +
 		      		"");
-		      		/*
-		      		//Viewed Items
-		      		if (viewed != null) {
-		      			p("<!-- Shopping Cart Detail Card -->\n" +
-		    		 	  "<div class=\"w3-card-4 ordersummarycard\" style=\"width:48%; float:left;\">\n" +
-		    		 	  	"<center><strong><h2>Most Recent Viewed Items</h2></strong></center>\n" +
-		    		 			"");
-			      			p("<div class=\"product-table\"> \n" + 
-									"<table>\n" + 
-						              "<tbody>\n" +
-						              "");
-			      			for (String id : viewed) {
-								Map<String, Object> product = Database.getProduct(id);
-								String imgLinks = (String) product.get("ImageLinks");
-								String[] imgLinksArray = imgLinks.split(",");
-								String mainImg = imgLinksArray[0];
-								p(
-										"<td>\n" +
-										"<div class=\"productcategory-card\"> \n" +
-											"<a href=\"productdetails?pageFrom=productcategory_"+ ((String)product.get("Platform")).toLowerCase() +"&productCategory="+product.get("ProductCategory")+"&productID="+product.get("ProductID")+"\">\n" +
-												"<img src=\""+mainImg+"\" alt=\"cover\" style=\"width:100%\">" +
-											"</a> \n" +
-												"<div class=\"productcategory-card-container\">\n" +
-													"<p>Product Name:" + product.get("ProductName") + "</p> \n" +
-													"<p>Price: " + product.get("Price") + "</p> \n" +
-												"</div> \n" +
-										"</div> \n"+
-										"</td>");
-							}
-							p(
-										"</tbody>\n" + 
-									"</table> \n" 
-												);
-		      		} */
+
 
 		      p("</div>\n" +
 			 "<!-- end of main div -->\n" +

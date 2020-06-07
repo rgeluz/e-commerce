@@ -11,6 +11,12 @@ import javax.ws.rs.core.Response;
 
 @Path("/shippingprice")
 public class ShippingResource {
+	
+	/**
+	 * 
+	 * @param shippingmethod
+	 * @return
+	 */
 	@Path("{shippingmethod}")
 	@GET
 	@Produces( { MediaType.APPLICATION_JSON } )

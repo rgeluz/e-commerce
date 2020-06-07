@@ -53,7 +53,7 @@ public class ViewHistory extends HttpServlet{
 				
 				
 				for (String id : viewed) {
-					Map<String, Object> product = EcommerceAPIService.getProduct(id); //Database.getProduct(id);
+					Map<String, Object> product = EcommerceAPIService.getProduct(id);
 					String imgLinks = (String) product.get("ImageLinks");
 					String[] imgLinksArray = imgLinks.split(",");
 					String mainImg = imgLinksArray[0];

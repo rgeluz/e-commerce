@@ -1,4 +1,3 @@
-<%@page import="com.gamehub.Database" %>
 <%@page import="com.gamehub.EcommerceAPIService" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.Map" %>
@@ -7,7 +6,7 @@
 <%
 
 	String searchkeyword = request.getParameter("query");
-	ArrayList<Map<String, Object>> productList = EcommerceAPIService.getAllProductsBySearchKeyword(searchkeyword); //Database.getAllProductsBySearchKeyword(searchkeyword);
+	ArrayList<Map<String, Object>> productList = EcommerceAPIService.getAllProductsBySearchKeyword(searchkeyword); 
 	
 	int sizeOfResults = productList.size();
 	
