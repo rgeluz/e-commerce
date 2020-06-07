@@ -22,8 +22,12 @@ public class StateService {
 	 */
 	private static State convertStateMapToStatePojo(Map<String, Object> statemap) {
 		State state = new State();
-		state.setState_name((String) statemap.get("state_name"));
-		state.setTax((float) statemap.get("tax"));
+		if(statemap.isEmpty()) {
+			System.out.println("statemap is empty");
+		} else {
+			state.setState_name((String) statemap.get("state_name"));
+			state.setTax((float) statemap.get("tax"));
+		}
 		return state;
 	}
 	

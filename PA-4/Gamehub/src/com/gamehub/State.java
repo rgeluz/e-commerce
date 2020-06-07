@@ -1,4 +1,4 @@
-package com.ecommerceapi;
+package com.gamehub;
 
 public class State {
 	private float tax;

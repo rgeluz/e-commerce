@@ -58,15 +58,19 @@ public class ProductService {
 	 */
 	private static Product convertProductMapToProductPojo(Map<String, Object> productmap) {
 		Product product = new Product();	
-		product.setProductName((String) productmap.get("ProductName"));
-		product.setQuantity((int) productmap.get("Quantity"));
-		product.setProductID((String) productmap.get("ProductID"));
-		product.setProductCategory((String) productmap.get("ProductCategory"));
-		product.setCategory((String) productmap.get("Category"));
-		product.setPlatform((String) productmap.get("Platform"));
-		product.setPrice((float)productmap.get("Price"));
-		product.setDescription((String) productmap.get("Description"));
-		product.setImageLinks((String) productmap.get("ImageLinks"));
+		if(productmap.isEmpty()) {
+			System.out.println("productmap is empty");
+		} else {
+			product.setProductName((String) productmap.get("ProductName"));
+			product.setQuantity((int) productmap.get("Quantity"));
+			product.setProductID((String) productmap.get("ProductID"));
+			product.setProductCategory((String) productmap.get("ProductCategory"));
+			product.setCategory((String) productmap.get("Category"));
+			product.setPlatform((String) productmap.get("Platform"));
+			product.setPrice((float)productmap.get("Price"));
+			product.setDescription((String) productmap.get("Description"));
+			product.setImageLinks((String) productmap.get("ImageLinks"));
+		}
 		return product;
 	}
 	

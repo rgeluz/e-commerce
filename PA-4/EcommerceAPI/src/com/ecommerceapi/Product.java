@@ -87,6 +87,8 @@ public class Product {
 		this.imageLinks = imageLinks;
 	}
 	
-	
+	public boolean isValid() {
+		return productName != null;
+	}
 	
 }

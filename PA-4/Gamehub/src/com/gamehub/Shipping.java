@@ -1,4 +1,4 @@
-package com.ecommerceapi;
+package com.gamehub;
 
 public class Shipping {
 	private String shipping_method;
