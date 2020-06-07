@@ -15,8 +15,37 @@ public class OrderService {
 	
 	//TODO Finish Later
 	public static boolean addOrder(Order order) {
-		//int newrecordID = 0;
-		//newrecordID = Database.setOrder();
+		int newrecordID = 0;
+		newrecordID = Database.setOrder(
+			order.getTodaysDate(),
+			order.getOrderproductname(),
+			order.getOrderquantity(),
+			order.getOrderdiscount(),
+			order.getOrdersubtotal_afterdiscount(),
+			order.getOrdershippingprice(),
+			order.getOrdersubtotal_aftershipping(),
+			order.getOrdertaxrate(),
+			order.getOrderamounttaxed(),
+			order.getOrdersubtotal_aftertax(),
+			order.getOrdertotalprice(),
+			order.getFirstname(),
+			order.getLastname(),
+			order.getAddress(),
+			order.getCity(),
+			order.getState(),
+			order.getZipInt(),
+			order.getShippingmethod(),
+			order.getOrderproductid(),
+			order.getProductIDList(),
+			order.getOrderquantity(),
+			order.getQuantityList(),
+			order.getCardnumber(),
+			order.getExpmonth(),
+			order.getExpyearInt(),
+			order.getCvvInt(),
+			order.getPhone(),
+			order.getEmail()
+				);
 		return true;
 	}
 	
