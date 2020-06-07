@@ -6,6 +6,11 @@ import java.util.Map;
 
 public class OrderService {
 	
+	/**
+	 * 
+	 * @param orderID
+	 * @return
+	 */
 	public static Order getOrderByID(Integer orderID) {
 		Map<String, Object> ordermap = Database.getOrder(orderID);
 		Order order = new Order();
@@ -13,13 +18,17 @@ public class OrderService {
 		return order;
 	}
 	
-	//TODO Finish Later
-	public static boolean addOrder(Order order) {
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
+	public static int addOrder(Order order) {
 		int newrecordID = 0;
 		newrecordID = Database.setOrder(
 			order.getTodaysDate(),
 			order.getOrderproductname(),
-			order.getOrderquantity(),
+			order.getOrderpricequantity(),
 			order.getOrderdiscount(),
 			order.getOrdersubtotal_afterdiscount(),
 			order.getOrdershippingprice(),
@@ -46,9 +55,27 @@ public class OrderService {
 			order.getPhone(),
 			order.getEmail()
 				);
-		return true;
+		return newrecordID;
 	}
 	
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
+	public static boolean isValid(Order order) {
+		if(order.getOrderid() != 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param ordermap
+	 * @return
+	 */
 	private static Order convertOrderMapToOrderPojo(Map<String, Object> ordermap) {
 		Order order = new Order();
 		if(ordermap.isEmpty()) {

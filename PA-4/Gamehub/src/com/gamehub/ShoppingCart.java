@@ -205,7 +205,7 @@ public class ShoppingCart extends HttpServlet {
 		      			String prodID = entry.getKey();
 		      			Integer qty = entry.getValue();
 		      			String qtyString = Integer.toString(qty);
-		      			Map<String, Object> product = Database.getProduct(prodID);
+		      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
 		      			String productname = (String) product.get("ProductName");
 		      			float price = (float) product.get("Price");
 		      			String productprice = Float.toString( price );
@@ -316,7 +316,7 @@ public class ShoppingCart extends HttpServlet {
 			 			//Viewed Items  p(   );
 			      		if (viewed != null) {	
 			      			for (String id : viewed) {
-								Map<String, Object> product = Database.getProduct(id);
+								Map<String, Object> product = EcommerceAPIService.getProduct(id); //Database.getProduct(id);
 								String imgLinks = (String) product.get("ImageLinks");
 								String[] imgLinksArray = imgLinks.split(",");
 								String mainImg = imgLinksArray[0];

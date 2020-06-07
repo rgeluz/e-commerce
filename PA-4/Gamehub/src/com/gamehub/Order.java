@@ -269,7 +269,4 @@ public class Order {
 			this.email = email;
 		}
 		
-		public boolean isValid() {
-			return orderid != 0;
-		}
 }

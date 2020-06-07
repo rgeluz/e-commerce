@@ -1,4 +1,5 @@
 <%@page import="com.gamehub.Database" %>
+<%@page import="com.gamehub.EcommerceAPIService" %>
 <%@page import="java.io.IOException"  %>
 <%@page import="java.io.PrintWriter"  %>
 <%@page import="java.util.LinkedList"  %>
@@ -280,7 +281,7 @@
 		String productCategory = request.getParameter("productCategory");
 		String productID = request.getParameter("productID");
 		
-		Map<String, Object> product = Database.getProduct(productID);
+		Map<String, Object> product = EcommerceAPIService.getProduct(productID); //Database.getProduct(productID);
 		
 		//Retrieve the main image. This is the first image in the array.
 		String imageLinks = (String) product.get("ImageLinks"); 

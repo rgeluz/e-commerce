@@ -17,7 +17,7 @@ public class ProductResource {
 	@Produces( { MediaType.APPLICATION_JSON } )
 	public Response getProductByID( @PathParam("id") String prouductID ) {
 		Product product = ProductService.getProductByID(prouductID);
-		if(product.isValid()) {		
+		if(ProductService.isValid(product)) {		
 			return Response.ok(product).build();
 		}
 		return Response.status(Response.Status.NOT_FOUND).build();

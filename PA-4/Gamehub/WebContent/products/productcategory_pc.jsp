@@ -1,4 +1,5 @@
 <%@page import="com.gamehub.Database" %>
+<%@page import="com.gamehub.EcommerceAPIService" %>
 <%@page import="java.io.IOException" %>
 <%@page import="java.io.PrintWriter" %>
 <%@page import="java.util.ArrayList" %>
@@ -157,7 +158,7 @@
 				<!-- JSP scriplet -->
 				<%
 					 //ADD PRODUCT CARDS
-			        ArrayList<Map<String, Object>> productList = Database.getAllProductsByCategory("PC Gaming");
+			        ArrayList<Map<String, Object>> productList = EcommerceAPIService.getAllProductsByCategory("PC Gaming"); //Database.getAllProductsByCategory("PC Gaming");
 			        int i=0;
 					for(Map<String, Object> product : productList) {
 						if( (i%3)==0 ) {

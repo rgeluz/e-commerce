@@ -13,8 +13,7 @@ public class Database {
 	static final String DB_URL = "jdbc:mysql://localhost/ecommerce?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	//  Database credentials
 	static final String USER = "root";
-//	static final String PASS = "testdb";//"testdb124";
-	static final String PASS = "testdb124";//"testdb124";
+    static final String PASS = "testdb";//"testdb124";
 	
 	/**
 	 * openConnection
@@ -452,6 +451,7 @@ public class Database {
 		    try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
 		    	if(generatedKeys.next()) {
 		    		recordID = (int) generatedKeys.getLong(1);
+		    		System.out.println("recordID of newly created record: " + recordID);
 		    	} else {
 		    		throw new SQLException("Creating order record failed, no record ID obtained.");
 		    	}

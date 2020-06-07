@@ -108,7 +108,7 @@ public class OrderProcessing extends HttpServlet {
   			String prodID = entry.getKey();
   			Integer qty = entry.getValue();
   			String qtyString = Integer.toString(qty);
-  			Map<String, Object> product = Database.getProduct(prodID);
+  			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
   			String productname = (String) product.get("ProductName");
   			float price = (float) product.get("Price");
   			String productprice = Float.toString( price );
@@ -153,13 +153,13 @@ public class OrderProcessing extends HttpServlet {
   		float ordersubtotal_afterdiscount = workingTotal;
   		
   		// Calculate shipping price
-  		Map<String, Object> shippingPrice = Database.getShippingPrice(shippingmethod);
+  		Map<String, Object> shippingPrice = EcommerceAPIService.getShippingPrice(shippingmethod); //Database.getShippingPrice(shippingmethod);
   		float ordershippingprice = (float) shippingPrice.get("price");
   		workingTotal+=ordershippingprice;
   		float ordersubtotal_aftershipping = workingTotal;
   		
 		// Calculate price after tax
-  		Map<String, Object> taxRate = Database.getTaxRate(state);
+  		Map<String, Object> taxRate = EcommerceAPIService.getTaxRate(state); //Database.getTaxRate(state);
   		float ordertaxratePercent = (float) taxRate.get("tax");
   		float ordertaxrate = (float) (ordertaxratePercent * 0.01); //convert percent to decimal
   		float orderamounttaxed = workingTotal * ordertaxrate;
@@ -175,7 +175,7 @@ public class OrderProcessing extends HttpServlet {
   		String orderproductid = "See ProductList for complete product list";
   		int orderquantity = 0; //will not use this field "Quantity" in order table, will use QuantityList instead to record string list of quantities
   		int newrecordID = 0;
-  		newrecordID = Database.setOrder(
+  		newrecordID = EcommerceAPIService.setOrder(
 					  				todaysDate,
 					  				orderproductname,
 					  				orderpricequantity,
@@ -204,12 +204,46 @@ public class OrderProcessing extends HttpServlet {
 					  				cvvInt,
 					  				phone,
 					  				email
-					  			);
+					  			); 
+  				
+  				
+  				/* Database.setOrder(
+					  				todaysDate,
+					  				orderproductname,
+					  				orderpricequantity,
+					  				orderdiscount,
+					  				ordersubtotal_afterdiscount,
+					  				ordershippingprice,
+					  				ordersubtotal_aftershipping,
+					  				ordertaxrate,
+					  				orderamounttaxed,
+					  				ordersubtotal_aftertax,
+					  				ordertotalprice,
+					  				firstname,
+					  				lastname,
+					  				address,
+					  				city,
+					  				state,
+					  				zipInt,
+					  				shippingmethod,
+					  				orderproductid,
+					  				productIDList,
+					  				orderquantity,
+					  				quantityList,
+					  				cardnumber,
+					  				expmonth,
+					  				expyearInt,
+					  				cvvInt,
+					  				phone,
+					  				email
+					  			); */
 		
+  		
+  	
   		if(newrecordID != 0) {
   			p("record: " + newrecordID + " created!");
   		}
-  		/**/
+  		
   		
   		// Set orderrecord session attribute
   		session.setAttribute("orderrecordid", newrecordID);

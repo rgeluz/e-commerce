@@ -18,7 +18,7 @@ public class OrderResource {
 	@Produces( { MediaType.APPLICATION_JSON } )
 	public Response getOrderByID( @PathParam("id") Integer orderID ) {
 		Order order = OrderService.getOrderByID(orderID);
-		if( order.isValid() ) {
+		if( OrderService.isValid(order) ) {
 			return Response.ok(order).build();
 		}
 		return Response.status(Response.Status.NOT_FOUND).build();
@@ -27,8 +27,12 @@ public class OrderResource {
 	@POST
 	@Consumes( { MediaType.APPLICATION_JSON } )
 	public Response addOrder(Order order) {
-		if( OrderService.addOrder(order) ) {
-			return Response.ok().entity("Order Added Successfully").build();
+		int newrecordID = 0;
+		newrecordID = OrderService.addOrder(order);
+		
+		if( newrecordID != 0 ) {
+			//return Response.ok().entity("Order Added Successfully").build();
+			return Response.ok().entity(String.valueOf(newrecordID)).build();
 		}
 		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 	}

@@ -24,7 +24,5 @@ public class Shipping {
 		this.price = price;
 	}
 	
-	public boolean isValid() {
-		return shipping_method != null;
-	}
+
 }

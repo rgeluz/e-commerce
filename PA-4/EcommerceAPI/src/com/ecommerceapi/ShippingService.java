@@ -17,6 +17,19 @@ public class ShippingService {
 	
 	/**
 	 * 
+	 * @param shipping
+	 * @return
+	 */
+	public static boolean isValid(Shipping shipping) {
+		if(shipping.getShipping_method() != null ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * 
 	 * @param shippingmap
 	 * @return
 	 */

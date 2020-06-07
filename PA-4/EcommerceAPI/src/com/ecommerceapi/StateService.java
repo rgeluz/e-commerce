@@ -17,6 +17,19 @@ public class StateService {
 	
 	/**
 	 * 
+	 * @param state
+	 * @return
+	 */
+	public static boolean isValid(State state) {
+		if(state.getState_name() != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * 
 	 * @param statemap
 	 * @return
 	 */

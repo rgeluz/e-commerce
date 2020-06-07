@@ -50,6 +50,19 @@ public class ProductService {
 		}
 		return products;
 	}
+	
+	/**
+	 * 
+	 * @param product
+	 * @return
+	 */
+	public static boolean isValid(Product product) {
+		if(product.getProductName() != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	/**
 	 * 

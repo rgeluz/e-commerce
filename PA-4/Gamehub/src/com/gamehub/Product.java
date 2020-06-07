@@ -85,9 +85,5 @@ public class Product {
 	public void setImageLinks(String imageLinks) {
 		this.imageLinks = imageLinks;
 	}
-	
-	public boolean isValid() {
-		return productName != null;
-	}
-	
+		
 }

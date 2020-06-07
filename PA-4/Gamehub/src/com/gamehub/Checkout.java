@@ -121,7 +121,7 @@ public class Checkout extends HttpServlet {
 		for(Map.Entry<String, Integer> entry: cart.entrySet()) {
 			String prodID = entry.getKey();
 			Integer qty = entry.getValue();
-			Map<String, Object> product = Database.getProduct(prodID);
+			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
 			float price = (float) product.get("Price");
 			// add to subtotal
   			subtotal+= (qty * price);
@@ -162,7 +162,7 @@ public class Checkout extends HttpServlet {
       			String prodID = entry.getKey();
       			Integer qty = entry.getValue();
       			String qtyString = Integer.toString(qty);
-      			Map<String, Object> product = Database.getProduct(prodID);
+      			Map<String, Object> product = EcommerceAPIService.getProduct(prodID); //Database.getProduct(prodID);
       			String productname = (String) product.get("ProductName");
       			String productprice = Float.toString( (float) product.get("Price") );
       			

@@ -17,7 +17,7 @@ public class StateResource {
 	@Produces( { MediaType.APPLICATION_JSON })
 	public Response getTaxRate( @PathParam("statename") String statename ) {
 		State state = StateService.getTaxRate(statename);
-		if(state.isValid()) {
+		if(StateService.isValid(state)) {
 			return Response.ok(state).build();
 		}
 		return Response.status(Response.Status.NOT_FOUND).build();
